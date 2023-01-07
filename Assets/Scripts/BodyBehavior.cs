@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BodyBehavior : MonoBehaviour
+public class BodyBehavior : Interactable
 {
+    public ArmBehavior leftArm;
+    public ArmBehavior rightArm;
+    public TrinketBehavior coreTrinket;
+
     // Start is called before the first frame update
     void Start()
     {

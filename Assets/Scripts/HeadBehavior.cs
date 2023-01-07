@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeadBehavior : MonoBehaviour
+public class HeadBehavior : Interactable
 {
     // Start is called before the first frame update
     void Start()

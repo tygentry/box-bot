@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool canHighlight = true;
+    bool isHighlighted = false;
+    public InteractPopup popup;
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void ToggleHighlight()
+    {
+        isHighlighted = !isHighlighted;
     }
 }
