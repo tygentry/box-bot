@@ -59,7 +59,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 76c97f502a738ce49babc46e401d4b90, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,12 +80,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 748ae8b33df036b46a86e0387f1602cf, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.82, y: 0.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -104,7 +104,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canHighlight: 1
-  popup: {fileID: 2877223828000425210}
+  highlightMat: {fileID: 2100000, guid: 76c97f502a738ce49babc46e401d4b90, type: 2}
+  nonHighlightShader: {fileID: 4800000, guid: e260cfa7296ee7642b167f1eb5be5023, type: 3}
+  highlightShader: {fileID: -6465566751694194690, guid: 597b8234fc5737e4b8d078ad90327828, type: 3}
+  popupObj: {fileID: 2877223828000425210}
+  timeUntilPopup: 3
+  popupGroup: {fileID: 3360849347065600789}
 --- !u!1 &7760737679558422073
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +122,7 @@ GameObject:
   - component: {fileID: 7760737679558422069}
   - component: {fileID: 7760737679558422068}
   - component: {fileID: 7760737679558422075}
+  - component: {fileID: 3360849347065600789}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -206,6 +212,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &3360849347065600789
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7760737679558422073}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &7760737679284920069
 PrefabInstance:
   m_ObjectHideFlags: 0
