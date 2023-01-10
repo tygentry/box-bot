@@ -36,7 +36,7 @@ public class Interactable : MonoBehaviour
         isHighlighted = !isHighlighted;
         if (isHighlighted)
         {
-            highlightMat.shader = highlightShader; //SWAP OVER TO COROUTINE
+            highlightMat.shader = highlightShader; 
 
             yield return new WaitForSeconds(timeUntilPopup);
 
@@ -48,6 +48,7 @@ public class Interactable : MonoBehaviour
         else
         {
             highlightMat.shader = nonHighlightShader;
+            StopAllCoroutines();
             StartCoroutine(HidePopup());
         }
     }
@@ -57,7 +58,7 @@ public class Interactable : MonoBehaviour
         while (popupGroup.alpha < 1.0f)
         {
             popupGroup.alpha += .01f;
-            Mathf.Clamp(popupGroup.alpha, 0.0f, 1.0f);
+            Mathf.Clamp(popupGroup.alpha, -0.1f, 1.0f);
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
@@ -67,7 +68,7 @@ public class Interactable : MonoBehaviour
         while (popupGroup.alpha > 0.0f)
         {
             popupGroup.alpha -= .01f;
-            Mathf.Clamp(popupGroup.alpha, 0.0f, 1.0f);
+            Mathf.Clamp(popupGroup.alpha, -0.1f, 1.0f);
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
