@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    [Header("Highlighting")]
     public bool canHighlight = true;
     bool isHighlighted = false;
     public Material highlightMat;
     public Shader nonHighlightShader;
     public Shader highlightShader;
 
+    [Header("Interact Popup")]
     public InteractPopup popupObj;
     public float timeUntilPopup = 3.0f;
     public CanvasGroup popupGroup;
@@ -40,23 +42,43 @@ public class Interactable : MonoBehaviour
 
             if (isHighlighted)
             { 
-                InvokeRepeating("DisplayPopup", 1.0f, 0.01f);
+                StartCoroutine(DisplayPopup());
             }
         }
         else
         {
             highlightMat.shader = nonHighlightShader;
-            InvokeRepeating("HidePopup", 1.0f, 0.01f);
+            StartCoroutine(HidePopup());
         }
     }
 
-    public void DisplayPopup()
+    IEnumerator DisplayPopup()
     {
-        popupGroup.alpha += (1.0f / (1.0f / 0.01f));
+        while (popupGroup.alpha < 1.0f)
+        {
+            popupGroup.alpha += .01f;
+            Mathf.Clamp(popupGroup.alpha, 0.0f, 1.0f);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
     }
 
-    public void HidePopup()
+    IEnumerator HidePopup()
     {
-        popupGroup.alpha -= (1.0f / (2.0f / 0.1f));
+        while (popupGroup.alpha > 0.0f)
+        {
+            popupGroup.alpha -= .01f;
+            Mathf.Clamp(popupGroup.alpha, 0.0f, 1.0f);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        StartCoroutine(ToggleHighlight());
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        StartCoroutine(ToggleHighlight());
     }
 }

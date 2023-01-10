@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7760737679185918603}
   - component: {fileID: 7760737679185918602}
   - component: {fileID: 7760737679185918601}
+  - component: {fileID: 5350780323979943789}
   m_Layer: 0
   m_Name: BaseInteractable
   m_TagString: Untagged
@@ -108,8 +109,24 @@ MonoBehaviour:
   nonHighlightShader: {fileID: 4800000, guid: e260cfa7296ee7642b167f1eb5be5023, type: 3}
   highlightShader: {fileID: -6465566751694194690, guid: 597b8234fc5737e4b8d078ad90327828, type: 3}
   popupObj: {fileID: 2877223828000425210}
-  timeUntilPopup: 3
+  timeUntilPopup: 2
   popupGroup: {fileID: 3360849347065600789}
+--- !u!58 &5350780323979943789
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7760737679185918600}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!1 &7760737679558422073
 GameObject:
   m_ObjectHideFlags: 0
