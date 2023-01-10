@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
     private bool invincible = false;
     private float dodgeTimer = 0f;
 
+    [Header("Interact")]
+    public GameObject intObj;
+    public bool canInteract = true;
+
     private Vector2 dodgeDirection = Vector2.zero;
 
     private Rigidbody2D rb;
@@ -40,6 +44,10 @@ public class PlayerMovement : MonoBehaviour
             invincible= true;
         }
 
+        if (Input.GetButtonDown("Interact") && canInteract && intObj != null)
+        {
+            intObj.GetComponent<Interactable>().Interact();
+        }
 
         if (dodgeTimer <= 0f)
         {

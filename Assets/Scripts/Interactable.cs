@@ -25,10 +25,7 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(ToggleHighlight());
-        }
+        
     }
 
     IEnumerator ToggleHighlight()
@@ -36,7 +33,7 @@ public class Interactable : MonoBehaviour
         isHighlighted = !isHighlighted;
         if (isHighlighted)
         {
-            highlightMat.shader = highlightShader; 
+            highlightMat.shader = highlightShader;
 
             yield return new WaitForSeconds(timeUntilPopup);
 
@@ -75,11 +72,22 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        StartCoroutine(ToggleHighlight());
+        GameObject colObj = collision.gameObject;
+        if (colObj.CompareTag("Player"))
+        {
+            colObj.GetComponent<PlayerMovement>().intObj = this.gameObject;
+            StartCoroutine(ToggleHighlight());
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         StartCoroutine(ToggleHighlight());
+    }
+
+    public bool Interact()
+    {
+        print("interacted");
+        return true;
     }
 }
