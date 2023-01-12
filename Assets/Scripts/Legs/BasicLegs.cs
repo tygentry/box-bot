@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmBehavior : Interactable
+public class BasicLegs : LegBehavior
 {
     // Start is called before the first frame update
     void Start()
@@ -14,15 +14,5 @@ public class ArmBehavior : Interactable
     void Update()
     {
         
-    }
-
-    public virtual void HoldAttack()
-    {
-        Debug.Log(this.name + " hold attack");
-    }
-
-    public virtual void ReleaseAttack()
-    {
-        Debug.Log(this.name + " release attack");
     }
 }

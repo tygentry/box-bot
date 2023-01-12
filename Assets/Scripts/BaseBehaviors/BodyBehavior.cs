@@ -38,4 +38,7 @@ public class BodyBehavior : Interactable
     {
         
     }
+
+    //public void AttackLeft() { if (leftArm) leftArm.Attack(); }
+    //public void AttackRight() { if (rightArm) rightArm.Attack(); }
 }

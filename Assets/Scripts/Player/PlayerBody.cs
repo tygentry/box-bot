@@ -37,6 +37,27 @@ public class PlayerBody : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach (BodyBehavior b in bodies)
+        {
+            // holding / initial press
+            if (Input.GetButton("LeftAttack"))
+            {
+                //b.HoldLeft();
+            }
+            if (Input.GetButton("RightAttack"))
+            {
+                
+            }
+
+            // release
+            if (Input.GetButtonUp("LeftAttack"))
+            {
+
+            }
+            if (Input.GetButtonUp("RightAttack"))
+            {
+
+            }
+        }
     }
 }
