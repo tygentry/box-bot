@@ -2,26 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmBehavior : Interactable
+public abstract class ArmBehavior : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Base Arm Stats")]
+    public float attackDelay;
+    public int damage;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public virtual void HoldAttack()
+    public virtual void HoldAttack(float dt)
     {
         Debug.Log(this.name + " hold attack");
     }
 
-    public virtual void ReleaseAttack()
+    public virtual void ReleaseAttack(float dt)
     {
         Debug.Log(this.name + " release attack");
     }

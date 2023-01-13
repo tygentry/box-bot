@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BodyBehavior : Interactable
+public abstract class BodyBehavior : Interactable
 {
     [Header("Body Components")]
     public GameObject leftArmObj;
     public GameObject rightArmObj;
     public GameObject coreTrinketObj;
-    private ArmBehavior leftArm;
+    public ArmBehavior leftArm;
     private ArmBehavior rightArm;
     private TrinketBehavior trinket;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         if (leftArmObj)
         {
@@ -39,6 +39,8 @@ public class BodyBehavior : Interactable
         
     }
 
-    //public void AttackLeft() { if (leftArm) leftArm.Attack(); }
-    //public void AttackRight() { if (rightArm) rightArm.Attack(); }
+    public void HoldLeft(float dt) { if (leftArm) leftArm.HoldAttack(dt); }
+    public void HoldRight(float dt) { if (rightArm) rightArm.HoldAttack(dt); }
+    public void AttackLeft(float dt) { if (leftArm) leftArm.ReleaseAttack(dt); }
+    public void AttackRight(float dt) { if (rightArm) rightArm.ReleaseAttack(dt); }
 }

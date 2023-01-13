@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pellet : ProjectileBehavior
+public abstract class MeleeArm : ArmBehavior
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +14,15 @@ public class Pellet : ProjectileBehavior
     void Update()
     {
         
+    }
+
+    public override void HoldAttack(float dt)
+    {
+        
+    }
+
+    public override void ReleaseAttack(float dt)
+    {
+        Debug.Log(this.name + " release melee attack");
     }
 }

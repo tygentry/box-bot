@@ -16,18 +16,6 @@ public class Interactable : MonoBehaviour
     public float timeUntilPopup = 3.0f;
     public CanvasGroup popupGroup;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator ToggleHighlight()
     {
         isHighlighted = !isHighlighted;

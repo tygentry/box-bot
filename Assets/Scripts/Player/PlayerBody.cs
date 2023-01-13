@@ -42,21 +42,21 @@ public class PlayerBody : MonoBehaviour
             // holding / initial press
             if (Input.GetButton("LeftAttack"))
             {
-                //b.HoldLeft();
+                b.HoldLeft(Time.deltaTime);
             }
             if (Input.GetButton("RightAttack"))
             {
-                
+                b.HoldRight(Time.deltaTime);
             }
 
             // release
             if (Input.GetButtonUp("LeftAttack"))
             {
-
+                b.AttackLeft(Time.deltaTime);
             }
             if (Input.GetButtonUp("RightAttack"))
             {
-
+                b.AttackRight(Time.deltaTime);
             }
         }
     }
