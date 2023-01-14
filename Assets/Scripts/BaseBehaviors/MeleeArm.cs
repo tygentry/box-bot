@@ -1,28 +1,49 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class MeleeArm : ArmBehavior
 {
-    // Start is called before the first frame update
+    [Header("Melee Arm")]
+    public GameObject hitboxObj;
+    private HitBox hitbox;
+    public float activeHitTime;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        print("test");
+        hitbox = hitboxObj.GetComponent<HitBox>();
     }
 
     public override void PressAttack(float dt)
     {
-        
+        if (canAttack)
+        {
+            canAttack = false;
+            Swing();
+        }
     }
 
     public override void ReleaseAttack(float dt)
     {
-        Debug.Log(this.name + " release melee attack");
+        
+    }
+
+    public void Swing()
+    {
+        hitbox.Activate(activeHitTime);
+        StartCoroutine(ResetSwing());
+    }
+
+    IEnumerator ResetSwing()
+    {
+        yield return new WaitForSeconds(attackDelay+activeHitTime);
+        canAttack = true;
+    }
+
+    public void Hit(Collider2D collision)
+    {
+
     }
 }

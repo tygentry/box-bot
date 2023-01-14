@@ -8,7 +8,6 @@ public abstract class ArmBehavior : Interactable
     public float attackDelay;
     public int damage;
     public bool canAttack;
-    public bool finishedAttack;
 
     public virtual void PressAttack(float dt)
     {
