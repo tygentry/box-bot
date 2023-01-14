@@ -39,8 +39,8 @@ public abstract class BodyBehavior : Interactable
         
     }
 
-    public void HoldLeft(float dt) { if (leftArm) leftArm.HoldAttack(dt); }
-    public void HoldRight(float dt) { if (rightArm) rightArm.HoldAttack(dt); }
-    public void AttackLeft(float dt) { if (leftArm) leftArm.ReleaseAttack(dt); }
-    public void AttackRight(float dt) { if (rightArm) rightArm.ReleaseAttack(dt); }
+    public void PressLeft(float dt) { if (leftArm) leftArm.PressAttack(dt); }
+    public void PressRight(float dt) { if (rightArm) rightArm.PressAttack(dt); }
+    public void ReleaseLeft(float dt) { if (leftArm) leftArm.ReleaseAttack(dt); }
+    public void ReleaseRight(float dt) { if (rightArm) rightArm.ReleaseAttack(dt); }
 }

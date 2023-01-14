@@ -16,7 +16,7 @@ public abstract class MeleeArm : ArmBehavior
         
     }
 
-    public override void HoldAttack(float dt)
+    public override void PressAttack(float dt)
     {
         
     }

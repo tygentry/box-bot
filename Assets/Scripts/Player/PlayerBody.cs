@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBody : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class PlayerBody : MonoBehaviour
     }
 
     public HeadBehavior GetHead() { return head; }
-    public BodyBehavior GetBody(int index) { return bodies[index]; }
+    public BodyBehavior GetBody(int index) { if (index >= 0 && index < bodies.Count) return bodies[index]; else return null; }
     public LegBehavior GetLeg() { return legs; }
 
     // Update is called once per frame
@@ -40,23 +41,23 @@ public class PlayerBody : MonoBehaviour
         foreach (BodyBehavior b in bodies)
         {
             // holding / initial press
-            if (Input.GetButton("LeftAttack"))
+            if (Mouse.current.leftButton.wasPressedThisFrame)
             {
-                b.HoldLeft(Time.deltaTime);
+                b.PressLeft(Time.deltaTime);
             }
-            if (Input.GetButton("RightAttack"))
+            if (Mouse.current.rightButton.wasPressedThisFrame)
             {
-                b.HoldRight(Time.deltaTime);
+                b.PressRight(Time.deltaTime);
             }
 
             // release
-            if (Input.GetButtonUp("LeftAttack"))
+            if (Mouse.current.leftButton.wasReleasedThisFrame)
             {
-                b.AttackLeft(Time.deltaTime);
+                b.ReleaseLeft(Time.deltaTime);
             }
-            if (Input.GetButtonUp("RightAttack"))
+            if (Mouse.current.rightButton.wasReleasedThisFrame)
             {
-                b.AttackRight(Time.deltaTime);
+                b.ReleaseRight(Time.deltaTime);
             }
         }
     }

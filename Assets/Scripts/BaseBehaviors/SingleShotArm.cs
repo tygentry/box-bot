@@ -4,13 +4,9 @@ using UnityEngine;
 
 public abstract class SingleShotArm : ArmBehavior
 {
+    [Header("Single Shot Arm")]
+    public Transform spawnPoint;
     public GameObject projectile;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -18,18 +14,33 @@ public abstract class SingleShotArm : ArmBehavior
         
     }
 
-    public override void HoldAttack(float dt)
+    public override void PressAttack(float dt)
     {
-        
+        if (canAttack)
+        {
+            canAttack = false;
+            Fire();
+            finishedAttack = true;
+        }
     }
 
     public override void ReleaseAttack(float dt)
     {
-        Fire();
+        if (finishedAttack)
+        {
+            finishedAttack = false;
+            StartCoroutine(ResetFire());
+        }
     }
 
     public void Fire()
     {
-        Instantiate(projectile);
+        Instantiate(projectile, spawnPoint.position, spawnPoint.rotation);
+    }
+
+    IEnumerator ResetFire()
+    {
+        yield return new WaitForSeconds(attackDelay);
+        canAttack = true;
     }
 }
