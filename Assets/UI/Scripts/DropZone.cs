@@ -5,7 +5,7 @@ using UnityEngine;
 public class DropZone : MonoBehaviour
 {
     public int allowedChildren;
-    //public Modifier.ModifierEnum slotType = Modifier.ModifierEnum.None;
+    public RobotPart.PartEnum slotType = RobotPart.PartEnum.None;
 
     public bool CheckAllowDrop(GameObject dropped)
     {
@@ -19,13 +19,13 @@ public class DropZone : MonoBehaviour
             isValid = false;
         }
 
-        /*if (slotType != Modifier.ModifierEnum.None)
+        if (slotType != RobotPart.PartEnum.None)
         {
             if (slotType != dropped.GetComponent<DragDrop>().dropType)
             {
                 isValid = false;
             }
-        }*/
+        }
 
         return isValid;
     }

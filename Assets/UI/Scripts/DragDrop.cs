@@ -6,9 +6,6 @@ using UnityEngine.UI;
 public class DragDrop : MonoBehaviour
 {
 
-    /*
-     * Usability notes: Drag+Drop script should be placed on a button with the event trigger
-     */
     public bool isDraggable = true;
     public GameObject dragger;
     public bool isOverDropZone = false;
@@ -35,7 +32,7 @@ public class DragDrop : MonoBehaviour
     {
         isOverDropZone = true;
         dropZones.Add(collision.gameObject);
-        //print(collision.gameObject);
+        print(collision.gameObject);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -60,7 +57,7 @@ public class DragDrop : MonoBehaviour
         {
             startPosition = trans.localPosition;
             previousParent = trans.parent.gameObject;
-            //prevChildIndex = trans.GetSiblingIndex();
+            prevChildIndex = trans.GetSiblingIndex();
             dragger.GetComponent<Dragger>().isDragging = true;
             trans.localPosition = new Vector3(0, 0, 0);
             trans.SetParent(dragger.transform, false);
@@ -81,36 +78,17 @@ public class DragDrop : MonoBehaviour
         GameObject retVal = null;
         //first performing validation checks
 
-        /*foreach (GameObject dropZone in dropZones)
+        foreach (GameObject dropZone in dropZones)
         {
-            CustomizationDropZone cdz = dropZone.GetComponent<CustomizationDropZone>();
-            if (cdz != null)
+            DropZone dz = dropZone.GetComponent<DropZone>();
+            if (dropZone != previousParent && (dz == null || dz.CheckAllowDrop(gameObject))) //prevents dropping onto same parent and check is the DropZone script is present, asking it if drop is valid)
             {
-                GameObject subDropZone = cdz.DroppedOnto(gameObject);
-                if (subDropZone != null)
+                if (allowedDropZones.Count == 0 || allowedDropZones.Contains(dropZone)) //if no specific drop zones are specified, goes to any, otherwise only to specified
                 {
-                    DropZone dz = subDropZone.GetComponent<DropZone>();
-                    if (subDropZone != previousParent && (dz == null || dz.CheckAllowDrop(gameObject))) //prevents dropping onto same parent and check is the DropZone script is present, asking it if drop is valid)
-                    {
-                        if (allowedDropZones.Count == 0 || allowedDropZones.Contains(subDropZone)) //if no specific drop zones are specified, goes to any, otherwise only to specified
-                        {
-                            valid.Add(subDropZone);
-                        }
-                    }
+                    valid.Add(dropZone);
                 }
             }
-            else
-            {
-                DropZone dz = dropZone.GetComponent<DropZone>();
-                if (dropZone != previousParent && (dz == null || dz.CheckAllowDrop(gameObject))) //prevents dropping onto same parent and check is the DropZone script is present, asking it if drop is valid)
-                {
-                    if (allowedDropZones.Count == 0 || allowedDropZones.Contains(dropZone)) //if no specific drop zones are specified, goes to any, otherwise only to specified
-                    {
-                        valid.Add(dropZone);
-                    }
-                }
-            }
-        }*/
+        }
 
         if (valid.Count == 0)
         {
@@ -147,17 +125,11 @@ public class DragDrop : MonoBehaviour
             if (isOverDropZone && dropZone != null) //prevents dropping onto same parent and check is the DropZone script is present, asking it if drop is valid
             {
                 //print(dropZone);
-
-                //SET PARENT HERE
-                /*ScrollRect scrollRectZone = dropZone.GetComponent<ScrollRect>();
-                if (scrollRectZone != null && scrollRectZone.content != previousParent)
+                trans.SetParent(dropZone.transform, false);
+                if (dropZone == previousParent) 
                 {
-                    trans.SetParent(scrollRectZone.content.transform, false);
-                    if (scrollRectZone.content.gameObject == previousParent) 
-                    {
-                        trans.SetSiblingIndex(prevChildIndex);
-                    }
-                }*/
+                    trans.SetSiblingIndex(prevChildIndex);
+                }
             }
             else
             {
