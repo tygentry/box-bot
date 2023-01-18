@@ -16,6 +16,9 @@ public class Interactable : MonoBehaviour
     public float timeUntilPopup = 3.0f;
     public CanvasGroup popupGroup;
 
+    [Header("Inventory")]
+    public GameObject inventoryPrefab;
+
     IEnumerator ToggleHighlight()
     {
         isHighlighted = !isHighlighted;

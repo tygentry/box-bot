@@ -13,6 +13,8 @@ public class PlayerBody : MonoBehaviour
     private List<BodyBehavior> bodies;
     private LegBehavior legs;
 
+    private CanvasManager cm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,8 @@ public class PlayerBody : MonoBehaviour
         {
             legs = legsObj.GetComponent<LegBehavior>();
         }
+
+        cm = FindObjectOfType<CanvasManager>();
     }
 
     public HeadBehavior GetHead() { return head; }
@@ -38,6 +42,11 @@ public class PlayerBody : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Keyboard.current.tabKey.wasPressedThisFrame)
+        {
+            cm.ToggleCustomizeMenu();
+        }
+
         foreach (BodyBehavior b in bodies)
         {
             // holding / initial press
