@@ -97,3 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf767e4f977f9e428dbf14cab5841d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canHighlight: 1
+  highlightMat: {fileID: 0}
+  nonHighlightShader: {fileID: 0}
+  highlightShader: {fileID: 0}
+  popupObj: {fileID: 0}
+  timeUntilPopup: 3
+  popupGroup: {fileID: 0}
+  inventoryPrefab: {fileID: 4368693400412802296, guid: 2a28f8a3feb72284aa1f6c8015d7e047, type: 3}

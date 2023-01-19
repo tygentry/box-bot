@@ -8,7 +8,7 @@ public abstract class BodyBehavior : Interactable
     public GameObject leftArmObj;
     public GameObject rightArmObj;
     public GameObject coreTrinketObj;
-    public ArmBehavior leftArm;
+    private ArmBehavior leftArm;
     private ArmBehavior rightArm;
     private TrinketBehavior trinket;
 

@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class CanvasManager : MonoBehaviour
 {
-    [SerializeField] GameObject customizeMenu;
+    [SerializeField] GameObject customizeMenuObj;
     [SerializeField] GameObject pauseMenu;
+    private CustomizeMenu customizeMenu;
 
     public bool isPaused;
     public bool isCustomizing;
 
+    private void Start()
+    {
+        customizeMenu = customizeMenuObj.GetComponent<CustomizeMenu>();
+    }
     public void ToggleCustomizeMenu()
     {
         if (isPaused)
             return;
 
         isCustomizing = !isCustomizing;
-        customizeMenu.SetActive(isCustomizing);
+        customizeMenuObj.SetActive(isCustomizing);
     }
 
-    public void MatchPlayer()
+    public void MatchPlayer(PlayerBody p)
     {
-
+        customizeMenu.MatchCharacter(p);
     }
 
     public void TogglePauseMenu()

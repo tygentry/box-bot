@@ -105,10 +105,10 @@ MonoBehaviour:
   popupObj: {fileID: 0}
   timeUntilPopup: 3
   popupGroup: {fileID: 0}
+  inventoryPrefab: {fileID: 2902938765829276747, guid: b9f40a449b076514da71c001f72a92b5, type: 3}
   attackDelay: 1
   damage: 1
   canAttack: 1
-  finishedAttack: 0
   spawnPoint: {fileID: 1893345056399765717}
   projectile: {fileID: 2683160699197081974, guid: de988ffdd7357a64a9a197ef4fb56cb9, type: 3}
 --- !u!1 &2717403173901824693

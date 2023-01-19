@@ -47,6 +47,11 @@ public class PlayerBody : MonoBehaviour
             cm.ToggleCustomizeMenu();
         }
 
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            cm.MatchPlayer(this);
+        }
+
         foreach (BodyBehavior b in bodies)
         {
             // holding / initial press
