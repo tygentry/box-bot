@@ -32,7 +32,7 @@ public class DragDrop : MonoBehaviour
     {
         isOverDropZone = true;
         dropZones.Add(collision.gameObject);
-        print(collision.gameObject);
+        //print(collision.gameObject);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -52,6 +52,7 @@ public class DragDrop : MonoBehaviour
             pop.popup.isHoverable = false;
             pop.popup.isHovered = false;
         }*/
+        print("starting");
         dropZones.Clear();
         if (isDraggable)
         {
@@ -81,7 +82,7 @@ public class DragDrop : MonoBehaviour
         foreach (GameObject dropZone in dropZones)
         {
             DropZone dz = dropZone.GetComponent<DropZone>();
-            if (dropZone != previousParent && (dz == null || dz.CheckAllowDrop(gameObject))) //prevents dropping onto same parent and check is the DropZone script is present, asking it if drop is valid)
+            if (dropZone != previousParent && (dz != null && dz.CheckAllowDrop(gameObject))) //prevents dropping onto same parent and check is the DropZone script is present, asking it if drop is valid)
             {
                 if (allowedDropZones.Count == 0 || allowedDropZones.Contains(dropZone)) //if no specific drop zones are specified, goes to any, otherwise only to specified
                 {
@@ -124,6 +125,14 @@ public class DragDrop : MonoBehaviour
             //print(dropZone);
             if (isOverDropZone && dropZone != null) //prevents dropping onto same parent and check is the DropZone script is present, asking it if drop is valid
             {
+                //if dropping on populated drop zone, swap the contents of the zones
+                if (dropZone.transform.childCount > 0)
+                {
+                    Transform swapChild = dropZone.transform.GetChild(dropZone.transform.childCount - 1);
+                    swapChild.SetParent(previousParent.transform, false);
+                    swapChild.SetSiblingIndex(prevChildIndex);
+                    //swapChild.localPosition = startPosition;
+                }
                 //print(dropZone);
                 trans.SetParent(dropZone.transform, false);
                 if (dropZone == previousParent) 

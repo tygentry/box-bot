@@ -14,11 +14,10 @@ public class DropZone : MonoBehaviour
             return false;
         }
         bool isValid = true;
-        if (transform.childCount >= allowedChildren && allowedChildren != -1)
+        /*if (transform.childCount >= allowedChildren && allowedChildren != -1)
         {
             isValid = false;
-        }
-
+        }*/
         if (slotType != RobotPart.PartEnum.None)
         {
             if (slotType != dropped.GetComponent<DragDrop>().dropType)
