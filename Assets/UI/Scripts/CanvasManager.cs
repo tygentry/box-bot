@@ -6,7 +6,7 @@ public class CanvasManager : MonoBehaviour
 {
     [SerializeField] GameObject customizeMenuObj;
     [SerializeField] GameObject pauseMenu;
-    private CustomizeMenu customizeMenu;
+    public CustomizeMenu customizeMenu;
 
     public bool isPaused;
     public bool isCustomizing;

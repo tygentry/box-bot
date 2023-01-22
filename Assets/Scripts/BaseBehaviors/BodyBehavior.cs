@@ -30,8 +30,11 @@ public abstract class BodyBehavior : Interactable
     }
 
     public ArmBehavior GetLeftArm() { return leftArm; }
+    public void UpdateLeftArm() { leftArm = leftArmObj.GetComponent<ArmBehavior>(); }
     public ArmBehavior GetRightArm() { return rightArm; }
+    public void UpdateRightArm() { rightArm = rightArmObj.GetComponent<ArmBehavior>(); }
     public TrinketBehavior GetTrinket() { return trinket; }
+    public void UpdateTrinketArm() { trinket = coreTrinketObj.GetComponent<TrinketBehavior>(); }
 
     // Update is called once per frame
     void Update()

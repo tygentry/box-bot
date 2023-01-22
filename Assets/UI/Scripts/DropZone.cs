@@ -6,6 +6,7 @@ public class DropZone : MonoBehaviour
 {
     public int allowedChildren;
     public RobotPart.PartEnum slotType = RobotPart.PartEnum.None;
+    public GameObject associatedSlot;
 
     public bool CheckAllowDrop(GameObject dropped)
     {
