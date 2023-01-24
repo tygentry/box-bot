@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: dropType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2498722612823863690, guid: 9c30cd314e5269e4d95ed396864a0299, type: 3}
+      propertyPath: partPrefab
+      value: 
+      objectReference: {fileID: 8341776230713353740, guid: 900b9e00135bd75459fdf430b96007c2, type: 3}
     - target: {fileID: 2498722612823863732, guid: 9c30cd314e5269e4d95ed396864a0299, type: 3}
       propertyPath: m_Size.x
       value: 180

@@ -2714,22 +2714,6 @@ PrefabInstance:
       propertyPath: coreTrinketObj
       value: 
       objectReference: {fileID: 979612422}
-    - target: {fileID: 1972180595677544708, guid: 611c8e33975e94e4784df5f56dc4f877, type: 3}
-      propertyPath: startPos.z
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3394300475788355890, guid: 611c8e33975e94e4784df5f56dc4f877, type: 3}
-      propertyPath: startPos.y
-      value: 0.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306804985082195083, guid: 611c8e33975e94e4784df5f56dc4f877, type: 3}
-      propertyPath: startPos.x
-      value: 0.66
-      objectReference: {fileID: 0}
-    - target: {fileID: 5187069668237796065, guid: 611c8e33975e94e4784df5f56dc4f877, type: 3}
-      propertyPath: startPos.x
-      value: 0.67
-      objectReference: {fileID: 0}
     - target: {fileID: 6241148983329299896, guid: 611c8e33975e94e4784df5f56dc4f877, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2794,10 +2778,6 @@ PrefabInstance:
       propertyPath: bodyObjs.Array.data[0]
       value: 
       objectReference: {fileID: 6241148983004282668}
-    - target: {fileID: 8749218239294733932, guid: 611c8e33975e94e4784df5f56dc4f877, type: 3}
-      propertyPath: startPos.y
-      value: -0.26
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 611c8e33975e94e4784df5f56dc4f877, type: 3}
 --- !u!1 &6241148983004282665 stripped

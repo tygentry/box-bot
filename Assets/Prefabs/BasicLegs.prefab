@@ -138,6 +138,8 @@ MonoBehaviour:
   timeUntilPopup: 3
   popupGroup: {fileID: 0}
   inventoryPrefab: {fileID: 8817916807367149135, guid: da5ec75d26ba7b44eb7ef0357974c035, type: 3}
+  startPos: {x: 0, y: -0.26, z: 0}
+  startRot: {x: 0, y: 0, z: 0}
 --- !u!1 &7856960155964948305
 GameObject:
   m_ObjectHideFlags: 0
