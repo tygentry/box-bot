@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float movementSpeed = 3f;
-    public float dodgeSpeed = 5f;
-    public float dodgeTime = 0.75f;
     private Vector2 input;
     private GameObject attachedLegs;
+    private LegBehavior legBehavior;
 
+    private bool dodge = false;
     private bool dodging = false;
     private bool invincible = false;
-    private float dodgeTimer = 0f;
 
     [Header("Interact")]
     public GameObject intObj;
@@ -31,48 +29,34 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dodgeTimer -= Time.deltaTime;
         input = Vector2.zero;
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
 
         if (Input.GetButtonDown("Jump") && !dodging)
         {
-            dodgeTimer = dodgeTime;
-            dodging = true;
+            dodge = true;
             dodgeDirection = input;
-            invincible= true;
         }
 
         if (Input.GetButtonDown("Interact") && canInteract && intObj != null)
         {
             intObj.GetComponent<Interactable>().Interact();
         }
-
-        if (dodgeTimer <= 0f)
-        {
-            dodging = false;
-            invincible = false;
-        }
     }
 
     private void FixedUpdate()
     {
-
-        if(!dodging)
+        if(dodge)
         {
-            //transform.position += (Vector3)input * movementSpeed * Time.deltaTime;
-            rb.MovePosition((Vector2)transform.position + input * movementSpeed * Time.deltaTime);
+            dodging = true;
+            LegAction();
         }
-        else
-        {
-            //transform.position += (Vector3)dodgeDirection.normalized * dodgeSpeed * Time.deltaTime;
-            rb.MovePosition((Vector2)transform.position + dodgeDirection.normalized * dodgeSpeed * Time.deltaTime);
-        }
+       rb.MovePosition((Vector2)transform.position + input.normalized * legBehavior.regularSpeed * Time.deltaTime);
     }
 
     private void LegAction()
     {
-        //attachedLegs.LegAction();
+        legBehavior.Dodge();
     }
 }

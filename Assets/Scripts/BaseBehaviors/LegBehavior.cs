@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class LegBehavior : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+    public float regularSpeed;
+    public float dodgeSpeed;
+    public float dodgeDelay;
+    public bool canDodge = true;
+    public virtual void PressDodge(float dt)
     {
-        
+        Debug.Log(this.name + " press dodge");
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void ReleaseDodge(float dt)
     {
-        
+        Debug.Log(this.name + " release dodge");
+    }
+
+    public virtual void Dodge(Vector2 dodgeDirection)
+    {
+        Debug.Log(this.name + " dodge");
     }
 }

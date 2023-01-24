@@ -8,6 +8,12 @@ public abstract class ArmBehavior : Interactable
     public float attackDelay;
     public int damage;
     public bool canAttack;
+    public Transform aimTransform;
+
+    public void Start()
+    {
+        aimTransform = FindObjectOfType<AimTracker>().transform;
+    }
 
     public virtual void PressAttack(float dt)
     {

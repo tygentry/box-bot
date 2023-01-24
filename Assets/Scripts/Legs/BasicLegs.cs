@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class BasicLegs : LegBehavior
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void PressDodge(float dt)
     {
-        
+        if (canDodge)
+        {
+            canDodge = false;
+            Dodge();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Dodge(Vector2 dodgeDirection)
     {
         
     }
