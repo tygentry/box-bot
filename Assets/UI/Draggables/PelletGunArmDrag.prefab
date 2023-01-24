@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2498722612823863690, guid: 9c30cd314e5269e4d95ed396864a0299, type: 3}
+      propertyPath: partPrefab
+      value: 
+      objectReference: {fileID: 838447546545987557, guid: 82e9a18f2f981b34c9b197dc2c14e937, type: 3}
     - target: {fileID: 2498722612823863732, guid: 9c30cd314e5269e4d95ed396864a0299, type: 3}
       propertyPath: m_Size.x
       value: 180

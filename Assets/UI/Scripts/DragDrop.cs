@@ -14,12 +14,12 @@ public class DragDrop : MonoBehaviour
     public bool isOverDropZone = false;
     private GameObject previousParent;
     private int prevChildIndex;
-    [SerializeField]
     public List<GameObject> allowedDropZones = new List<GameObject>();
     public List<GameObject> dropZones = new List<GameObject>();
     private Vector2 startPosition;
     private RectTransform trans;
     public RobotPart.PartEnum dropType = RobotPart.PartEnum.None;
+    [SerializeField] GameObject partPrefab;
 
     void Start()
     {
@@ -135,10 +135,11 @@ public class DragDrop : MonoBehaviour
                     swapChild.SetParent(previousParent.transform, false);
                     swapChild.SetSiblingIndex(prevChildIndex);
                     //swapChild.localPosition = startPosition;
-                    cm.customizeMenu.player.UpdateBody(swapChild.gameObject, dropZone.GetComponent<DropZone>());
+                    cm.customizeMenu.player.UpdateBody(swapChild.GetComponent<DragDrop>().partPrefab, previousParent.GetComponent<DropZone>());
                 }
                 //print(dropZone);
                 trans.SetParent(dropZone.transform, false);
+                cm.customizeMenu.player.UpdateBody(partPrefab, dropZone.GetComponent<DropZone>());
                 if (dropZone == previousParent) 
                 {
                     trans.SetSiblingIndex(prevChildIndex);

@@ -100,10 +100,16 @@ public class PlayerBody : MonoBehaviour
         return "";
     }
 
-    public void UpdateBody(GameObject newPart, DropZone slot)
+    public void UpdateBody(GameObject newPartPrefab, DropZone slot)
     {
         string location = MatchPart(slot);
         if (location.Equals("")) return;
+
+        //base setup for any new part
+        Interactable prefabBase = newPartPrefab.GetComponent<Interactable>();
+        GameObject newPart = Instantiate(newPartPrefab);
+        Interactable newPartBase = newPart.GetComponent<Interactable>();
+        newPartBase.canHighlight = false;
 
         int sepLoc = location.IndexOf("_");
         // head or legs
@@ -111,19 +117,21 @@ public class PlayerBody : MonoBehaviour
         {
             if (location.Equals("headObj"))
             {
+                Destroy(headObj);
                 headObj = newPart;
                 head = headObj.GetComponent<HeadBehavior>();
                 slot.associatedSlot = headObj;
                 newPart.transform.SetParent(this.gameObject.transform, false);
-                newPart.transform.SetPositionAndRotation(newPart.GetComponent<HeadBehavior>().startPos, Quaternion.Euler(newPart.GetComponent<HeadBehavior>().startRot));
+                newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
             }
             else if (location.Equals("legsObj"))
             {
+                Destroy(legsObj);
                 legsObj = newPart;
                 legs = legsObj.GetComponent<LegBehavior>();
                 slot.associatedSlot = legsObj;
                 newPart.transform.SetParent(this.gameObject.transform, false);
-                newPart.transform.SetPositionAndRotation(newPart.GetComponent<LegBehavior>().startPos, Quaternion.Euler(newPart.GetComponent<LegBehavior>().startRot));
+                newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
             }
         }
         //arm or trinket
@@ -134,31 +142,36 @@ public class PlayerBody : MonoBehaviour
             BodyBehavior b = GetBody(index);
             if (slotName.Equals("leftArmObj"))
             {
+                Destroy(b.leftArmObj);
                 b.leftArmObj = newPart;
                 b.UpdateLeftArm();
                 slot.associatedSlot = b.leftArmObj;
                 newPart.transform.SetParent(b.gameObject.transform, false);
-                Vector3 adjustedPos = newPart.GetComponent<ArmBehavior>().startPos;
+                Vector3 adjustedPos = prefabBase.startPos;
                 adjustedPos.x *= -1; //flipping X value for left arm
-                newPart.transform.SetPositionAndRotation(adjustedPos, Quaternion.Euler(newPart.GetComponent<ArmBehavior>().startRot));
+                Vector3 adjustedRot = prefabBase.startRot;
+                adjustedRot.z += 180;
+                newPart.transform.SetLocalPositionAndRotation(adjustedPos, Quaternion.Euler(adjustedRot));
             }
             else
             {
                 if (slotName.Equals("rightArmObj"))
                 {
+                    Destroy(b.rightArmObj);
                     b.rightArmObj = newPart;
                     b.UpdateRightArm();
                     slot.associatedSlot = b.rightArmObj;
-                    newPart.transform.SetParent(this.gameObject.transform, false);
-                    newPart.transform.SetPositionAndRotation(newPart.GetComponent<ArmBehavior>().startPos, Quaternion.Euler(newPart.GetComponent<ArmBehavior>().startRot));
+                    newPart.transform.SetParent(b.gameObject.transform, false);
+                    newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
                 }
                 else if (slotName.Equals("coreTrinketObj"))
                 {
+                    Destroy(b.coreTrinketObj);
                     b.coreTrinketObj = newPart;
                     b.UpdateTrinketArm();
                     slot.associatedSlot = b.coreTrinketObj;
-                    newPart.transform.SetParent(this.gameObject.transform, false);
-                    newPart.transform.SetPositionAndRotation(newPart.GetComponent<TrinketBehavior>().startPos, Quaternion.Euler(newPart.GetComponent<TrinketBehavior>().startRot));
+                    newPart.transform.SetParent(b.gameObject.transform, false);
+                    newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
                 }
             }
         }
