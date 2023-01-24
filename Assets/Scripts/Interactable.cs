@@ -18,6 +18,8 @@ public class Interactable : MonoBehaviour
 
     [Header("Inventory")]
     public GameObject inventoryPrefab;
+    public Vector3 startPos;
+    public Vector3 startRot;
 
     IEnumerator ToggleHighlight()
     {

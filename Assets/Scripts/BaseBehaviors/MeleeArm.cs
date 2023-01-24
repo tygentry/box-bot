@@ -12,7 +12,6 @@ public abstract class MeleeArm : ArmBehavior
 
     void Start()
     {
-        print("test");
         hitbox = hitboxObj.GetComponent<HitBox>();
     }
 

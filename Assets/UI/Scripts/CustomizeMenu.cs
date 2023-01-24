@@ -17,22 +17,37 @@ public class CustomizeMenu : MonoBehaviour
     private List<DropZone> rightArms;
     private DropZone legs;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        CalibrateDropZones();
-    }
+    public PlayerBody player;
 
     private void CalibrateDropZones()
     {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBody>();
+        }
+
         head = headSlot.GetComponent<DropZone>();
+        head.associatedSlot = player.headObj;
         leftArms = new List<DropZone>();
-        foreach (GameObject obj in leftArmSlots) { leftArms.Add(obj.GetComponent<DropZone>()); }
+        for (int i = 0; i < leftArmSlots.Count; i++)
+        {
+            leftArms.Add(leftArmSlots[i].GetComponent<DropZone>());
+            leftArms[i].associatedSlot = player.GetBody(i).leftArmObj;
+        }
         trinkets = new List<DropZone>();
-        foreach (GameObject obj in trinketSlots) { trinkets.Add(obj.GetComponent<DropZone>()); }
+        for (int i = 0; i < trinketSlots.Count; i++)
+        {
+            trinkets.Add(trinketSlots[i].GetComponent<DropZone>());
+            trinkets[i].associatedSlot = player.GetBody(i).coreTrinketObj;
+        }
         rightArms = new List<DropZone>();
-        foreach (GameObject obj in rightArmSlots) { rightArms.Add(obj.GetComponent<DropZone>()); }
+        for (int i = 0; i < rightArmSlots.Count; i++)
+        {
+            rightArms.Add(rightArmSlots[i].GetComponent<DropZone>());
+            rightArms[i].associatedSlot = player.GetBody(i).rightArmObj;
+        }
         legs = legsSlot.GetComponent<DropZone>();
+        legs.associatedSlot = player.legsObj;
     }
 
     private void ClearDraggables()

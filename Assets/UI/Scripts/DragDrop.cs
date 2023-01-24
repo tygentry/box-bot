@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class DragDrop : MonoBehaviour
 {
+    [Header("Canvas Objects")]
+    public CanvasManager cm;
 
+    [Header("Drop Zone Attributes")]
     public bool isDraggable = true;
     public GameObject dragger;
     public bool isOverDropZone = false;
@@ -26,6 +29,7 @@ public class DragDrop : MonoBehaviour
         {
             dragger = d.gameObject;
         }
+        cm = FindObjectOfType<CanvasManager>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,7 +56,6 @@ public class DragDrop : MonoBehaviour
             pop.popup.isHoverable = false;
             pop.popup.isHovered = false;
         }*/
-        print("starting");
         dropZones.Clear();
         if (isDraggable)
         {
@@ -132,6 +135,7 @@ public class DragDrop : MonoBehaviour
                     swapChild.SetParent(previousParent.transform, false);
                     swapChild.SetSiblingIndex(prevChildIndex);
                     //swapChild.localPosition = startPosition;
+                    cm.customizeMenu.player.UpdateBody(swapChild.gameObject, dropZone.GetComponent<DropZone>());
                 }
                 //print(dropZone);
                 trans.SetParent(dropZone.transform, false);
