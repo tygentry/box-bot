@@ -10,8 +10,9 @@ public abstract class MeleeArm : ArmBehavior
     private HitBox hitbox;
     public float activeHitTime;
 
-    void Start()
+    new void Start()
     {
+        base.Start();
         hitbox = hitboxObj.GetComponent<HitBox>();
     }
 
