@@ -176,4 +176,64 @@ public class PlayerBody : MonoBehaviour
             }
         }
     }
+
+    public void Unequip(GameObject droppedPrefab, DropZone slot)
+    {
+        string location = MatchPart(slot);
+        if (location.Equals("")) return;
+
+        GameObject drop = Instantiate(droppedPrefab);
+        drop.transform.position = gameObject.transform.position;
+
+        int sepLoc = location.IndexOf("_");
+        // head or legs
+        if (sepLoc == -1)
+        {
+            if (location.Equals("headObj"))
+            {
+                Destroy(headObj);
+                headObj = null;
+                head = null;
+                slot.associatedSlot = headObj;
+            }
+            else if (location.Equals("legsObj"))
+            {
+                Destroy(legsObj);
+                legsObj = null;
+                legs = null;
+                slot.associatedSlot = legsObj;
+            }
+        }
+        //arm or trinket
+        else
+        {
+            string slotName = location.Substring(0, sepLoc);
+            int index = Int16.Parse(location.Substring(sepLoc + 1));
+            BodyBehavior b = GetBody(index);
+            if (slotName.Equals("leftArmObj"))
+            {
+                Destroy(b.leftArmObj);
+                b.leftArmObj = null;
+                b.UpdateLeftArm();
+                slot.associatedSlot = b.leftArmObj;
+            }
+            else
+            {
+                if (slotName.Equals("rightArmObj"))
+                {
+                    Destroy(b.rightArmObj);
+                    b.rightArmObj = null;
+                    b.UpdateRightArm();
+                    slot.associatedSlot = b.rightArmObj;
+                }
+                else if (slotName.Equals("coreTrinketObj"))
+                {
+                    Destroy(b.coreTrinketObj);
+                    b.coreTrinketObj = null;
+                    b.UpdateTrinketArm();
+                    slot.associatedSlot = b.coreTrinketObj;
+                }
+            }
+        }
+    }
 }
