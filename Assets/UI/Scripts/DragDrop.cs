@@ -65,11 +65,11 @@ public class DragDrop : MonoBehaviour
             dragger.GetComponent<Dragger>().isDragging = true;
             trans.localPosition = new Vector3(0, 0, 0);
             trans.SetParent(dragger.transform, false);
-            centerOnDragger();
+            CenterOnDragger();
         }
     }
 
-    private void centerOnDragger()
+    private void CenterOnDragger()
     {
         trans.anchorMax = new Vector2(0.5f, 0.5f);
         trans.anchorMin = new Vector2(0.5f, 0.5f);
@@ -126,8 +126,17 @@ public class DragDrop : MonoBehaviour
                 dropZone = GetClosestValidDropZone();
             }
             //print(dropZone);
+
             if (isOverDropZone && dropZone != null) //prevents dropping onto same parent and check is the DropZone script is present, asking it if drop is valid
             {
+                //unequip check
+                if (dropZone.GetComponent<DropZone>().isUnequipZone)
+                {
+                    cm.customizeMenu.player.Unequip(partPrefab, previousParent.GetComponent<DropZone>());
+                    Destroy(gameObject);
+                    return;
+                }
+
                 //if dropping on populated drop zone, swap the contents of the zones
                 if (dropZone.transform.childCount > 0)
                 {

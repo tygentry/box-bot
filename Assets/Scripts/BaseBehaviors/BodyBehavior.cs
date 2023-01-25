@@ -30,11 +30,41 @@ public abstract class BodyBehavior : Interactable
     }
 
     public ArmBehavior GetLeftArm() { return leftArm; }
-    public void UpdateLeftArm() { leftArm = leftArmObj.GetComponent<ArmBehavior>(); }
+    public void UpdateLeftArm() 
+    { 
+        if (leftArmObj == null)
+        {
+            leftArm = null;
+        }
+        else
+        {
+            leftArm = leftArmObj.GetComponent<ArmBehavior>();
+        }
+    }
     public ArmBehavior GetRightArm() { return rightArm; }
-    public void UpdateRightArm() { rightArm = rightArmObj.GetComponent<ArmBehavior>(); }
+    public void UpdateRightArm()
+    {
+        if (rightArmObj == null)
+        {
+            rightArm = null;
+        }
+        else
+        {
+            rightArm = rightArmObj.GetComponent<ArmBehavior>();
+        }
+    }
     public TrinketBehavior GetTrinket() { return trinket; }
-    public void UpdateTrinketArm() { trinket = coreTrinketObj.GetComponent<TrinketBehavior>(); }
+    public void UpdateTrinketArm()
+    {
+        if (coreTrinketObj == null)
+        {
+            trinket = null;
+        }
+        else
+        {
+            trinket = coreTrinketObj.GetComponent<TrinketBehavior>();
+        }
+    }
 
     // Update is called once per frame
     void Update()
