@@ -9,7 +9,7 @@ public class BasicLegs : LegBehavior
         if (canDodge)
         {
             canDodge = false;
-            Dodge();
+            Dodge(Vector2.zero);
         }
     }
 

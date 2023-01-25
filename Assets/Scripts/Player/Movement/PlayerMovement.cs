@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Vector2 input;
     private GameObject attachedLegs;
+    [SerializeField]
     private LegBehavior legBehavior;
 
     private bool dodge = false;
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
            rb = this.GetComponent<Rigidbody2D>();
+        legBehavior = GetComponentInChildren<LegBehavior>();
     }
 
     // Update is called once per frame
@@ -57,6 +59,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void LegAction()
     {
-        legBehavior.Dodge();
+        legBehavior.Dodge(input);
     }
 }
