@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject attachedLegs;
     [SerializeField]
     private LegBehavior legBehavior;
+    private Controls controls;
 
     private bool dodge = false;
     private bool dodging = false;
@@ -21,27 +22,37 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-           rb = this.GetComponent<Rigidbody2D>();
+        rb = this.GetComponent<Rigidbody2D>();
         legBehavior = GetComponentInChildren<LegBehavior>();
+        controls = new Controls();
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
         input = Vector2.zero;
-        input.x = Input.GetAxis("Horizontal");
-        input.y = Input.GetAxis("Vertical");
+        input.x = controls.PlayerControls.MovementHorizontal.ReadValue<float>();
+        input.y = controls.PlayerControls.MovementVertical.ReadValue<float>();
 
-        if (Input.GetButtonDown("Jump") && !dodging)
+        if (controls.PlayerControls.SpaceBar.triggered && !dodging)
         {
             dodge = true;
             dodgeDirection = input;
         }
 
-        if (Input.GetButtonDown("Interact") && canInteract && intObj != null)
+        if (controls.PlayerControls.Interact.triggered && canInteract && intObj != null)
         {
             intObj.GetComponent<Interactable>().Interact();
         }
@@ -54,11 +65,13 @@ public class PlayerMovement : MonoBehaviour
             dodging = true;
             LegAction();
         }
-       rb.MovePosition((Vector2)transform.position + input.normalized * legBehavior.regularSpeed * Time.deltaTime);
+       rb.MovePosition((Vector2)transform.position + legBehavior.regularSpeed * Time.deltaTime * input.normalized);
     }
 
     private void LegAction()
     {
         legBehavior.Dodge(input);
     }
+
+
 }
