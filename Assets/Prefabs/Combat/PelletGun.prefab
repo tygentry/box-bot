@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4773156855106968496}
   - component: {fileID: 5223248239089159812}
   - component: {fileID: 6326469035020235203}
+  - component: {fileID: 5715123700439023245}
   m_Layer: 0
   m_Name: PelletGun
   m_TagString: Untagged
@@ -99,9 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canHighlight: 1
-  highlightMat: {fileID: 0}
-  nonHighlightShader: {fileID: 0}
-  highlightShader: {fileID: 0}
+  highlightMat: {fileID: 2100000, guid: 76c97f502a738ce49babc46e401d4b90, type: 2}
+  nonHighlightShader: {fileID: 4800000, guid: e260cfa7296ee7642b167f1eb5be5023, type: 3}
+  highlightShader: {fileID: -6465566751694194690, guid: 597b8234fc5737e4b8d078ad90327828, type: 3}
   popupObj: {fileID: 0}
   timeUntilPopup: 3
   popupGroup: {fileID: 0}
@@ -111,8 +112,25 @@ MonoBehaviour:
   attackDelay: 1
   damage: 1
   canAttack: 1
+  aimTransform: {fileID: 0}
   spawnPoint: {fileID: 1893345056399765717}
   projectile: {fileID: 2683160699197081974, guid: de988ffdd7357a64a9a197ef4fb56cb9, type: 3}
+--- !u!58 &5715123700439023245
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838447546545987557}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!1 &2717403173901824693
 GameObject:
   m_ObjectHideFlags: 0

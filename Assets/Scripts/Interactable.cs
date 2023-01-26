@@ -21,6 +21,11 @@ public class Interactable : MonoBehaviour
     public Vector3 startPos;
     public Vector3 startRot;
 
+    public void Start()
+    {
+        //print("test");
+        highlightMat = gameObject.GetComponent<SpriteRenderer>().material;
+    }
     IEnumerator ToggleHighlight()
     {
         isHighlighted = !isHighlighted;
@@ -45,6 +50,7 @@ public class Interactable : MonoBehaviour
 
     IEnumerator DisplayPopup()
     {
+        if (popupGroup == null) yield break;
         while (popupGroup.alpha < 1.0f)
         {
             popupGroup.alpha += .01f;
@@ -55,6 +61,7 @@ public class Interactable : MonoBehaviour
 
     IEnumerator HidePopup()
     {
+        if (popupGroup == null) yield break;
         while (popupGroup.alpha > 0.0f)
         {
             popupGroup.alpha -= .01f;

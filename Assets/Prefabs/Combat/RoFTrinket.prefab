@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7726461122746436604}
   - component: {fileID: 905002562798774162}
   - component: {fileID: 5677963766851955607}
+  - component: {fileID: 4487807643698168196}
   m_Layer: 0
   m_Name: RoFTrinket
   m_TagString: Untagged
@@ -98,12 +99,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canHighlight: 1
-  highlightMat: {fileID: 0}
-  nonHighlightShader: {fileID: 0}
-  highlightShader: {fileID: 0}
+  highlightMat: {fileID: 2100000, guid: 76c97f502a738ce49babc46e401d4b90, type: 2}
+  nonHighlightShader: {fileID: 4800000, guid: e260cfa7296ee7642b167f1eb5be5023, type: 3}
+  highlightShader: {fileID: -6465566751694194690, guid: 597b8234fc5737e4b8d078ad90327828, type: 3}
   popupObj: {fileID: 0}
   timeUntilPopup: 3
   popupGroup: {fileID: 0}
   inventoryPrefab: {fileID: 4368693400412802296, guid: 2a28f8a3feb72284aa1f6c8015d7e047, type: 3}
   startPos: {x: 0, y: 0, z: -0.1}
   startRot: {x: 0, y: 0, z: 0}
+--- !u!58 &4487807643698168196
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8341776230713353740}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2

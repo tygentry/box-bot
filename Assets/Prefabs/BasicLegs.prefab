@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6453206487513744502}
   - component: {fileID: 1474926835122748110}
+  - component: {fileID: -1671811789906813610}
   m_Layer: 0
   m_Name: BasicLegs
   m_TagString: Untagged
@@ -131,9 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canHighlight: 1
-  highlightMat: {fileID: 0}
-  nonHighlightShader: {fileID: 0}
-  highlightShader: {fileID: 0}
+  highlightMat: {fileID: 2100000, guid: 76c97f502a738ce49babc46e401d4b90, type: 2}
+  nonHighlightShader: {fileID: 4800000, guid: e260cfa7296ee7642b167f1eb5be5023, type: 3}
+  highlightShader: {fileID: -6465566751694194690, guid: 597b8234fc5737e4b8d078ad90327828, type: 3}
   popupObj: {fileID: 0}
   timeUntilPopup: 3
   popupGroup: {fileID: 0}
@@ -144,6 +145,22 @@ MonoBehaviour:
   dodgeSpeed: 20
   dodgeDelay: 0.25
   canDodge: 1
+--- !u!58 &-1671811789906813610
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3254917526696337381}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!1 &7856960155964948305
 GameObject:
   m_ObjectHideFlags: 0

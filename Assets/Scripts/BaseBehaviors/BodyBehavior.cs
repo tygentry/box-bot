@@ -13,8 +13,9 @@ public abstract class BodyBehavior : Interactable
     private TrinketBehavior trinket;
 
     // Start is called before the first frame update
-    public void Start()
+    public new void Start()
     {
+        base.Start();
         if (leftArmObj)
         {
             leftArm = leftArmObj.GetComponent<ArmBehavior>();

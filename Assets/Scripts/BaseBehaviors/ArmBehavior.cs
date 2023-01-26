@@ -10,8 +10,9 @@ public abstract class ArmBehavior : Interactable
     public bool canAttack;
     public Transform aimTransform;
 
-    public void Start()
+    public new void Start()
     {
+        base.Start();
         aimTransform = FindObjectOfType<AimTracker>().transform;
     }
 
