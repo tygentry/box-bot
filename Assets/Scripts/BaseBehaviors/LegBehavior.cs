@@ -22,4 +22,14 @@ public class LegBehavior : Interactable
     {
         Debug.Log(this.name + " dodge");
     }
+
+    public virtual void LegUpdate(Vector2 input)
+    {
+
+    }
+
+    public virtual void LegFixedUpdate()
+    {
+
+    }
 }
