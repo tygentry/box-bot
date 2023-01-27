@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 76c97f502a738ce49babc46e401d4b90, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canHighlight: 1
-  highlightMat: {fileID: 2100000, guid: 76c97f502a738ce49babc46e401d4b90, type: 2}
+  highlightMat: {fileID: 0}
   nonHighlightShader: {fileID: 4800000, guid: e260cfa7296ee7642b167f1eb5be5023, type: 3}
   highlightShader: {fileID: -6465566751694194690, guid: 597b8234fc5737e4b8d078ad90327828, type: 3}
   popupObj: {fileID: 0}
