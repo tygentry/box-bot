@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
@@ -15,6 +16,8 @@ public class Interactable : MonoBehaviour
     public InteractPopup popupObj;
     public float timeUntilPopup = 3.0f;
     public CanvasGroup popupGroup;
+    delegate bool InteractFunction();
+    InteractFunction interact;
 
     [Header("Inventory")]
     public GameObject inventoryPrefab;
@@ -28,6 +31,7 @@ public class Interactable : MonoBehaviour
     }
     IEnumerator ToggleHighlight()
     {
+        print(gameObject.name);
         isHighlighted = !isHighlighted;
         if (isHighlighted)
         {
@@ -72,22 +76,41 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject colObj = collision.gameObject;
-        if (colObj.CompareTag("Player"))
+        if (canHighlight)
         {
-            colObj.GetComponent<PlayerMovement>().intObj = this.gameObject;
-            StartCoroutine(ToggleHighlight());
+            GameObject colObj = collision.gameObject;
+            if (colObj.CompareTag("Player"))
+            {
+                colObj.GetComponent<PlayerMovement>().intObj = this.gameObject;
+                StartCoroutine(ToggleHighlight());
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        StartCoroutine(ToggleHighlight());
+        if (canHighlight)
+        {
+            GameObject colObj = collision.gameObject;
+            if (colObj.CompareTag("Player"))
+            {
+                if (colObj.GetComponent<PlayerMovement>().intObj == this.gameObject)
+                {
+                    colObj.GetComponent<PlayerMovement>().intObj = null;
+                }
+                StartCoroutine(ToggleHighlight());
+            }
+        }
     }
 
     public bool Interact()
     {
-        print("interacted");
-        return true;
+        print("interact");
+        bool? retVal = interact?.Invoke();
+        if (retVal != null)
+        {
+            return (bool)retVal;
+        }
+        return false;
     }
 }

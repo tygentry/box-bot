@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6241148983329299898}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6197631294390793401
 MonoBehaviour:
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 6241148983329299902}
   - component: {fileID: 6241148983329299900}
   - component: {fileID: 6241148983329299901}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -142,9 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46bfeb9693a843b4683380a99833df55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 7
-  dodgeSpeed: 20
-  dodgeTime: 0.15
+  legBehavior: {fileID: 0}
   intObj: {fileID: 0}
   canInteract: 1
 --- !u!114 &6241148983329299902
@@ -196,7 +194,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.24}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -207,7 +205,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.02, y: 2.31}
   m_EdgeRadius: 0
 --- !u!1001 &3205981256030325266
 PrefabInstance:
@@ -326,6 +324,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7189293935485772729, guid: b73262a0837c7204a9ace470ccc35066, type: 3}
+      propertyPath: canHighlight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b73262a0837c7204a9ace470ccc35066, type: 3}
 --- !u!4 &1215159357573221928 stripped
@@ -340,6 +342,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1142816336899899353}
     m_Modifications:
+    - target: {fileID: 5677963766851955607, guid: 900b9e00135bd75459fdf430b96007c2, type: 3}
+      propertyPath: canHighlight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7726461122746436604, guid: 900b9e00135bd75459fdf430b96007c2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -445,6 +451,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6326469035020235203, guid: 82e9a18f2f981b34c9b197dc2c14e937, type: 3}
+      propertyPath: canHighlight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82e9a18f2f981b34c9b197dc2c14e937, type: 3}
 --- !u!1001 &7862310259219055778
@@ -454,6 +464,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6241148983329299898}
     m_Modifications:
+    - target: {fileID: 1474926835122748110, guid: b4975b9322e568b4dbdfbfe1eec35a2d, type: 3}
+      propertyPath: canHighlight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3254917526696337381, guid: b4975b9322e568b4dbdfbfe1eec35a2d, type: 3}
       propertyPath: m_Name
       value: BasicLegs
@@ -563,6 +577,10 @@ PrefabInstance:
     - target: {fileID: 2001602168817835526, guid: 3e6eb04f649c2c744b5a0797befd8933, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508590193584421598, guid: 3e6eb04f649c2c744b5a0797befd8933, type: 3}
+      propertyPath: canHighlight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e6eb04f649c2c744b5a0797befd8933, type: 3}
