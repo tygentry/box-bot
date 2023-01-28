@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ArmBehavior : Interactable
+public abstract class ArmBehavior : RobotPart
 {
     [Header("Base Arm Stats")]
     public float attackDelay;
@@ -10,9 +10,8 @@ public abstract class ArmBehavior : Interactable
     public bool canAttack;
     public Transform aimTransform;
 
-    public new void Start()
+    public void Start()
     {
-        base.Start();
         aimTransform = FindObjectOfType<AimTracker>().transform;
     }
 

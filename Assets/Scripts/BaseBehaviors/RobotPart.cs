@@ -7,8 +7,11 @@ public class RobotPart : MonoBehaviour
 
     public enum PartEnum { None, Head, Arm, Leg, Trinket };
 
+    [Header("Inventory")]
     public PartEnum type;
-    public Sprite icon;
+    public GameObject inventoryPrefab;
+    public Vector3 startPos;
+    public Vector3 startRot;
 
     // Start is called before the first frame update
     void Start()
@@ -16,9 +19,5 @@ public class RobotPart : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public virtual void OnPartPickup() { }
 }

@@ -106,7 +106,7 @@ public class PlayerBody : MonoBehaviour
         if (location.Equals("")) return;
 
         //base setup for any new part
-        Interactable prefabBase = newPartPrefab.GetComponent<Interactable>();
+        RobotPart prefabBase = newPartPrefab.GetComponent<RobotPart>();
         GameObject newPart = Instantiate(newPartPrefab);
         Interactable newPartBase = newPart.GetComponent<Interactable>();
         newPartBase.canHighlight = false;

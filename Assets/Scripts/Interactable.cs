@@ -19,11 +19,6 @@ public class Interactable : MonoBehaviour
     delegate bool InteractFunction();
     InteractFunction interact;
 
-    [Header("Inventory")]
-    public GameObject inventoryPrefab;
-    public Vector3 startPos;
-    public Vector3 startRot;
-
     public void Start()
     {
         //print("test");
