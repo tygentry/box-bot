@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &71930649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2876008752625199005, guid: 611c8e33975e94e4784df5f56dc4f877, type: 3}
+  m_PrefabInstance: {fileID: 6241148983004282664}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &264449159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2600,10 +2605,14 @@ PrefabInstance:
       propertyPath: coreTrinketObj
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2876008753527763745, guid: 611c8e33975e94e4784df5f56dc4f877, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3915589051771587113, guid: 611c8e33975e94e4784df5f56dc4f877, type: 3}
       propertyPath: leftArmObj
       value: 
-      objectReference: {fileID: 6241148983004282666}
+      objectReference: {fileID: 71930649}
     - target: {fileID: 3915589051771587113, guid: 611c8e33975e94e4784df5f56dc4f877, type: 3}
       propertyPath: rightArmObj
       value: 
