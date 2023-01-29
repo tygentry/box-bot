@@ -109,7 +109,7 @@ public class PlayerBody : MonoBehaviour
         RobotPart prefabBase = newPartPrefab.GetComponent<RobotPart>();
         GameObject newPart = Instantiate(newPartPrefab);
         Interactable newPartBase = newPart.GetComponent<Interactable>();
-        newPartBase.canHighlight = false;
+        newPartBase.DisableInteraction();
 
         int sepLoc = location.IndexOf("_");
         // head or legs

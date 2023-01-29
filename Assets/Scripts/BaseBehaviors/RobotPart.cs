@@ -14,10 +14,10 @@ public class RobotPart : MonoBehaviour
     public Vector3 startRot;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        
+        gameObject.GetComponent<Interactable>().SetInteractable(OnPartPickup);
     }
 
-    public virtual void OnPartPickup() { }
+    public virtual bool OnPartPickup() { Debug.Log("Base Robot Part Pickup"); return true; }
 }

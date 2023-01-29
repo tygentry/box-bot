@@ -10,8 +10,9 @@ public abstract class ArmBehavior : RobotPart
     public bool canAttack;
     public Transform aimTransform;
 
-    public void Start()
+    public new void Start()
     {
+        base.Start();
         aimTransform = FindObjectOfType<AimTracker>().transform;
     }
 
@@ -23,5 +24,11 @@ public abstract class ArmBehavior : RobotPart
     public virtual void ReleaseAttack(float dt)
     {
         Debug.Log(this.name + " release attack");
+    }
+
+    public override bool OnPartPickup()
+    {
+        print("Arm Part Pickup");
+        return true;
     }
 }

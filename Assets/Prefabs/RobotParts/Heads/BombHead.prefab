@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6420062065500902584, guid: 8d48b46572ebcf34a91e78472cb2f9b4, type: 3}
+      propertyPath: inventoryPrefab
+      value: 
+      objectReference: {fileID: 8550680104868396063, guid: 048dcf02353d85542a1d17e473ee0a4f, type: 3}
     - target: {fileID: 794106083858988036, guid: 8d48b46572ebcf34a91e78472cb2f9b4, type: 3}
       propertyPath: m_Name
-      value: BasicHead
+      value: BombHead
       objectReference: {fileID: 0}
     - target: {fileID: 794106083858988039, guid: 8d48b46572ebcf34a91e78472cb2f9b4, type: 3}
       propertyPath: m_Pivot.x

@@ -11,12 +11,13 @@ public class Interactable : MonoBehaviour
     public Material highlightMat;
     public Shader nonHighlightShader;
     public Shader highlightShader;
+    [SerializeField] CircleCollider2D interactRange;
 
     [Header("Interact Popup")]
     public InteractPopup popupObj;
     public float timeUntilPopup = 3.0f;
     public CanvasGroup popupGroup;
-    delegate bool InteractFunction();
+    public delegate bool InteractFunction();
     InteractFunction interact;
 
     public void Start()
@@ -24,9 +25,16 @@ public class Interactable : MonoBehaviour
         //print("test");
         highlightMat = gameObject.GetComponent<SpriteRenderer>().material;
     }
+
+    public void DisableInteraction()
+    {
+        canHighlight = false;
+        interactRange.enabled = false;
+    }
+
     IEnumerator ToggleHighlight()
     {
-        print(gameObject.name);
+        //print(gameObject.name);
         isHighlighted = !isHighlighted;
         if (isHighlighted)
         {
@@ -96,6 +104,11 @@ public class Interactable : MonoBehaviour
                 StartCoroutine(ToggleHighlight());
             }
         }
+    }
+
+    public void SetInteractable(InteractFunction intF)
+    {
+        interact = intF;
     }
 
     public bool Interact()
