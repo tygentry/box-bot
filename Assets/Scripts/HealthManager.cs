@@ -10,6 +10,7 @@ public class HealthManager : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currenthealth = Mathf.Clamp(currenthealth - damage, 0, maxHealth);
+        print("Ouch, " + damage + " damage!");
     }
 
     public void Heal(int healAmount)

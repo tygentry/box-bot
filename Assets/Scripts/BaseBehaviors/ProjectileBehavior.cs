@@ -9,6 +9,7 @@ public class ProjectileBehavior : MonoBehaviour
     public float speed;
     public float decayTime;
     public bool destroyOnHit;
+    public int damage;
     
 
     [Header("Bouncing Projectile")]
@@ -30,6 +31,10 @@ public class ProjectileBehavior : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //handle enemy damage / check here
+        if (collision.gameObject.transform.TryGetComponent<HealthManager>(out var hm))
+        {
+            hm.TakeDamage(damage);
+        }
 
         if (destroyOnHit)
         {
