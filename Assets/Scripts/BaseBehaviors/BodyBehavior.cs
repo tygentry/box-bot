@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BodyBehavior : Interactable
+public abstract class BodyBehavior : RobotPart
 {
     [Header("Body Components")]
     public GameObject leftArmObj;
@@ -65,12 +65,6 @@ public abstract class BodyBehavior : Interactable
         {
             trinket = coreTrinketObj.GetComponent<TrinketBehavior>();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PressLeft(float dt) { if (leftArm) leftArm.PressAttack(dt); }

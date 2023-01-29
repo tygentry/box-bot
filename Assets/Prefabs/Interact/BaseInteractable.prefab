@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.84, y: -4.42}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &7760737679185918602
@@ -108,6 +108,7 @@ MonoBehaviour:
   highlightMat: {fileID: 2100000, guid: 76c97f502a738ce49babc46e401d4b90, type: 2}
   nonHighlightShader: {fileID: 4800000, guid: e260cfa7296ee7642b167f1eb5be5023, type: 3}
   highlightShader: {fileID: -6465566751694194690, guid: 597b8234fc5737e4b8d078ad90327828, type: 3}
+  interactRange: {fileID: 5350780323979943789}
   popupObj: {fileID: 2877223828000425210}
   timeUntilPopup: 2
   popupGroup: {fileID: 3360849347065600789}

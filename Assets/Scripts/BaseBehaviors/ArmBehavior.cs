@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ArmBehavior : Interactable
+public abstract class ArmBehavior : RobotPart
 {
     [Header("Base Arm Stats")]
     public float attackDelay;
@@ -24,5 +24,11 @@ public abstract class ArmBehavior : Interactable
     public virtual void ReleaseAttack(float dt)
     {
         Debug.Log(this.name + " release attack");
+    }
+
+    public override bool OnPartPickup()
+    {
+        print("Arm Part Pickup");
+        return true;
     }
 }
