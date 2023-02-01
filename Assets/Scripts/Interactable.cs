@@ -24,6 +24,7 @@ public class Interactable : MonoBehaviour
     {
         //print("test");
         highlightMat = gameObject.GetComponent<SpriteRenderer>().material;
+        highlightMat.shader = nonHighlightShader;
     }
 
     public void DisableInteraction()

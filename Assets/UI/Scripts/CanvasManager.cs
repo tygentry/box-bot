@@ -5,8 +5,10 @@ using UnityEngine;
 public class CanvasManager : MonoBehaviour
 {
     [SerializeField] GameObject customizeMenuObj;
+    [SerializeField] GameObject customizePopoutObj;
     [SerializeField] GameObject pauseMenu;
     public CustomizeMenu customizeMenu;
+    public CustomizePopout customizePopout;
 
     public bool isPaused;
     public bool isCustomizing;
