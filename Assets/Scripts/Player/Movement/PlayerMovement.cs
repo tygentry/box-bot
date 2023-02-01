@@ -10,9 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private LegBehavior legBehavior;
     private Controls controls;
 
-    private bool dodge = false;
-    private bool dodging = false;
-    private bool invincible = false;
+    private bool spacePressed = false;
 
     [Header("Interact")]
     public GameObject intObj;
@@ -42,15 +40,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        spacePressed = false;
         input = Vector2.zero;
         input.x = controls.PlayerControls.MovementHorizontal.ReadValue<float>();
         input.y = controls.PlayerControls.MovementVertical.ReadValue<float>();
 
-        if (controls.PlayerControls.SpaceBar.triggered && !dodging)
+        if (controls.PlayerControls.SpaceBar.triggered)
         {
-            dodge = true;
-            dodgeDirection = input;
+            spacePressed = true;
         }
+
+        legBehavior.LegUpdate(input, spacePressed);
 
         if (controls.PlayerControls.Interact.triggered && canInteract && intObj != null)
         {
@@ -60,18 +60,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(dodge)
-        {
-            dodging = true;
-            LegAction();
-        }
-       rb.MovePosition((Vector2)transform.position + legBehavior.regularSpeed * Time.deltaTime * input.normalized);
+        legBehavior.LegFixedUpdate();
     }
-
-    private void LegAction()
-    {
-        legBehavior.Dodge(input);
-    }
-
-
 }

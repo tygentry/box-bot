@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7091389847620684324, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_Name
-      value: BasicLegs1
+      value: BasicLegs
       objectReference: {fileID: 0}
     - target: {fileID: 7091389847620684326, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_Sprite
@@ -141,5 +141,9 @@ MonoBehaviour:
   startRot: {x: 0, y: 0, z: 0}
   regularSpeed: 7
   dodgeSpeed: 20
-  dodgeDelay: 0.25
+  dodgeDelay: 0.1
   canDodge: 1
+  player: {fileID: 0}
+  playerRB: {fileID: 0}
+  input: {x: 0, y: 0}
+  dodgeDuration: 0.25
