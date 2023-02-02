@@ -15,23 +15,16 @@ public class CustomizePopout : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.C))
-        {
-            StopAllCoroutines();
-            StartCoroutine(PopOut());
-        }
-
-        if (Input.GetKeyUp(KeyCode.V))
-        {
-            StopAllCoroutines();
-            StartCoroutine(PopBack());
-        }
+        
     }
 
     public void MimicCustomize(CustomizeMenu cm)
     {
-
+        
     }
+
+    public void StartPopOut() { StopAllCoroutines(); StartCoroutine(PopOut()); }
+    public void StartPopBack() { StopAllCoroutines(); StartCoroutine(PopBack()); }
 
     IEnumerator PopBack()
     {

@@ -62,6 +62,60 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenCustomize"",
+                    ""type"": ""Button"",
+                    ""id"": ""531b968a-f02c-492e-979c-0ff0689a7370"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""20c36bfe-7c0e-4df1-bebd-b48b9331b5cb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftFirePress"",
+                    ""type"": ""Button"",
+                    ""id"": ""94471ccb-36df-496c-b021-af47736f23a7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightFirePress"",
+                    ""type"": ""Button"",
+                    ""id"": ""586a9141-1420-4266-80d6-c351be7506c8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftFireRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad426eb4-e87e-4a4a-8669-e1a3555ffcd1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightFireRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""224b758c-e3d1-45b5-a119-18770d69c7a2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +206,72 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03fb64bb-ad59-4d18-a2f7-47e070aa5963"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""OpenCustomize"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""adc08988-a3d0-4a41-8d99-875a27851da8"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""115be00a-9d32-4d01-835b-8ec18ab781c8"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""LeftFirePress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92c025c2-c0e7-4198-b589-9f85b106a3b2"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""RightFirePress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68381fe9-b9e4-4de0-aeb4-7556d10d4ee7"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""LeftFireRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7dec4efb-e392-4c8d-907c-ba21502b9eb4"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""RightFireRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -181,6 +301,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_PlayerControls_MovementHorizontal = m_PlayerControls.FindAction("MovementHorizontal", throwIfNotFound: true);
         m_PlayerControls_SpaceBar = m_PlayerControls.FindAction("SpaceBar", throwIfNotFound: true);
         m_PlayerControls_Interact = m_PlayerControls.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerControls_OpenCustomize = m_PlayerControls.FindAction("OpenCustomize", throwIfNotFound: true);
+        m_PlayerControls_Pause = m_PlayerControls.FindAction("Pause", throwIfNotFound: true);
+        m_PlayerControls_LeftFirePress = m_PlayerControls.FindAction("LeftFirePress", throwIfNotFound: true);
+        m_PlayerControls_RightFirePress = m_PlayerControls.FindAction("RightFirePress", throwIfNotFound: true);
+        m_PlayerControls_LeftFireRelease = m_PlayerControls.FindAction("LeftFireRelease", throwIfNotFound: true);
+        m_PlayerControls_RightFireRelease = m_PlayerControls.FindAction("RightFireRelease", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -244,6 +370,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControls_MovementHorizontal;
     private readonly InputAction m_PlayerControls_SpaceBar;
     private readonly InputAction m_PlayerControls_Interact;
+    private readonly InputAction m_PlayerControls_OpenCustomize;
+    private readonly InputAction m_PlayerControls_Pause;
+    private readonly InputAction m_PlayerControls_LeftFirePress;
+    private readonly InputAction m_PlayerControls_RightFirePress;
+    private readonly InputAction m_PlayerControls_LeftFireRelease;
+    private readonly InputAction m_PlayerControls_RightFireRelease;
     public struct PlayerControlsActions
     {
         private @Controls m_Wrapper;
@@ -252,6 +384,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @MovementHorizontal => m_Wrapper.m_PlayerControls_MovementHorizontal;
         public InputAction @SpaceBar => m_Wrapper.m_PlayerControls_SpaceBar;
         public InputAction @Interact => m_Wrapper.m_PlayerControls_Interact;
+        public InputAction @OpenCustomize => m_Wrapper.m_PlayerControls_OpenCustomize;
+        public InputAction @Pause => m_Wrapper.m_PlayerControls_Pause;
+        public InputAction @LeftFirePress => m_Wrapper.m_PlayerControls_LeftFirePress;
+        public InputAction @RightFirePress => m_Wrapper.m_PlayerControls_RightFirePress;
+        public InputAction @LeftFireRelease => m_Wrapper.m_PlayerControls_LeftFireRelease;
+        public InputAction @RightFireRelease => m_Wrapper.m_PlayerControls_RightFireRelease;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -273,6 +411,24 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
+                @OpenCustomize.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnOpenCustomize;
+                @OpenCustomize.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnOpenCustomize;
+                @OpenCustomize.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnOpenCustomize;
+                @Pause.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPause;
+                @LeftFirePress.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLeftFirePress;
+                @LeftFirePress.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLeftFirePress;
+                @LeftFirePress.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLeftFirePress;
+                @RightFirePress.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightFirePress;
+                @RightFirePress.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightFirePress;
+                @RightFirePress.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightFirePress;
+                @LeftFireRelease.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLeftFireRelease;
+                @LeftFireRelease.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLeftFireRelease;
+                @LeftFireRelease.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLeftFireRelease;
+                @RightFireRelease.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightFireRelease;
+                @RightFireRelease.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightFireRelease;
+                @RightFireRelease.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightFireRelease;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -289,6 +445,24 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @OpenCustomize.started += instance.OnOpenCustomize;
+                @OpenCustomize.performed += instance.OnOpenCustomize;
+                @OpenCustomize.canceled += instance.OnOpenCustomize;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @LeftFirePress.started += instance.OnLeftFirePress;
+                @LeftFirePress.performed += instance.OnLeftFirePress;
+                @LeftFirePress.canceled += instance.OnLeftFirePress;
+                @RightFirePress.started += instance.OnRightFirePress;
+                @RightFirePress.performed += instance.OnRightFirePress;
+                @RightFirePress.canceled += instance.OnRightFirePress;
+                @LeftFireRelease.started += instance.OnLeftFireRelease;
+                @LeftFireRelease.performed += instance.OnLeftFireRelease;
+                @LeftFireRelease.canceled += instance.OnLeftFireRelease;
+                @RightFireRelease.started += instance.OnRightFireRelease;
+                @RightFireRelease.performed += instance.OnRightFireRelease;
+                @RightFireRelease.canceled += instance.OnRightFireRelease;
             }
         }
     }
@@ -308,5 +482,11 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnMovementHorizontal(InputAction.CallbackContext context);
         void OnSpaceBar(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnOpenCustomize(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnLeftFirePress(InputAction.CallbackContext context);
+        void OnRightFirePress(InputAction.CallbackContext context);
+        void OnLeftFireRelease(InputAction.CallbackContext context);
+        void OnRightFireRelease(InputAction.CallbackContext context);
     }
 }

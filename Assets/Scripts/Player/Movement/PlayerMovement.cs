@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject attachedLegs;
     [SerializeField]
     private LegBehavior legBehavior;
-    private Controls controls;
+    public Controls controls;
 
     private bool spacePressed = false;
 

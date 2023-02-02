@@ -14,7 +14,8 @@ public class PlayerBody : MonoBehaviour
     private List<BodyBehavior> bodies;
     private LegBehavior legs;
 
-    private CanvasManager cm;
+    public CanvasManager cm;
+    [SerializeField] PlayerMovement mv;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class PlayerBody : MonoBehaviour
         }
 
         cm = FindObjectOfType<CanvasManager>();
+        mv = gameObject.GetComponent<PlayerMovement>();
     }
 
     public HeadBehavior GetHead() { return head; }
@@ -43,11 +45,12 @@ public class PlayerBody : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.tabKey.wasPressedThisFrame)
+        if (mv.controls.PlayerControls.OpenCustomize.triggered)
         {
             cm.ToggleCustomizeMenu();
         }
 
+        //DEBUG
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             cm.MatchPlayer(this);
@@ -58,21 +61,21 @@ public class PlayerBody : MonoBehaviour
             foreach (BodyBehavior b in bodies)
             {
                 // holding / initial press
-                if (Mouse.current.leftButton.wasPressedThisFrame)
+                if (mv.controls.PlayerControls.LeftFirePress.triggered)
                 {
                     b.PressLeft(Time.deltaTime);
                 }
-                if (Mouse.current.rightButton.wasPressedThisFrame)
+                if (mv.controls.PlayerControls.RightFirePress.triggered)
                 {
                     b.PressRight(Time.deltaTime);
                 }
 
                 // release
-                if (Mouse.current.leftButton.wasReleasedThisFrame)
+                if (mv.controls.PlayerControls.LeftFireRelease.triggered)
                 {
                     b.ReleaseLeft(Time.deltaTime);
                 }
-                if (Mouse.current.rightButton.wasReleasedThisFrame)
+                if (mv.controls.PlayerControls.RightFireRelease.triggered)
                 {
                     b.ReleaseRight(Time.deltaTime);
                 }

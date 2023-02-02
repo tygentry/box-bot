@@ -16,6 +16,7 @@ public class CanvasManager : MonoBehaviour
     private void Start()
     {
         customizeMenu = customizeMenuObj.GetComponent<CustomizeMenu>();
+        customizePopout = customizePopoutObj.GetComponent<CustomizePopout>();
     }
     public void ToggleCustomizeMenu()
     {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RobotPart : MonoBehaviour
 {
-
     public enum PartEnum { None, Head, Arm, Leg, Trinket };
 
     [Header("Inventory")]

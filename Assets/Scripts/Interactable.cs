@@ -20,11 +20,15 @@ public class Interactable : MonoBehaviour
     public delegate bool InteractFunction();
     InteractFunction interact;
 
+    private bool isRobotPart;
+    private GameObject player;
+
     public void Start()
     {
         //print("test");
         highlightMat = gameObject.GetComponent<SpriteRenderer>().material;
         highlightMat.shader = nonHighlightShader;
+        isRobotPart = gameObject.GetComponent<RobotPart>();
     }
 
     public void DisableInteraction()
@@ -37,9 +41,11 @@ public class Interactable : MonoBehaviour
     {
         //print(gameObject.name);
         isHighlighted = !isHighlighted;
+        PlayerBody playerBody = player.GetComponent<PlayerBody>();
         if (isHighlighted)
         {
             highlightMat.shader = highlightShader;
+            playerBody.cm.customizePopout.StartPopOut();
 
             yield return new WaitForSeconds(timeUntilPopup);
 
@@ -52,6 +58,7 @@ public class Interactable : MonoBehaviour
         {
             highlightMat.shader = nonHighlightShader;
             StopAllCoroutines();
+            playerBody.cm.customizePopout.StartPopBack();
             StartCoroutine(HidePopup());
         }
     }
@@ -83,10 +90,14 @@ public class Interactable : MonoBehaviour
         if (canHighlight)
         {
             GameObject colObj = collision.gameObject;
-            if (colObj.CompareTag("Player"))
+            if (colObj == player || colObj.CompareTag("Player"))
             {
-                colObj.GetComponent<PlayerMovement>().intObj = this.gameObject;
-                StartCoroutine(ToggleHighlight());
+                if (player == null) { player = colObj; }
+                PlayerMovement mv = player.GetComponent<PlayerMovement>();
+                if (mv.canInteract) { 
+                    mv.intObj = this.gameObject;
+                    StartCoroutine(ToggleHighlight());
+                }
             }
         }
     }
@@ -96,13 +107,18 @@ public class Interactable : MonoBehaviour
         if (canHighlight)
         {
             GameObject colObj = collision.gameObject;
-            if (colObj.CompareTag("Player"))
+            if (colObj == player || colObj.CompareTag("Player"))
             {
-                if (colObj.GetComponent<PlayerMovement>().intObj == this.gameObject)
+                if (player == null) { player = colObj; }
+                PlayerMovement mv = player.GetComponent<PlayerMovement>();
+                if (mv.canInteract)
                 {
-                    colObj.GetComponent<PlayerMovement>().intObj = null;
+                    if (mv.intObj == this.gameObject)
+                    {
+                        mv.intObj = null;
+                    }
+                    StartCoroutine(ToggleHighlight());
                 }
-                StartCoroutine(ToggleHighlight());
             }
         }
     }
