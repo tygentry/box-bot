@@ -28,7 +28,6 @@ public abstract class ArmBehavior : RobotPart
 
     public override bool OnPartPickup()
     {
-        print("Arm Part Pickup");
-        return true;
+        return base.OnPartPickup();
     }
 }

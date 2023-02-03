@@ -21,7 +21,7 @@ public class Interactable : MonoBehaviour
     InteractFunction interact;
 
     private bool isRobotPart;
-    private GameObject player;
+    private GameObject player = null;
 
     public void Start()
     {
@@ -29,6 +29,11 @@ public class Interactable : MonoBehaviour
         highlightMat = gameObject.GetComponent<SpriteRenderer>().material;
         highlightMat.shader = nonHighlightShader;
         isRobotPart = gameObject.GetComponent<RobotPart>();
+    }
+
+    public GameObject GetPlayer()
+    {
+        return player;
     }
 
     public void DisableInteraction()
@@ -45,7 +50,6 @@ public class Interactable : MonoBehaviour
         if (isHighlighted)
         {
             highlightMat.shader = highlightShader;
-            playerBody.cm.customizePopout.StartPopOut();
 
             yield return new WaitForSeconds(timeUntilPopup);
 
@@ -130,7 +134,6 @@ public class Interactable : MonoBehaviour
 
     public bool Interact()
     {
-        print("interact");
         bool? retVal = interact?.Invoke();
         if (retVal != null)
         {
