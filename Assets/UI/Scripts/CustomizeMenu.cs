@@ -90,5 +90,7 @@ public class CustomizeMenu : MonoBehaviour
             Instantiate(body.GetRightArm().inventoryPrefab, rightArmSlots[i].transform.position, Quaternion.identity).transform.SetParent(rightArmSlots[i].transform);
         }
         Instantiate(player.GetLeg().inventoryPrefab, legsSlot.transform.position, Quaternion.identity).transform.SetParent(legsSlot.transform);
+
+        
     }
 }
