@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HazardEffect : MonoBehaviour
 {
+    public int hazardDamage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,8 @@ public class HazardEffect : MonoBehaviour
         {
             Debug.Log("Hit Spike");
             // add code to push player back and damage them
+            collision.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(hazardDamage);
+
         }
     }
 }

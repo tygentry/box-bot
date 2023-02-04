@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour
+public class PlayerHealthManager : MonoBehaviour
 {
     public int maxHealth;
     public int currenthealth;
+    public GameObject healthUI;
 
     public void TakeDamage(int damage)
     {

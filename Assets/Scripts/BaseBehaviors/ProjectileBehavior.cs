@@ -31,7 +31,7 @@ public class ProjectileBehavior : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //handle enemy damage / check here
-        if (collision.gameObject.transform.TryGetComponent<HealthManager>(out var hm))
+        if (collision.gameObject.transform.TryGetComponent<EnemyHealthManager>(out var hm))
         {
             hm.TakeDamage(damage);
         }
