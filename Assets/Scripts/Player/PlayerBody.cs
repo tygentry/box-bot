@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using Unity.VisualScripting;
+using UnityEditor;
 
 public class PlayerBody : MonoBehaviour
 {
@@ -86,7 +88,7 @@ public class PlayerBody : MonoBehaviour
     /*
      * Matches a DropZone to the PlayerBody variable so all updates can be made to track a body change
      */
-    private string MatchPart(DropZone slot)
+    public string MatchPart(DropZone slot)
     {
         if (slot == null) return "";
 
@@ -103,9 +105,11 @@ public class PlayerBody : MonoBehaviour
         return "";
     }
 
-    public void UpdateBody(GameObject newPartPrefab, DropZone slot)
+    /*
+     * "Picks up" a given part and slots it into the location, attaching it to the player, and updating UI pointers
+     */
+    public void UpdateBody(string location, GameObject newPartPrefab, DropZone slot)
     {
-        string location = MatchPart(slot);
         if (location.Equals("")) return;
 
         //base setup for any new part
@@ -180,10 +184,74 @@ public class PlayerBody : MonoBehaviour
         }
     }
 
-    public void Unequip(GameObject droppedPrefab, DropZone slot)
+    /*
+     * Removes the equipped item from the location slot, dropping the part on the ground, and updating the UI pointers
+     */
+    public void Unequip(string location)
     {
-        string location = MatchPart(slot);
         if (location.Equals("")) return;
+
+        GameObject droppedPrefab = null;
+
+        int sepLoc = location.IndexOf("_");
+        // head or legs
+        if (sepLoc == -1)
+        {
+            if (location.Equals("headObj"))
+            {
+                droppedPrefab = headObj;
+                headObj = null;
+                head = null;
+            }
+            else if (location.Equals("legsObj"))
+            {
+                droppedPrefab = legsObj;
+                legsObj = null;
+                legs = null;
+            }
+        }
+        //arm or trinket
+        else
+        {
+            string slotName = location.Substring(0, sepLoc);
+            int index = Int16.Parse(location.Substring(sepLoc + 1));
+            BodyBehavior b = GetBody(index);
+            if (slotName.Equals("leftArmObj"))
+            {
+                droppedPrefab = b.leftArmObj;
+                b.leftArmObj = null;
+                b.UpdateLeftArm();
+            }
+            else
+            {
+                if (slotName.Equals("rightArmObj"))
+                {
+                    droppedPrefab = b.rightArmObj;
+                    b.rightArmObj = null;
+                    b.UpdateRightArm();
+                }
+                else if (slotName.Equals("coreTrinketObj"))
+                {
+                    droppedPrefab = b.coreTrinketObj;
+                    b.coreTrinketObj = null;
+                    b.UpdateTrinketArm();
+                }
+            }
+        }
+
+        if (droppedPrefab != null)
+        {
+            GameObject drop = Instantiate(droppedPrefab);
+            drop.GetComponent<Interactable>().EnableInteraction();
+            drop.transform.position = gameObject.transform.position;
+            Destroy(droppedPrefab);
+        }
+    }
+
+    /*
+     * public GameObject Unequip(string location, GameObject droppedPrefab, DropZone slot)
+    {
+        if (location.Equals("")) return null;
 
         GameObject drop = Instantiate(droppedPrefab);
         drop.transform.position = gameObject.transform.position;
@@ -238,5 +306,5 @@ public class PlayerBody : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 }

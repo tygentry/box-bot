@@ -132,8 +132,11 @@ public class DragDrop : MonoBehaviour
                 //unequip check
                 if (dropZone.GetComponent<DropZone>().isUnequipZone)
                 {
-                    cm.customizeMenu.player.Unequip(partPrefab, previousParent.GetComponent<DropZone>());
+                    string unequipLoc = cm.customizeMenu.player.MatchPart(previousParent.GetComponent<DropZone>());
+                    cm.customizeMenu.player.Unequip(unequipLoc);
+                    previousParent.GetComponent<DropZone>().associatedSlot = null;
                     Destroy(gameObject);
+                    cm.customizePopout.MimicCustomize();
                     return;
                 }
 
@@ -144,15 +147,18 @@ public class DragDrop : MonoBehaviour
                     swapChild.SetParent(previousParent.transform, false);
                     swapChild.SetSiblingIndex(prevChildIndex);
                     //swapChild.localPosition = startPosition;
-                    cm.customizeMenu.player.UpdateBody(swapChild.GetComponent<DragDrop>().partPrefab, previousParent.GetComponent<DropZone>());
+                    string swapLoc = cm.customizeMenu.player.MatchPart(previousParent.GetComponent<DropZone>());
+                    cm.customizeMenu.player.UpdateBody(swapLoc, swapChild.GetComponent<DragDrop>().partPrefab, previousParent.GetComponent<DropZone>());
                 }
                 //print(dropZone);
                 trans.SetParent(dropZone.transform, false);
-                cm.customizeMenu.player.UpdateBody(partPrefab, dropZone.GetComponent<DropZone>());
+                string location = cm.customizeMenu.player.MatchPart(dropZone.GetComponent<DropZone>());
+                cm.customizeMenu.player.UpdateBody(location, partPrefab, dropZone.GetComponent<DropZone>());
                 if (dropZone == previousParent) 
                 {
                     trans.SetSiblingIndex(prevChildIndex);
                 }
+                cm.customizePopout.MimicCustomize();
             }
             else
             {

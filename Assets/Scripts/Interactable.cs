@@ -42,6 +42,12 @@ public class Interactable : MonoBehaviour
         interactRange.enabled = false;
     }
 
+    public void EnableInteraction()
+    {
+        canHighlight = true;
+        interactRange.enabled = true;
+    }
+
     IEnumerator ToggleHighlight()
     {
         //print(gameObject.name);

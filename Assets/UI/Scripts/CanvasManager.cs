@@ -30,7 +30,7 @@ public class CanvasManager : MonoBehaviour
     public void MatchPlayer(PlayerBody p)
     {
         customizeMenu.MatchCharacter(p);
-        customizePopout.MimicCustomize(customizeMenu);
+        customizePopout.MimicCustomize();
     }
 
     public void TogglePauseMenu()

@@ -19,7 +19,7 @@ public class CustomizeMenu : MonoBehaviour
 
     public PlayerBody player;
 
-    private void CalibrateDropZones()
+    public void CalibrateDropZones()
     {
         if (player == null)
         {
@@ -59,15 +59,10 @@ public class CustomizeMenu : MonoBehaviour
         DestroyAllChildren(legsSlot);
     }
 
-    private void DestroyAllChildren(GameObject obj)
+    public void DestroyAllChildren(GameObject obj)
     {
         if (obj == null) return;
-        /*while (obj.transform.childCount > 0)
-        {
-            GameObject child = obj.transform.GetChild(0).gameObject;
-            child.transform.parent = null;
-            Destroy(child);
-        }*/
+    
         for (int i = 0; i < obj.transform.childCount; i++)
         {
             Destroy(obj.transform.GetChild(i).gameObject);
@@ -90,7 +85,5 @@ public class CustomizeMenu : MonoBehaviour
             Instantiate(body.GetRightArm().inventoryPrefab, rightArmSlots[i].transform.position, Quaternion.identity).transform.SetParent(rightArmSlots[i].transform);
         }
         Instantiate(player.GetLeg().inventoryPrefab, legsSlot.transform.position, Quaternion.identity).transform.SetParent(legsSlot.transform);
-
-        
     }
 }

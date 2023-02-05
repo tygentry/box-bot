@@ -10,39 +10,72 @@ public class CustomizePopout : MonoBehaviour
     [SerializeField] List<BodySelect> bodies = new List<BodySelect>();
     [SerializeField] PopoutButton legs;
 
+    [SerializeField] Sprite transparentSprite;
     public float popoutDistance = 220.0f;
     RectTransform trans;
+    private CanvasManager cm;
 
     // Start is called before the first frame update
     void Start()
     {
         trans = gameObject.GetComponent<RectTransform>();
+        cm = FindObjectOfType<CanvasManager>();
     }
 
-    public void MimicCustomize(CustomizeMenu cm)
+    public void NewPart(PopoutButton clicked)
     {
-        if (cm.headSlot.transform.GetChild(0))
-        {
-            head.SetImage(cm.headSlot.transform.GetChild(0).gameObject.GetComponent<Image>().sprite);
-        }
+        print(clicked);
+        string loc = FindSlot(clicked);
+        cm.customizeMenu.player.Unequip(loc);
+        cm.customizeMenu.CalibrateDropZones();
+    }
+
+    private string FindSlot(PopoutButton button)
+    {
+        if (button == null) return "";
+
+        if (button == head) return "headObj";
+        if (button == legs) return "legsObj";
         for (int i = 0; i < bodies.Count; i++)
         {
-            if (cm.leftArmSlots[i].transform.GetChild(0))
+            if (button == bodies[i].leftArm) return "leftArmObj_" + i;
+            if (button == bodies[i].trinket) return "coreTrinketObj_" + i;
+            if (button == bodies[i].rightArm) return "rightArmObj_" + i;
+        }
+
+        return "";
+    }
+
+    public void MimicCustomize()
+    {
+        if (cm.customizeMenu.headSlot.transform.childCount == 0) { head.SetImage(transparentSprite); }
+        else
+        {
+            head.SetImage(cm.customizeMenu.headSlot.transform.GetChild(0).gameObject.GetComponent<Image>().sprite);
+        }
+
+        for (int i = 0; i < bodies.Count; i++)
+        {
+            if (cm.customizeMenu.leftArmSlots[i].transform.childCount == 0) { bodies[i].leftArm.SetImage(transparentSprite); }
+            else
             {
-                bodies[i].leftArm.SetImage(cm.leftArmSlots[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite);
+                bodies[i].leftArm.SetImage(cm.customizeMenu.leftArmSlots[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite);
             }
-            if (cm.trinketSlots[i].transform.GetChild(0))
+            if (cm.customizeMenu.trinketSlots[i].transform.childCount == 0) { bodies[i].trinket.SetImage(transparentSprite); }
+            else
             {
-                bodies[i].trinket.SetImage(cm.trinketSlots[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite);
+                bodies[i].trinket.SetImage(cm.customizeMenu.trinketSlots[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite);
             }
-            if (cm.rightArmSlots[i].transform.GetChild(0))
+            if (cm.customizeMenu.rightArmSlots[i].transform.childCount == 0) { bodies[i].rightArm.SetImage(transparentSprite); }
+            else
             {
-                bodies[i].rightArm.SetImage(cm.rightArmSlots[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite);
+                bodies[i].rightArm.SetImage(cm.customizeMenu.rightArmSlots[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite);
             }
         }
-        if (cm.legsSlot.transform.GetChild(0))
+        if (cm.customizeMenu.legsSlot.transform.childCount == 0) { legs.SetImage(transparentSprite); }
+        else
         {
-            legs.SetImage(cm.legsSlot.transform.GetChild(0).gameObject.GetComponent<Image>().sprite);
+            legs.SetImage(cm.customizeMenu.legsSlot.transform.GetChild(0).gameObject.GetComponent<Image>().sprite);
         }
     }
 

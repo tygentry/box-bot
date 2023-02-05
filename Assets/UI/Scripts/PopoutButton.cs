@@ -8,16 +8,10 @@ public class PopoutButton : MonoBehaviour
     [SerializeField] CustomizePopout customPop;
     [SerializeField] Image partImg;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void SetImage(Sprite img) { partImg.sprite = img; }
 
     public void Selected()
     {
-
+        customPop.NewPart(this);
     }
 }
