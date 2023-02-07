@@ -108,9 +108,9 @@ public class PlayerBody : MonoBehaviour
     /*
      * "Picks up" a given part and slots it into the location, attaching it to the player, and updating UI pointers
      */
-    public void UpdateBody(string location, GameObject newPartPrefab, DropZone slot)
+    public GameObject UpdateBody(string location, GameObject newPartPrefab)
     {
-        if (location.Equals("")) return;
+        if (location.Equals("")) return null;
 
         //base setup for any new part
         RobotPart prefabBase = newPartPrefab.GetComponent<RobotPart>();
@@ -127,18 +127,18 @@ public class PlayerBody : MonoBehaviour
                 Destroy(headObj);
                 headObj = newPart;
                 head = headObj.GetComponent<HeadBehavior>();
-                slot.associatedSlot = headObj;
                 newPart.transform.SetParent(this.gameObject.transform, false);
                 newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
+                return headObj;
             }
             else if (location.Equals("legsObj"))
             {
                 Destroy(legsObj);
                 legsObj = newPart;
                 legs = legsObj.GetComponent<LegBehavior>();
-                slot.associatedSlot = legsObj;
                 newPart.transform.SetParent(this.gameObject.transform, false);
                 newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
+                return legsObj;
             }
         }
         //arm or trinket
@@ -152,13 +152,13 @@ public class PlayerBody : MonoBehaviour
                 Destroy(b.leftArmObj);
                 b.leftArmObj = newPart;
                 b.UpdateLeftArm();
-                slot.associatedSlot = b.leftArmObj;
                 newPart.transform.SetParent(b.gameObject.transform, false);
                 Vector3 adjustedPos = prefabBase.startPos;
                 adjustedPos.x *= -1; //flipping X value for left arm
                 Vector3 adjustedRot = prefabBase.startRot;
                 adjustedRot.z += 180;
                 newPart.transform.SetLocalPositionAndRotation(adjustedPos, Quaternion.Euler(adjustedRot));
+                return b.leftArmObj; 
             }
             else
             {
@@ -167,21 +167,23 @@ public class PlayerBody : MonoBehaviour
                     Destroy(b.rightArmObj);
                     b.rightArmObj = newPart;
                     b.UpdateRightArm();
-                    slot.associatedSlot = b.rightArmObj;
                     newPart.transform.SetParent(b.gameObject.transform, false);
                     newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
+                    return b.rightArmObj;
                 }
                 else if (slotName.Equals("coreTrinketObj"))
                 {
                     Destroy(b.coreTrinketObj);
                     b.coreTrinketObj = newPart;
                     b.UpdateTrinketArm();
-                    slot.associatedSlot = b.coreTrinketObj;
                     newPart.transform.SetParent(b.gameObject.transform, false);
                     newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
+                    return b.coreTrinketObj;
                 }
             }
         }
+
+        return null;
     }
 
     /*

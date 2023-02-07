@@ -24,10 +24,16 @@ public class CustomizePopout : MonoBehaviour
 
     public void NewPart(PopoutButton clicked)
     {
-        print(clicked);
+        GameObject newPart = cm.customizeMenu.player.GetComponent<PlayerMovement>().interactedObj;
+        if (newPart == null) { return; }
         string loc = FindSlot(clicked);
         cm.customizeMenu.player.Unequip(loc);
+        cm.customizeMenu.player.UpdateBody(loc, newPart);
+        //still not connecting to visuals
         cm.customizeMenu.CalibrateDropZones();
+        MimicCustomize();
+        Destroy(newPart);
+        cm.customizeMenu.player.GetComponent<PlayerMovement>().interactedObj = null;
     }
 
     private string FindSlot(PopoutButton button)

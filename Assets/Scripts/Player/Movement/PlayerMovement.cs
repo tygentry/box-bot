@@ -13,8 +13,9 @@ public class PlayerMovement : MonoBehaviour
     private bool spacePressed = false;
 
     [Header("Interact")]
-    public GameObject intObj;
+    public GameObject closestIntObj;
     public bool canInteract = true;
+    public GameObject interactedObj;
 
     private Vector2 dodgeDirection = Vector2.zero;
 
@@ -52,9 +53,10 @@ public class PlayerMovement : MonoBehaviour
 
         legBehavior.LegUpdate(input, spacePressed);
 
-        if (controls.PlayerControls.Interact.triggered && canInteract && intObj != null)
+        if (controls.PlayerControls.Interact.triggered && canInteract && closestIntObj != null)
         {
-            intObj.GetComponent<Interactable>().Interact();
+            interactedObj = closestIntObj;
+            closestIntObj.GetComponent<Interactable>().Interact();
         }
     }
 

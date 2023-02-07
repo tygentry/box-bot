@@ -40,6 +40,7 @@ public class Interactable : MonoBehaviour
     {
         canHighlight = false;
         interactRange.enabled = false;
+        InstaHidePopup();
     }
 
     public void EnableInteraction()
@@ -69,6 +70,7 @@ public class Interactable : MonoBehaviour
             highlightMat.shader = nonHighlightShader;
             StopAllCoroutines();
             playerBody.cm.customizePopout.StartPopBack();
+            player.GetComponent<PlayerMovement>().interactedObj = null;
             StartCoroutine(HidePopup());
         }
     }
@@ -95,6 +97,11 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    public void InstaHidePopup()
+    {
+        popupGroup.alpha = 0.0f;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (canHighlight)
@@ -105,7 +112,7 @@ public class Interactable : MonoBehaviour
                 if (player == null) { player = colObj; }
                 PlayerMovement mv = player.GetComponent<PlayerMovement>();
                 if (mv.canInteract) { 
-                    mv.intObj = this.gameObject;
+                    mv.closestIntObj = this.gameObject;
                     StartCoroutine(ToggleHighlight());
                 }
             }
@@ -123,9 +130,9 @@ public class Interactable : MonoBehaviour
                 PlayerMovement mv = player.GetComponent<PlayerMovement>();
                 if (mv.canInteract)
                 {
-                    if (mv.intObj == this.gameObject)
+                    if (mv.closestIntObj == this.gameObject)
                     {
-                        mv.intObj = null;
+                        mv.closestIntObj = null;
                     }
                     StartCoroutine(ToggleHighlight());
                 }

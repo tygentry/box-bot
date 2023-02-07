@@ -148,12 +148,14 @@ public class DragDrop : MonoBehaviour
                     swapChild.SetSiblingIndex(prevChildIndex);
                     //swapChild.localPosition = startPosition;
                     string swapLoc = cm.customizeMenu.player.MatchPart(previousParent.GetComponent<DropZone>());
-                    cm.customizeMenu.player.UpdateBody(swapLoc, swapChild.GetComponent<DragDrop>().partPrefab, previousParent.GetComponent<DropZone>());
+                    //moving old part
+                    previousParent.GetComponent<DropZone>().associatedSlot = cm.customizeMenu.player.UpdateBody(swapLoc, swapChild.GetComponent<DragDrop>().partPrefab);
                 }
                 //print(dropZone);
                 trans.SetParent(dropZone.transform, false);
                 string location = cm.customizeMenu.player.MatchPart(dropZone.GetComponent<DropZone>());
-                cm.customizeMenu.player.UpdateBody(location, partPrefab, dropZone.GetComponent<DropZone>());
+                //new part attach
+                dropZone.GetComponent<DropZone>().associatedSlot = cm.customizeMenu.player.UpdateBody(location, partPrefab); ;
                 if (dropZone == previousParent) 
                 {
                     trans.SetSiblingIndex(prevChildIndex);
