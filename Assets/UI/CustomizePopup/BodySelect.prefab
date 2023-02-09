@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customPop: {fileID: 0}
   partImg: {fileID: 7861256718826348590}
+  type: 2
 --- !u!1 &1018339713158712327
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customPop: {fileID: 0}
   partImg: {fileID: 4638684043946466860}
+  type: 4
 --- !u!1 &4856936874416707528
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,6 +677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customPop: {fileID: 0}
   partImg: {fileID: 8563149859273532361}
+  type: 2
 --- !u!1 &7779670139335946844
 GameObject:
   m_ObjectHideFlags: 0

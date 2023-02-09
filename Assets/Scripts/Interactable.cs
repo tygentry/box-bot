@@ -36,6 +36,7 @@ public class Interactable : MonoBehaviour
         return player;
     }
 
+    // toggle interactability
     public void DisableInteraction()
     {
         canHighlight = false;
@@ -49,6 +50,7 @@ public class Interactable : MonoBehaviour
         interactRange.enabled = true;
     }
 
+    // Highlight and animation control for popup
     IEnumerator ToggleHighlight()
     {
         //print(gameObject.name);
@@ -140,6 +142,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    // Custom interact function handling
     public void SetInteractable(InteractFunction intF)
     {
         interact = intF;

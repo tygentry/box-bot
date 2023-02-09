@@ -19,6 +19,9 @@ public class CustomizeMenu : MonoBehaviour
 
     public PlayerBody player;
 
+    /*
+     * Forces a recalculation of drop zone variables and associated slots on the player
+     */
     public void CalibrateDropZones()
     {
         if (player == null)
@@ -50,6 +53,9 @@ public class CustomizeMenu : MonoBehaviour
         legs.associatedSlot = player.legsObj;
     }
 
+    /*
+     * Resets draggables placed in the customize menu so it can be repopulated
+     */
     private void ClearDraggables()
     {
         DestroyAllChildren(headSlot);
@@ -59,6 +65,9 @@ public class CustomizeMenu : MonoBehaviour
         DestroyAllChildren(legsSlot);
     }
 
+    /*
+     * Utility function to destroy all children of a gameobject
+     */
     public void DestroyAllChildren(GameObject obj)
     {
         if (obj == null) return;
@@ -70,6 +79,9 @@ public class CustomizeMenu : MonoBehaviour
         obj.transform.DetachChildren();
     }
 
+    /*
+     * Complete reset of Customize Menu based on the passed in PlayerBody
+     */
     public void MatchCharacter(PlayerBody player)
     {
         ClearDraggables();

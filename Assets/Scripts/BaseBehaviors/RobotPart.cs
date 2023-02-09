@@ -21,6 +21,7 @@ public class RobotPart : MonoBehaviour
         interact.SetInteractable(OnPartPickup);
     }
 
+    //base Interact function to be called when interacting with a part, see Interactable.cs
     public virtual bool OnPartPickup() 
     {
         interact.GetPlayer()?.GetComponent<PlayerBody>().cm.customizePopout.StartPopOut();

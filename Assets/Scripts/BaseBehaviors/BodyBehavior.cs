@@ -30,6 +30,7 @@ public abstract class BodyBehavior : RobotPart
         }
     }
 
+    //getters / setters
     public ArmBehavior GetLeftArm() { return leftArm; }
     public void UpdateLeftArm() 
     { 
@@ -67,6 +68,7 @@ public abstract class BodyBehavior : RobotPart
         }
     }
 
+    //click handlers
     public void PressLeft(float dt) { if (leftArm) leftArm.PressAttack(dt); }
     public void PressRight(float dt) { if (rightArm) rightArm.PressAttack(dt); }
     public void ReleaseLeft(float dt) { if (leftArm) leftArm.ReleaseAttack(dt); }

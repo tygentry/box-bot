@@ -22,20 +22,28 @@ public class CustomizePopout : MonoBehaviour
         cm = FindObjectOfType<CanvasManager>();
     }
 
+    /*
+     * Handler for when a button in the customize popout is clicked to pick up a new part
+     */
     public void NewPart(PopoutButton clicked)
     {
         GameObject newPart = cm.customizeMenu.player.GetComponent<PlayerMovement>().interactedObj;
+
         if (newPart == null) { return; }
+        if (newPart.GetComponent<RobotPart>().type != clicked.type) { return; }
+
         string loc = FindSlot(clicked);
         cm.customizeMenu.player.Unequip(loc);
         cm.customizeMenu.player.UpdateBody(loc, newPart);
-        //still not connecting to visuals
-        cm.customizeMenu.CalibrateDropZones();
+        cm.customizeMenu.MatchCharacter(cm.customizeMenu.player);
         MimicCustomize();
         Destroy(newPart);
         cm.customizeMenu.player.GetComponent<PlayerMovement>().interactedObj = null;
     }
 
+    /*
+     * Determines the location of the button clicked based on its placement in the popout
+     */
     private string FindSlot(PopoutButton button)
     {
         if (button == null) return "";
@@ -52,6 +60,9 @@ public class CustomizePopout : MonoBehaviour
         return "";
     }
 
+    /*
+     * Forces reset of customize popup to match customize menu
+     */
     public void MimicCustomize()
     {
         if (cm.customizeMenu.headSlot.transform.childCount == 0) { head.SetImage(transparentSprite); }
@@ -85,6 +96,7 @@ public class CustomizePopout : MonoBehaviour
         }
     }
 
+    //Animation control
     public void StartPopOut() { StopAllCoroutines(); StartCoroutine(PopOut()); }
     public void StartPopBack() { StopAllCoroutines(); StartCoroutine(PopBack()); }
 

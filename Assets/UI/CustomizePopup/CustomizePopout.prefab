@@ -323,6 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customPop: {fileID: 2241742897461846791}
   partImg: {fileID: 7459452152905779970}
+  type: 1
 --- !u!1 &7791328766461012938
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customPop: {fileID: 2241742897461846791}
   partImg: {fileID: 8157121428950630753}
+  type: 3
 --- !u!1001 &7600411478199669311
 PrefabInstance:
   m_ObjectHideFlags: 0
