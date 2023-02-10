@@ -9,8 +9,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private LegBehavior legBehavior;
     public Controls controls;
+    public bool canMove = true;
 
     private bool spacePressed = false;
+    private float staggerTimer = 0f;
 
     [Header("Interact")]
     public GameObject closestIntObj;
@@ -41,6 +43,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        staggerTimer -= Time.deltaTime;
+        if (staggerTimer <= 0f)
+            canMove = true;
+
         spacePressed = false;
         input = Vector2.zero;
         input.x = controls.PlayerControls.MovementHorizontal.ReadValue<float>();
@@ -51,7 +57,8 @@ public class PlayerMovement : MonoBehaviour
             spacePressed = true;
         }
 
-        legBehavior.LegUpdate(input, spacePressed);
+        if(canMove)
+            legBehavior.LegUpdate(input, spacePressed);
 
         if (controls.PlayerControls.Interact.triggered && canInteract && closestIntObj != null)
         {
@@ -62,6 +69,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        legBehavior.LegFixedUpdate();
+        if(canMove)
+            legBehavior.LegFixedUpdate();
+    }
+
+    public void Stagger(float duration)
+    {
+        staggerTimer = duration;
+        canMove = false;
     }
 }

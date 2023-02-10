@@ -5,24 +5,22 @@ using UnityEngine;
 public class HazardEffect : MonoBehaviour
 {
     public int hazardDamage = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float knockbackForce = 50f;
+    public float staggerDuration = 0.2f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Hit Spike");
-            // add code to push player back and damage them
+
+            collision.gameObject.GetComponent<PlayerMovement>().Stagger(staggerDuration);
+
+            Vector2 direction = (collision.gameObject.transform.position - transform.position).normalized;
+
+            collision.gameObject.GetComponent<KnockBackController>().KnockBack(direction, knockbackForce);
+            print("KnockBack");
+            
             collision.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(hazardDamage);
 
         }
