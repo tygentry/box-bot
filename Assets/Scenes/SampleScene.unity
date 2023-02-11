@@ -405,6 +405,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hazardDamage: 1
+  knockbackForce: 50
+  staggerDuration: 0.2
 --- !u!19719996 &375242001
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -833,6 +835,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &573190881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5651338466747251517, guid: 8ef9059711b1afe47912d6c8bc62322c, type: 3}
+  m_PrefabInstance: {fileID: 8905142548509333028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &681507473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,7 +2600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customizeMenuObj: {fileID: 2059581620}
   customizePopoutObj: {fileID: 1436915359}
-  playerUIObj: {fileID: 0}
+  playerUIObj: {fileID: 573190881}
   pauseMenu: {fileID: 0}
   customizeMenu: {fileID: 0}
   customizePopout: {fileID: 0}
@@ -2995,6 +3002,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1036343880}
     m_Modifications:
+    - target: {fileID: 3498708012001425263, guid: 8ef9059711b1afe47912d6c8bc62322c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498708012001425263, guid: 8ef9059711b1afe47912d6c8bc62322c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498708012001425263, guid: 8ef9059711b1afe47912d6c8bc62322c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498708012001425263, guid: 8ef9059711b1afe47912d6c8bc62322c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3668860762777063159, guid: 8ef9059711b1afe47912d6c8bc62322c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
