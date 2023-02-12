@@ -18,13 +18,19 @@ public class RobotPart : MonoBehaviour
     public void Start()
     {
         interact = gameObject.GetComponent<Interactable>();
-        interact.SetInteractable(OnPartPickup);
+        interact.SetInteractable(OnPartInteract);
+        interact.SetPickUp(OnPartPickUp);
     }
 
     //base Interact function to be called when interacting with a part, see Interactable.cs
-    public virtual bool OnPartPickup() 
+    public virtual bool OnPartInteract() 
     {
         interact.GetPlayer()?.GetComponent<PlayerBody>().cm.customizePopout.StartPopOut();
+        return true;
+    }
+
+    public virtual bool OnPartPickUp()
+    {
         return true;
     }
 }

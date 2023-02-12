@@ -13,13 +13,13 @@ public class PlayerHealthManager : MonoBehaviour
         currenthealth = Mathf.Clamp(currenthealth - damage, 0, maxHealth);
         print("Ouch, " + damage + " damage!");
         if (playerUI == null) { playerUI = gameObject.GetComponent<PlayerBody>().cm.playerUI; }
-        playerUI.UpdateHealth(currenthealth);
+        playerUI.UpdateHealth(damage);
     }
 
     public void Heal(int healAmount)
     {
         currenthealth = Mathf.Clamp(currenthealth + healAmount, 0, maxHealth);
         if (playerUI == null) { playerUI = gameObject.GetComponent<PlayerBody>().cm.playerUI; }
-        playerUI.UpdateHealth(currenthealth);
+        playerUI.UpdateHealth(healAmount);
     }
 }

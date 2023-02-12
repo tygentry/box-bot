@@ -26,8 +26,8 @@ public abstract class ArmBehavior : RobotPart
         Debug.Log(this.name + " release attack");
     }
 
-    public override bool OnPartPickup()
+    public override bool OnPartInteract()
     {
-        return base.OnPartPickup();
+        return base.OnPartInteract();
     }
 }

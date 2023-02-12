@@ -19,6 +19,8 @@ public class Interactable : MonoBehaviour
     public CanvasGroup popupGroup;
     public delegate bool InteractFunction();
     InteractFunction interact;
+    public delegate bool PickUpFunction();
+    PickUpFunction pickup;
 
     private bool isRobotPart;
     private GameObject player = null;
@@ -151,6 +153,22 @@ public class Interactable : MonoBehaviour
     public bool Interact()
     {
         bool? retVal = interact?.Invoke();
+        if (retVal != null)
+        {
+            return (bool)retVal;
+        }
+        return false;
+    }
+
+    //MOVE THIS INTO ROBOTPART, not necessary here
+    public void SetPickUp(PickUpFunction puF)
+    {
+        pickup = puF;
+    }
+
+    public bool PickUp()
+    {
+        bool? retVal = pickup?.Invoke();
         if (retVal != null)
         {
             return (bool)retVal;

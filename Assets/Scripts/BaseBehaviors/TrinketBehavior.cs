@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class TrinketBehavior : RobotPart
 {
+    [SerializeField] public Dictionary<PlayerStats.ModifiableStats, float> statChangers = new Dictionary<PlayerStats.ModifiableStats, float>();
 
-    // Update is called once per frame
-    void Update()
+    public override bool OnPartPickUp()
     {
-        
+        foreach (KeyValuePair<PlayerStats.ModifiableStats, float> statMod in statChangers)
+        {
+
+        }
+        return base.OnPartPickUp();
     }
 }
