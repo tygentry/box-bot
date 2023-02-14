@@ -117,6 +117,7 @@ public class PlayerBody : MonoBehaviour
         GameObject newPart = Instantiate(newPartPrefab);
         Interactable newPartBase = newPart.GetComponent<Interactable>();
         newPartBase.DisableInteraction();
+        prefabBase.OnPartPickUp(gameObject);
 
         int sepLoc = location.IndexOf("_");
         // head or legs
@@ -243,6 +244,7 @@ public class PlayerBody : MonoBehaviour
 
         if (droppedPrefab != null)
         {
+            droppedPrefab.GetComponent<RobotPart>().OnPartDrop(gameObject);
             GameObject drop = Instantiate(droppedPrefab);
             drop.GetComponent<Interactable>().EnableInteraction();
             drop.transform.position = gameObject.transform.position;

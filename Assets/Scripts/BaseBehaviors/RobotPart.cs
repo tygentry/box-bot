@@ -19,7 +19,6 @@ public class RobotPart : MonoBehaviour
     {
         interact = gameObject.GetComponent<Interactable>();
         interact.SetInteractable(OnPartInteract);
-        interact.SetPickUp(OnPartPickUp);
     }
 
     //base Interact function to be called when interacting with a part, see Interactable.cs
@@ -29,7 +28,12 @@ public class RobotPart : MonoBehaviour
         return true;
     }
 
-    public virtual bool OnPartPickUp()
+    public virtual bool OnPartPickUp(GameObject player)
+    {
+        return true;
+    }
+
+    public virtual bool OnPartDrop(GameObject player)
     {
         return true;
     }

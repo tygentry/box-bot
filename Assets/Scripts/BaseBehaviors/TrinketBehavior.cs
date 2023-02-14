@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class TrinketBehavior : RobotPart
 {
-    [SerializeField] public Dictionary<PlayerStats.ModifiableStats, float> statChangers = new Dictionary<PlayerStats.ModifiableStats, float>();
+    [SerializeField] Dictionary<PlayerStats.ModifiableStats, float> statChangers = new Dictionary<PlayerStats.ModifiableStats, float>();
 
-    public override bool OnPartPickUp()
+    public override bool OnPartPickUp(GameObject player)
     {
+        print("trinketPickup");
+        PlayerStats stats = player.GetComponent<PlayerStats>();
         foreach (KeyValuePair<PlayerStats.ModifiableStats, float> statMod in statChangers)
         {
-
+            stats.ModifyStat(statMod.Key, statMod.Value);
         }
-        return base.OnPartPickUp();
+        return base.OnPartPickUp(player);
+    }
+
+    public override bool OnPartDrop(GameObject player)
+    {
+        PlayerStats stats = player.GetComponent<PlayerStats>();
+        foreach (KeyValuePair<PlayerStats.ModifiableStats, float> statMod in statChangers)
+        {
+            stats.ModifyStat(statMod.Key, -statMod.Value);
+        }
+        return base.OnPartPickUp(player);
     }
 }
