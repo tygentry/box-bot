@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8773243157817634322, guid: c3731b91d2d525942b9bf21c624bc5b9, type: 3}
       propertyPath: m_Name
-      value: RoFTrinket1
+      value: RoFTrinket
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -709069267337846167, guid: c3731b91d2d525942b9bf21c624bc5b9, type: 3}
@@ -119,3 +119,6 @@ MonoBehaviour:
   inventoryPrefab: {fileID: 4368693400412802296, guid: 2a28f8a3feb72284aa1f6c8015d7e047, type: 3}
   startPos: {x: 0, y: 0, z: -0.1}
   startRot: {x: 0, y: 0, z: 0}
+  statsList:
+  - stat: 5
+    value: 0.15

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [System.Serializable]
     public enum ModifiableStats
     {
         None,
@@ -16,7 +17,14 @@ public class PlayerStats : MonoBehaviour
         Luck
     }
 
-    [SerializeField] Dictionary<ModifiableStats, float> stats = new Dictionary<ModifiableStats, float>()
+    [System.Serializable]
+    public struct StatDict
+    {
+        public ModifiableStats stat;
+        public float value;
+    }
+
+    [SerializeField] Dictionary<ModifiableStats, float> statsDict = new Dictionary<ModifiableStats, float>()
     {
         { ModifiableStats.AllDamage, 1.0f },
         { ModifiableStats.MeleeDamage, 1.0f },
@@ -30,12 +38,12 @@ public class PlayerStats : MonoBehaviour
     public void ModifyStat(ModifiableStats stat, float value)
     {
         if (stat == ModifiableStats.None) return;
-        stats[stat] += value;
+        statsDict[stat] += value;
     }
 
     public float GetStat(ModifiableStats stat)
     {
         if (stat == ModifiableStats.None) return 0.0f;
-        return stats[stat];
+        return statsDict[stat];
     }
 }
