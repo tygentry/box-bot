@@ -8,6 +8,7 @@ public class KnockBackController : MonoBehaviour
     
     public void KnockBack(Vector2 direction, float force)
     {
+        rb.velocity = Vector2.zero;
         rb.AddForce(direction * force, ForceMode2D.Impulse);
     }
 }

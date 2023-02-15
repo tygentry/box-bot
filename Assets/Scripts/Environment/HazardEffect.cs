@@ -17,12 +17,12 @@ public class HazardEffect : MonoBehaviour
             collision.gameObject.GetComponent<PlayerMovement>().Stagger(staggerDuration);
 
             Vector2 direction = (collision.gameObject.transform.position - transform.position).normalized;
+            print(direction);
 
             collision.gameObject.GetComponent<KnockBackController>().KnockBack(direction, knockbackForce);
             print("KnockBack");
             
             collision.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(hazardDamage);
-
         }
     }
 }

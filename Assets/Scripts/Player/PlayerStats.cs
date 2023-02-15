@@ -13,6 +13,7 @@ public class PlayerStats : MonoBehaviour
         ShotDamage,
         ChargeDamage,
         AttackSpeed,
+        MoveSpeed,
         HeadChargeRate,
         Luck
     }
@@ -31,6 +32,7 @@ public class PlayerStats : MonoBehaviour
         { ModifiableStats.ShotDamage, 1.0f },
         { ModifiableStats.ChargeDamage, 1.0f },
         { ModifiableStats.AttackSpeed, 1.0f },
+        { ModifiableStats.MoveSpeed, 1.0f },
         { ModifiableStats.HeadChargeRate, 1.0f },
         { ModifiableStats.Luck, 1.0f },
     };

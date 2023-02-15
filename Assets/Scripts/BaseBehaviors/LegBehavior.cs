@@ -11,6 +11,7 @@ public class LegBehavior : RobotPart
 
     public GameObject player;
     public Rigidbody2D playerRB;
+    public PlayerStats playerStats;
     public Vector2 input;
     
     public virtual void LegUpdate(Vector2 playerInput, bool spacePressed)
