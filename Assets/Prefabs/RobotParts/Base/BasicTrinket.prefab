@@ -159,3 +159,4 @@ MonoBehaviour:
   inventoryPrefab: {fileID: 0}
   startPos: {x: 0, y: 0, z: 0}
   startRot: {x: 0, y: 0, z: 0}
+  statsList: []
