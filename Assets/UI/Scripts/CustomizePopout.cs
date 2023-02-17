@@ -16,7 +16,7 @@ public class CustomizePopout : MonoBehaviour
     private CanvasManager cm;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         trans = gameObject.GetComponent<RectTransform>();
         cm = FindObjectOfType<CanvasManager>();
@@ -48,13 +48,13 @@ public class CustomizePopout : MonoBehaviour
     {
         if (button == null) return "";
 
-        if (button == head) return "headObj";
-        if (button == legs) return "legsObj";
+        if (button == head) return PlayerBody.HeadLocString();
+        if (button == legs) return PlayerBody.LegsLocString();
         for (int i = 0; i < bodies.Count; i++)
         {
-            if (button == bodies[i].leftArm) return "leftArmObj_" + i;
-            if (button == bodies[i].trinket) return "coreTrinketObj_" + i;
-            if (button == bodies[i].rightArm) return "rightArmObj_" + i;
+            if (button == bodies[i].leftArm) return PlayerBody.LeftArmLocString() + "_" + i;
+            if (button == bodies[i].trinket) return PlayerBody.TrinketLocString() + "_" + i;
+            if (button == bodies[i].rightArm) return PlayerBody.RightArmLocString() + "_" + i;
         }
 
         return "";

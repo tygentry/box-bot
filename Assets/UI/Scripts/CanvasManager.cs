@@ -16,7 +16,7 @@ public class CanvasManager : MonoBehaviour
     public bool isPaused;
     public bool isCustomizing;
 
-    private void Start()
+    private void Awake()
     {
         customizeMenu = customizeMenuObj.GetComponent<CustomizeMenu>();
         customizePopout = customizePopoutObj.GetComponent<CustomizePopout>();

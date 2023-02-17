@@ -8,6 +8,20 @@ using UnityEditor;
 
 public class PlayerBody : MonoBehaviour
 {
+    [Header("Debug / Start Parts")]
+    public bool useStartParts = true;
+    [SerializeField] GameObject headPrefab;
+    [SerializeField] List<StartBody> bodyPrefabs;
+    [SerializeField] GameObject legsPrefab;
+
+    [System.Serializable]
+    public struct StartBody
+    {
+        public GameObject leftArm;
+        public GameObject trinket;
+        public GameObject rightArm;
+    }
+
     [Header("Robot Components")]
     public GameObject headObj;
     public List<GameObject> bodyObjs = new List<GameObject>();
@@ -38,6 +52,24 @@ public class PlayerBody : MonoBehaviour
 
         cm = FindObjectOfType<CanvasManager>();
         mv = gameObject.GetComponent<PlayerMovement>();
+        if (useStartParts)
+        {
+            SpawnStartParts();
+        }
+        cm.MatchPlayer(this);
+    }
+
+    //needs to be expanded for multiple bodies
+    public void SpawnStartParts()
+    {
+        UpdateBody(HeadLocString(), headPrefab);
+        for (int i = 0; i < bodyPrefabs.Count; i++)
+        {
+            UpdateBody(LeftArmLocString() + "_" + i, bodyPrefabs[i].leftArm);
+            UpdateBody(RightArmLocString() + "_" + i, bodyPrefabs[i].rightArm);
+            UpdateBody(TrinketLocString() + "_" + i, bodyPrefabs[i].trinket);
+        }
+        UpdateBody(LegsLocString(), legsPrefab);
     }
 
     public HeadBehavior GetHead() { return head; }
@@ -55,7 +87,7 @@ public class PlayerBody : MonoBehaviour
         //DEBUG
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            cm.MatchPlayer(this);
+            
         }
 
         if (!cm.isCustomizing)
@@ -93,13 +125,13 @@ public class PlayerBody : MonoBehaviour
         if (slot == null) return "";
 
         GameObject part = slot.associatedSlot;
-        if (part == headObj) return "headObj";
-        if (part == legsObj) return "legsObj";
+        if (part == headObj) return HeadLocString();
+        if (part == legsObj) return LegsLocString();
         for (int i = 0; i < bodies.Count; i++)
         {
-            if (part == bodies[i].leftArmObj) return "leftArmObj_" + i;
-            if (part == bodies[i].coreTrinketObj) return "coreTrinketObj_" + i;
-            if (part == bodies[i].rightArmObj) return "rightArmObj_" + i;
+            if (part == bodies[i].leftArmObj) return LeftArmLocString() + "_" + i;
+            if (part == bodies[i].coreTrinketObj) return TrinketLocString() + "_" + i;
+            if (part == bodies[i].rightArmObj) return RightArmLocString() + "_" + i;
         }
 
         return "";
@@ -123,7 +155,7 @@ public class PlayerBody : MonoBehaviour
         // head or legs
         if (sepLoc == -1)
         {
-            if (location.Equals("headObj"))
+            if (location.Equals(HeadLocString()))
             {
                 Destroy(headObj);
                 headObj = newPart;
@@ -132,11 +164,12 @@ public class PlayerBody : MonoBehaviour
                 newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
                 return headObj;
             }
-            else if (location.Equals("legsObj"))
+            else if (location.Equals(LegsLocString()))
             {
                 Destroy(legsObj);
                 legsObj = newPart;
                 legs = legsObj.GetComponent<LegBehavior>();
+                GetComponent<PlayerMovement>().SetLegMovement(legs); //updating movement script
                 newPart.transform.SetParent(this.gameObject.transform, false);
                 newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
                 return legsObj;
@@ -148,7 +181,7 @@ public class PlayerBody : MonoBehaviour
             string slotName = location.Substring(0, sepLoc);
             int index = Int16.Parse(location.Substring(sepLoc + 1));
             BodyBehavior b = GetBody(index);
-            if (slotName.Equals("leftArmObj"))
+            if (slotName.Equals(LeftArmLocString()))
             {
                 Destroy(b.leftArmObj);
                 b.leftArmObj = newPart;
@@ -163,7 +196,7 @@ public class PlayerBody : MonoBehaviour
             }
             else
             {
-                if (slotName.Equals("rightArmObj"))
+                if (slotName.Equals(RightArmLocString()))
                 {
                     Destroy(b.rightArmObj);
                     b.rightArmObj = newPart;
@@ -172,7 +205,7 @@ public class PlayerBody : MonoBehaviour
                     newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
                     return b.rightArmObj;
                 }
-                else if (slotName.Equals("coreTrinketObj"))
+                else if (slotName.Equals(TrinketLocString()))
                 {
                     Destroy(b.coreTrinketObj);
                     b.coreTrinketObj = newPart;
@@ -200,13 +233,13 @@ public class PlayerBody : MonoBehaviour
         // head or legs
         if (sepLoc == -1)
         {
-            if (location.Equals("headObj"))
+            if (location.Equals(HeadLocString()))
             {
                 droppedPrefab = headObj;
                 headObj = null;
                 head = null;
             }
-            else if (location.Equals("legsObj"))
+            else if (location.Equals(LegsLocString()))
             {
                 droppedPrefab = legsObj;
                 legsObj = null;
@@ -219,7 +252,7 @@ public class PlayerBody : MonoBehaviour
             string slotName = location.Substring(0, sepLoc);
             int index = Int16.Parse(location.Substring(sepLoc + 1));
             BodyBehavior b = GetBody(index);
-            if (slotName.Equals("leftArmObj"))
+            if (slotName.Equals(LeftArmLocString()))
             {
                 droppedPrefab = b.leftArmObj;
                 b.leftArmObj = null;
@@ -227,13 +260,13 @@ public class PlayerBody : MonoBehaviour
             }
             else
             {
-                if (slotName.Equals("rightArmObj"))
+                if (slotName.Equals(RightArmLocString()))
                 {
                     droppedPrefab = b.rightArmObj;
                     b.rightArmObj = null;
                     b.UpdateRightArm();
                 }
-                else if (slotName.Equals("coreTrinketObj"))
+                else if (slotName.Equals(TrinketLocString()))
                 {
                     droppedPrefab = b.coreTrinketObj;
                     b.coreTrinketObj = null;
@@ -251,4 +284,10 @@ public class PlayerBody : MonoBehaviour
             Destroy(droppedPrefab);
         }
     }
+
+    public static string HeadLocString() { return "headObj"; }
+    public static string LeftArmLocString() { return "leftArmObj"; }
+    public static string RightArmLocString() { return "rightArmObj"; }
+    public static string TrinketLocString() { return "coreTrinketObj"; }
+    public static string LegsLocString() { return "legsObj"; }
 }

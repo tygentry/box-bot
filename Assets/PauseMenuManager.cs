@@ -17,11 +17,13 @@ public class PauseMenuManager : MonoBehaviour
 
     private void OnEnable()
     {
+        if (controls == null) { return; }
         controls.Enable();
     }
 
     private void OnDisable()
     {
+        if (controls == null) { return; }
         controls.Disable();
     }
 

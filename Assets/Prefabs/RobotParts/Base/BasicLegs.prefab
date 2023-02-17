@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   inventoryPrefab: {fileID: 8817916807367149135, guid: da5ec75d26ba7b44eb7ef0357974c035, type: 3}
-  startPos: {x: 0, y: -0.26, z: 0}
+  startPos: {x: 0, y: -0.72, z: 0}
   startRot: {x: 0, y: 0, z: 0}
   regularSpeed: 7
   dodgeSpeed: 20
@@ -145,5 +145,6 @@ MonoBehaviour:
   canDodge: 1
   player: {fileID: 0}
   playerRB: {fileID: 0}
+  playerStats: {fileID: 0}
   input: {x: 0, y: 0}
   dodgeDuration: 0.25

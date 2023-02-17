@@ -26,18 +26,24 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        legBehavior = GetComponentInChildren<LegBehavior>();
         controls = new Controls();
     }
 
     private void OnEnable()
     {
+        if (controls == null) { return; }
         controls.Enable();
     }
 
     private void OnDisable()
     {
+        if (controls == null) { return; }
         controls.Disable();
+    }
+
+    public void SetLegMovement(LegBehavior legBehavior)
+    {
+        this.legBehavior = legBehavior;
     }
 
     // Update is called once per frame
