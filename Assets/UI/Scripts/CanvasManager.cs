@@ -7,10 +7,11 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject customizeMenuObj;
     [SerializeField] GameObject customizePopoutObj;
     [SerializeField] GameObject playerUIObj;
-    [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject pauseMenuObj;
     public CustomizeMenu customizeMenu;
     public CustomizePopout customizePopout;
     public PlayerUI playerUI;
+    public PauseMenuManager pauseMenuManager;
 
     public bool isPaused;
     public bool isCustomizing;
@@ -20,6 +21,8 @@ public class CanvasManager : MonoBehaviour
         customizeMenu = customizeMenuObj.GetComponent<CustomizeMenu>();
         customizePopout = customizePopoutObj.GetComponent<CustomizePopout>();
         playerUI = playerUIObj.GetComponent<PlayerUI>();
+        pauseMenuManager = pauseMenuObj.GetComponent<PauseMenuManager>();
+        isPaused = false;
     }
     public void ToggleCustomizeMenu()
     {
