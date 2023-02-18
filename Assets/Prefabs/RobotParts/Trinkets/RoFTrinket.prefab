@@ -119,6 +119,7 @@ MonoBehaviour:
   inventoryPrefab: {fileID: 4368693400412802296, guid: 2a28f8a3feb72284aa1f6c8015d7e047, type: 3}
   startPos: {x: 0, y: 0, z: -0.1}
   startRot: {x: 0, y: 0, z: 0}
+  stats: {fileID: 0}
   statsList:
   - stat: 5
     value: 0.15

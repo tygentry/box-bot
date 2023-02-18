@@ -11,22 +11,22 @@ public class LegBehavior : RobotPart
 
     public GameObject player;
     public Rigidbody2D playerRB;
-    public PlayerStats playerStats;
     public Vector2 input;
 
     public override bool OnPartPickUp(GameObject player)
     {
+        bool retVal = base.OnPartPickUp(player);
         this.player = player;
         playerRB = player.GetComponent<Rigidbody2D>();
-        playerStats = player.GetComponent<PlayerStats>();
         player.GetComponent<PlayerMovement>().canMove = true;
-        return base.OnPartPickUp(player);
+        return retVal;
     }
 
     public override bool OnPartDrop(GameObject player)
     {
+        bool retVal = base.OnPartDrop(player);
         player.GetComponent<PlayerMovement>().canMove = false;
-        return base.OnPartDrop(player);
+        return retVal;
     }
 
     public virtual void LegUpdate(Vector2 playerInput, bool spacePressed)

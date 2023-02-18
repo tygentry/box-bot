@@ -44,7 +44,7 @@ public class BasicLegs : LegBehavior
         } 
         else
         {
-            playerRB.MovePosition((Vector2)player.transform.position + regularSpeed * playerStats.GetStat(PlayerStats.ModifiableStats.MoveSpeed) * Time.deltaTime * input.normalized);
+            playerRB.MovePosition((Vector2)player.transform.position + regularSpeed * stats.GetStat(PlayerStats.ModifiableStats.MoveSpeed) * Time.deltaTime * input.normalized);
         }
     }
 }

@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private LegBehavior legBehavior;
     public Controls controls;
-    public bool canMove = true;
+    public bool canMove;
 
     private bool spacePressed = false;
     private float staggerTimer = 0f;
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         staggerTimer -= Time.deltaTime;
-        if (staggerTimer <= 0f)
+        if (staggerTimer <= 0f && legBehavior != null)
             canMove = true;
 
         spacePressed = false;

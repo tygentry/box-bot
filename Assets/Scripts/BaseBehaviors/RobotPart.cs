@@ -14,6 +14,8 @@ public class RobotPart : MonoBehaviour
 
     private Interactable interact;
 
+    public PlayerStats stats;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -30,6 +32,7 @@ public class RobotPart : MonoBehaviour
 
     public virtual bool OnPartPickUp(GameObject player)
     {
+        stats = player.GetComponent<PlayerStats>();
         return true;
     }
 
