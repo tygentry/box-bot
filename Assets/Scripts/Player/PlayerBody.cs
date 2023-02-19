@@ -145,8 +145,8 @@ public class PlayerBody : MonoBehaviour
         if (location.Equals("")) return null;
 
         //base setup for any new part
-        RobotPart prefabBase = newPartPrefab.GetComponent<RobotPart>();
         GameObject newPart = Instantiate(newPartPrefab);
+        RobotPart prefabBase = newPart.GetComponent<RobotPart>();
         Interactable newPartBase = newPart.GetComponent<Interactable>();
         newPartBase.DisableInteraction();
         prefabBase.OnPartPickUp(gameObject);
