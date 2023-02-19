@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LegBehavior : RobotPart
@@ -18,6 +19,7 @@ public class LegBehavior : RobotPart
         bool retVal = base.OnPartPickUp(player);
         this.player = player;
         playerRB = player.GetComponent<Rigidbody2D>();
+        player.GetComponent<PlayerMovement>().SetLegMovement(this); //updating movement script
         player.GetComponent<PlayerMovement>().canMove = true;
         return retVal;
     }

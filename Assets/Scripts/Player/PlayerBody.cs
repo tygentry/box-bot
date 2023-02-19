@@ -84,12 +84,6 @@ public class PlayerBody : MonoBehaviour
             cm.ToggleCustomizeMenu();
         }
 
-        //DEBUG
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            
-        }
-
         if (!cm.isCustomizing)
         {
             foreach (BodyBehavior b in bodies)
@@ -112,6 +106,12 @@ public class PlayerBody : MonoBehaviour
                 if (mv.controls.PlayerControls.RightFireRelease.triggered)
                 {
                     b.ReleaseRight(Time.deltaTime);
+                }
+
+                //head use
+                if (mv.controls.PlayerControls.UseHeadActive.triggered)
+                {
+                    head.UseHead();
                 }
             }
         }
@@ -169,7 +169,6 @@ public class PlayerBody : MonoBehaviour
                 Destroy(legsObj);
                 legsObj = newPart;
                 legs = legsObj.GetComponent<LegBehavior>();
-                GetComponent<PlayerMovement>().SetLegMovement(legs); //updating movement script
                 newPart.transform.SetParent(this.gameObject.transform, false);
                 newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
                 return legsObj;

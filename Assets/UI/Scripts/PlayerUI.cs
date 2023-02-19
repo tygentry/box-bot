@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class PlayerUI : MonoBehaviour
     public int currentHealth = 3;
     public int maxHealth = 3;
 
+    [Header("Charge")]
+    [SerializeField] Slider chargeBar;
+    [SerializeField] HeadBehavior headRef;
+
+    public int currentCharge = 3;
+    public int maxCharge = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,29 +30,30 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    private void Update()
+    /*private void Update()
     {   //debug
         if (Input.GetKeyDown(KeyCode.K))
         {
-            UpdateHealth(-2);
+            ResetCharge();
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            UpdateHealth(2);
+            IncrementCharge(1);
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
-            UpdateMaxHealth(maxHealth-1);
+            IncrementCharge(1);
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            UpdateMaxHealth(maxHealth+1);
+            IncrementCharge(2);
         }
-    }
+    }*/
 
     public void HideUI() { gameObject.SetActive(false); }
     public void ShowUI() { gameObject.SetActive(true); }
 
+    #region Health
     public void UpdateHealth(int numChanged)
     {
         int newHealth = Mathf.Clamp(currentHealth + numChanged, 0, maxHealth);
@@ -90,4 +99,36 @@ public class PlayerUI : MonoBehaviour
         
         maxHealth = total;
     }
+    #endregion
+
+    #region Charge bar
+    public void ResetCharge()
+    {
+        currentCharge = 0;
+        chargeBar.value = 0;
+    }
+
+    public void IncrementCharge(int added)
+    {
+        currentCharge = Mathf.Clamp(currentCharge + added, 0, maxCharge);
+        chargeBar.value = Mathf.Clamp(currentCharge / (float)maxCharge, 0.0f, 1.0f);
+    }
+
+    public void UpdateEquip(GameObject head)
+    {
+        if (head == null)
+        {
+            ResetCharge();
+            return;
+        }
+
+        HeadBehavior newHead = head.GetComponent<HeadBehavior>();
+        if (newHead == null) { return; } //didn't pass in a head
+
+        headRef = newHead;
+        currentCharge = headRef.currentCharge;
+        maxCharge = headRef.maxCharge;
+        IncrementCharge(0);
+    }
+    #endregion
 }
