@@ -8,12 +8,11 @@ public class TrinketBehavior : RobotPart
     //Enterable list for applying various stat modifiers for trinkets (MUST BE IN DECIMAL FORM (.15) NOT PERCENTAGE (15%)
     [SerializeField] public PlayerStats.StatDict[] statsList;
 
-    [SerializeField] Dictionary<PlayerStats.ModifiableStats, float> statChangers = new Dictionary<PlayerStats.ModifiableStats, float>();
+    [SerializeField] Dictionary<PlayerStats.ModifiableStats, float> statChangers = null;
 
-    private new void Start()
+    private void SetupDict()
     {
-        base.Start();
-        statChangers.Clear();
+        statChangers = new Dictionary<PlayerStats.ModifiableStats, float>();
         for (int i = 0; i < statsList.Length; i++)
         {
             statChangers.Add(statsList[i].stat, statsList[i].value);
@@ -22,21 +21,23 @@ public class TrinketBehavior : RobotPart
 
     public override bool OnPartPickUp(GameObject player)
     {
-        PlayerStats stats = player.GetComponent<PlayerStats>();
+        bool retVal = base.OnPartPickUp(player);
+        SetupDict();
         foreach (KeyValuePair<PlayerStats.ModifiableStats, float> statMod in statChangers)
         {
             stats.ModifyStat(statMod.Key, statMod.Value);
         }
-        return base.OnPartPickUp(player);
+        return retVal;
     }
 
     public override bool OnPartDrop(GameObject player)
     {
-        PlayerStats stats = player.GetComponent<PlayerStats>();
+        bool retVal = base.OnPartDrop(player);
+        SetupDict();
         foreach (KeyValuePair<PlayerStats.ModifiableStats, float> statMod in statChangers)
         {
             stats.ModifyStat(statMod.Key, -statMod.Value);
         }
-        return base.OnPartPickUp(player);
+        return retVal;
     }
 }

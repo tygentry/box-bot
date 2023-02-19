@@ -31,11 +31,11 @@ public class PauseMenuManager : MonoBehaviour
     {
         if(controls.PlayerControls.Pause.triggered && allowPause)
         {
-            TogglePause();
+            canvasManager.TogglePauseMenu();
         }
     }
 
-    public void TogglePause()
+    public bool TogglePause()
     {
         if(allowPause)
         {
@@ -51,8 +51,9 @@ public class PauseMenuManager : MonoBehaviour
                 menu.SetActive(false);
                 Time.timeScale = 1.0f;
             }
-            canvasManager.ToggleCustomizeMenu();
+            //canvasManager.ToggleCustomizeMenu();
         }
+        return paused;
     }
 
     public void Quit()

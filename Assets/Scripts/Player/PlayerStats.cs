@@ -48,4 +48,12 @@ public class PlayerStats : MonoBehaviour
         if (stat == ModifiableStats.None) return 0.0f;
         return statsDict[stat];
     }
+
+    public void PrintStats()
+    {
+        foreach (KeyValuePair<ModifiableStats, float> stat in statsDict)
+        {
+            Debug.Log(stat.Key + ": " + stat.Value);
+        }
+    }
 }

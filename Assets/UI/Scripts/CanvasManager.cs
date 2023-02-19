@@ -41,14 +41,6 @@ public class CanvasManager : MonoBehaviour
 
     public void TogglePauseMenu()
     {
-        isPaused = !isPaused;
-        if (isPaused)
-        {
-            playerUI.HideUI();
-        }
-        else
-        {
-            playerUI.ShowUI();
-        }
+        isPaused = pauseMenuManager.TogglePause();
     }
 }

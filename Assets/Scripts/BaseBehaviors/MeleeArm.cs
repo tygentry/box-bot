@@ -38,7 +38,10 @@ public abstract class MeleeArm : ArmBehavior
 
     IEnumerator ResetSwing()
     {
-        yield return new WaitForSeconds(attackDelay+activeHitTime);
+        print(stats.GetStat(PlayerStats.ModifiableStats.AttackSpeed));
+        float t1 = Time.time;
+        yield return new WaitForSeconds((attackDelay + activeHitTime) * (1.0f / stats.GetStat(PlayerStats.ModifiableStats.AttackSpeed)));
+        print(Time.time - t1);
         canAttack = true;
     }
 

@@ -31,7 +31,9 @@ public abstract class SingleShotArm : ArmBehavior
 
     IEnumerator ResetFire()
     {
-        yield return new WaitForSeconds(attackDelay);
+        float t1 = Time.time;
+        yield return new WaitForSeconds(attackDelay * (1.0f / stats.GetStat(PlayerStats.ModifiableStats.AttackSpeed)));
+        print(Time.time - t1);
         canAttack = true;
     }
 }
