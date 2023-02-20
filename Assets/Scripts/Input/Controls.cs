@@ -116,6 +116,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseHeadActive"",
+                    ""type"": ""Button"",
+                    ""id"": ""93ffd5bb-681d-4a90-971e-afaa3e113efe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -272,6 +281,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""RightFireRelease"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71b3749d-eb65-4b8e-9167-6dd234244f32"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""UseHeadActive"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -307,6 +327,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_PlayerControls_RightFirePress = m_PlayerControls.FindAction("RightFirePress", throwIfNotFound: true);
         m_PlayerControls_LeftFireRelease = m_PlayerControls.FindAction("LeftFireRelease", throwIfNotFound: true);
         m_PlayerControls_RightFireRelease = m_PlayerControls.FindAction("RightFireRelease", throwIfNotFound: true);
+        m_PlayerControls_UseHeadActive = m_PlayerControls.FindAction("UseHeadActive", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -376,6 +397,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControls_RightFirePress;
     private readonly InputAction m_PlayerControls_LeftFireRelease;
     private readonly InputAction m_PlayerControls_RightFireRelease;
+    private readonly InputAction m_PlayerControls_UseHeadActive;
     public struct PlayerControlsActions
     {
         private @Controls m_Wrapper;
@@ -390,6 +412,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @RightFirePress => m_Wrapper.m_PlayerControls_RightFirePress;
         public InputAction @LeftFireRelease => m_Wrapper.m_PlayerControls_LeftFireRelease;
         public InputAction @RightFireRelease => m_Wrapper.m_PlayerControls_RightFireRelease;
+        public InputAction @UseHeadActive => m_Wrapper.m_PlayerControls_UseHeadActive;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -429,6 +452,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @RightFireRelease.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightFireRelease;
                 @RightFireRelease.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightFireRelease;
                 @RightFireRelease.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightFireRelease;
+                @UseHeadActive.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnUseHeadActive;
+                @UseHeadActive.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnUseHeadActive;
+                @UseHeadActive.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnUseHeadActive;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -463,6 +489,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @RightFireRelease.started += instance.OnRightFireRelease;
                 @RightFireRelease.performed += instance.OnRightFireRelease;
                 @RightFireRelease.canceled += instance.OnRightFireRelease;
+                @UseHeadActive.started += instance.OnUseHeadActive;
+                @UseHeadActive.performed += instance.OnUseHeadActive;
+                @UseHeadActive.canceled += instance.OnUseHeadActive;
             }
         }
     }
@@ -488,5 +517,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnRightFirePress(InputAction.CallbackContext context);
         void OnLeftFireRelease(InputAction.CallbackContext context);
         void OnRightFireRelease(InputAction.CallbackContext context);
+        void OnUseHeadActive(InputAction.CallbackContext context);
     }
 }

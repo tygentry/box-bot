@@ -73,6 +73,7 @@ public class Interactable : MonoBehaviour
         {
             highlightMat.shader = nonHighlightShader;
             StopAllCoroutines();
+            playerBody.cm.isCustomizing = false;
             playerBody.cm.customizePopout.StartPopBack();
             player.GetComponent<PlayerMovement>().interactedObj = null;
             StartCoroutine(HidePopup());
