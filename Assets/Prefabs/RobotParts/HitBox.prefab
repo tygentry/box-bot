@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1553566093603616493}
   - component: {fileID: 8905234743145896748}
+  - component: {fileID: 2996268331018996334}
   - component: {fileID: 3564927879012944218}
   m_Layer: 0
   m_Name: HitBox
@@ -110,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7672276209672221963}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.699, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -144,6 +145,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!58 &2996268331018996334
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672276209672221963}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &3564927879012944218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,4 +176,6 @@ MonoBehaviour:
   DebugMode: 0
   hitbox: {fileID: 8905234743145896748}
   displayBox: {fileID: 7274412933827625255}
-  parentArm: {fileID: 0}
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []

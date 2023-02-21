@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HitBox : MonoBehaviour
 {
     public bool DebugMode = false;
-    public Collider2D hitbox;
+    public Collider2D hitbox; //when setting up a hitbox, must choose between box or circle collider attached and put into script
     public GameObject displayBox;
-    public MeleeArm parentArm;
+    [System.Serializable]
+    public class HitBoxEvent : UnityEvent<Collider2D> { }
+    public HitBoxEvent onHit;
 
     // Start is called before the first frame update
     void Start()
@@ -15,10 +19,13 @@ public class HitBox : MonoBehaviour
         hitbox.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-
+        if (onHit == null)
+        {
+            onHit = new HitBoxEvent();
+            Debug.Log("HitBox onHit event not set in " + gameObject.transform.parent.gameObject.name);
+        }
     }
 
     public void Activate(float time)
@@ -38,7 +45,6 @@ public class HitBox : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //check for hittable tag here
-
-        parentArm.Hit(collision);
+        onHit.Invoke(collision);
     }
 }

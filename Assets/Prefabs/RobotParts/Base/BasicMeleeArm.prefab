@@ -167,6 +167,7 @@ MonoBehaviour:
   inventoryPrefab: {fileID: 8019122153966667235, guid: 4295ff38548da9a40b7939b10afb2f12, type: 3}
   startPos: {x: 0.67, y: 0, z: 0}
   startRot: {x: 0, y: 0, z: -90}
+  stats: {fileID: 0}
   attackDelay: 0.5
   damage: 1
   canAttack: 1
@@ -237,6 +238,38 @@ PrefabInstance:
       propertyPath: parentArm
       value: 
       objectReference: {fileID: 840868356068109876}
+    - target: {fileID: 3564927879012944218, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564927879012944218, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564927879012944218, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 840868356068109876}
+    - target: {fileID: 3564927879012944218, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564927879012944218, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564927879012944218, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MeleeArm, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564927879012944218, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564927879012944218, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7672276209672221963, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
       propertyPath: m_Name
       value: HitBox
