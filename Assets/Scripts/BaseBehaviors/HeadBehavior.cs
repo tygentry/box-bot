@@ -27,9 +27,15 @@ public class HeadBehavior : RobotPart
         if (canUse)
         {
             canUse = false;
+            UseOverride();
             currentCharge = 0;
             ui.ResetCharge();
         }
+    }
+
+    public virtual void UseOverride()
+    {
+
     }
 
     public virtual void AddCharge(int add)

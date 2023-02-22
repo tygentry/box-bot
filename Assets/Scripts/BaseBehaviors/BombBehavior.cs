@@ -22,10 +22,14 @@ public class BombBehavior : MonoBehaviour
         yield return new WaitForSeconds(activeHitboxTimer);
         Destroy(gameObject);
     }
-    
 
     public void Hit(Collider2D collision)
     {
 
+    }
+
+    public void OnExplosionEnd()
+    {
+        Destroy(gameObject);
     }
 }

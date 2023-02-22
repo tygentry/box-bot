@@ -12,6 +12,7 @@ public class HitBox : MonoBehaviour
     [System.Serializable]
     public class HitBoxEvent : UnityEvent<Collider2D> { }
     public HitBoxEvent onHit;
+    public UnityEvent afterEnd;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,10 @@ public class HitBox : MonoBehaviour
         {
             onHit = new HitBoxEvent();
             Debug.Log("HitBox onHit event not set in " + gameObject.transform.parent.gameObject.name);
+        }
+        if (afterEnd == null)
+        {
+            afterEnd = new UnityEvent();
         }
     }
 
@@ -40,6 +45,7 @@ public class HitBox : MonoBehaviour
         yield return new WaitForSeconds(time);
         if (DebugMode) displayBox.SetActive(false);
         hitbox.enabled = false;
+        afterEnd.Invoke();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
