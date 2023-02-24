@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6972683576012465589}
   - component: {fileID: 3283590389560908107}
   - component: {fileID: 1909670175055879616}
+  - component: {fileID: 1322978402186193157}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -99,9 +100,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 3
-  activeHitboxTimer: 0.5
+  activeHitboxTimer: 7
   canHitPlayer: 0
+  damage: 3
   explosionTrigger: {fileID: 251977207315534456}
+--- !u!50 &1322978402186193157
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7189483514067869473}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &3604595953580743458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,7 +198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2996268331018996334, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3564927879012944218, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
       propertyPath: hitbox
@@ -242,6 +265,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7274412933827625255, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274412933827625255, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -252,6 +279,10 @@ PrefabInstance:
     - target: {fileID: 7672276209672221963, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
       propertyPath: m_Name
       value: HitBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672276209672221963, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8905234743145896748, guid: 8029471a08286e44b816a13a5ea313f7, type: 3}
       propertyPath: m_Enabled

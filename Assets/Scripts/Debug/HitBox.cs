@@ -42,14 +42,16 @@ public class HitBox : MonoBehaviour
 
     IEnumerator AttackTime(float time)
     {
+        transform.position += new Vector3(0,0,.001f);
         yield return new WaitForSeconds(time);
         if (DebugMode) displayBox.SetActive(false);
         hitbox.enabled = false;
         afterEnd.Invoke();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
+        print(collision.gameObject.name);
         //check for hittable tag here
         onHit.Invoke(collision);
     }

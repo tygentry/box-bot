@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 30613218514942203}
   - component: {fileID: 7312647990290921811}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoxDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8905234743145896748}
   - component: {fileID: 2996268331018996334}
   - component: {fileID: 3564927879012944218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,5 +177,8 @@ MonoBehaviour:
   hitbox: {fileID: 8905234743145896748}
   displayBox: {fileID: 7274412933827625255}
   onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  afterEnd:
     m_PersistentCalls:
       m_Calls: []

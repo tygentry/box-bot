@@ -47,6 +47,6 @@ public abstract class MeleeArm : ArmBehavior
 
     public void Hit(Collider2D collision)
     {
-        //print(collision.gameObject);
+        print(collision.gameObject);
     }
 }
