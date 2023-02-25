@@ -2833,8 +2833,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 2125908639}
-  m_Follow: {fileID: 2125908639}
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 1897895179}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 7.2954316
@@ -2869,6 +2869,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1897895179 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6241148981547769586, guid: 685466fff33490543a0d154af78ed88f, type: 3}
+  m_PrefabInstance: {fileID: 2125908638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1906311998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3060,11 +3065,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 685466fff33490543a0d154af78ed88f, type: 3}
---- !u!4 &2125908639 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6241148983329299898, guid: 685466fff33490543a0d154af78ed88f, type: 3}
-  m_PrefabInstance: {fileID: 2125908638}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2129309099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3348,6 +3348,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1036343880}
     m_Modifications:
+    - target: {fileID: 7304388203925145011, guid: 3d205de2c520f414393d05d0d537c079, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1566445132}
+    - target: {fileID: 7304388203925145011, guid: 3d205de2c520f414393d05d0d537c079, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7304388205243871092, guid: 3d205de2c520f414393d05d0d537c079, type: 3}
       propertyPath: m_Name
       value: PauseMenu

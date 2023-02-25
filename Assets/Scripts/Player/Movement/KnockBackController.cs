@@ -11,4 +11,9 @@ public class KnockBackController : MonoBehaviour
         rb.velocity = Vector2.zero;
         rb.AddForce(direction * force, ForceMode2D.Impulse);
     }
+
+    public Vector2 getDirection(GameObject from, GameObject to)
+    {
+        return (to.transform.position - from.transform.position).normalized;
+    }
 }
