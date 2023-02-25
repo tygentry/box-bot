@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 3
-  activeHitboxTimer: 7
+  activeHitboxTimer: 0.5
   canHitPlayer: 0
   damage: 3
   explosionTrigger: {fileID: 251977207315534456}

@@ -26,12 +26,18 @@ public class BombBehavior : MonoBehaviour
 
     public void Hit(Collider2D collision)
     {
-        print("hit");
         EnemyHealthManager hm = collision.gameObject.GetComponent<EnemyHealthManager>();
-        print(hm);
         if (hm != null)
         {
             hm.TakeDamage(damage);
+        }
+        if (canHitPlayer)
+        {
+            PlayerHealthManager phm = collision.gameObject.GetComponent<PlayerHealthManager>();
+            if (phm != null)
+            {
+                phm.TakeDamage(1);
+            }
         }
     }
 

@@ -170,6 +170,7 @@ MonoBehaviour:
   stats: {fileID: 0}
   attackDelay: 0.5
   damage: 1
+  knockback: 5
   canAttack: 1
   aimTransform: {fileID: 0}
   hitboxObj: {fileID: 3745229743403023389}

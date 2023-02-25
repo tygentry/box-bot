@@ -11,7 +11,8 @@ public class HeadBehavior : RobotPart
 
     [SerializeField] PlayerUI ui;
 
-    private void Update()
+    //debug
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
         {
@@ -21,7 +22,7 @@ public class HeadBehavior : RobotPart
         {
             AddCharge(2);
         }
-    }
+    }*/
     public virtual void UseHead()
     {
         if (canUse)

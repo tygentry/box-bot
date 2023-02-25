@@ -29,13 +29,13 @@ public class PlayerMovement : MonoBehaviour
         controls = new Controls();
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
         if (controls == null) { return; }
         controls.Enable();
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         if (controls == null) { return; }
         controls.Disable();

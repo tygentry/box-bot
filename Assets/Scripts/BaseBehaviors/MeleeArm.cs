@@ -47,6 +47,17 @@ public abstract class MeleeArm : ArmBehavior
 
     public void Hit(Collider2D collision)
     {
-        print(collision.gameObject);
+        EnemyHealthManager hm = collision.gameObject.GetComponent<EnemyHealthManager>();
+        if (hm != null)
+        {
+            hm.TakeDamage(damage);
+        }
+
+        KnockBackController kbc = collision.gameObject.GetComponent<KnockBackController>();
+        if (kbc != null)
+        {
+            Vector2 direction = (collision.gameObject.transform.position - transform.position).normalized;
+            kbc.KnockBack(direction, knockback);
+        }
     }
 }

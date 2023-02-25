@@ -28,8 +28,9 @@ public class ProjectileBehavior : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        print("col");
         //handle enemy damage / check here
         if (collision.gameObject.transform.TryGetComponent<EnemyHealthManager>(out var hm))
         {
