@@ -7,6 +7,7 @@ public abstract class ArmBehavior : RobotPart
     [Header("Base Arm Stats")]
     public float attackDelay;
     public int damage;
+    public float knockback;
     public bool canAttack;
     public Transform aimTransform;
 

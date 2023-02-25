@@ -68,7 +68,7 @@ public class CustomizeMenu : MonoBehaviour
     /*
      * Utility function to destroy all children of a gameobject
      */
-    public void DestroyAllChildren(GameObject obj)
+    public static void DestroyAllChildren(GameObject obj)
     {
         if (obj == null) return;
     

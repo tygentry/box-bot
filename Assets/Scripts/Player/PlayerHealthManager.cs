@@ -5,20 +5,34 @@ using UnityEngine;
 public class PlayerHealthManager : MonoBehaviour
 {
     public int maxHealth;
-    public int currenthealth;
+    public int currentHealth;
     public PlayerUI playerUI;
 
     public void TakeDamage(int damage)
     {
-        currenthealth = Mathf.Clamp(currenthealth - damage, 0, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
         print("Ouch, " + damage + " damage!");
         if (playerUI == null) { playerUI = gameObject.GetComponent<PlayerBody>().cm.playerUI; }
         playerUI.UpdateHealth(damage);
+
+        //death check
+        if (currentHealth <= 0)
+        {
+            playerUI.cm.PlayerDeath();
+        }
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            TakeDamage(100);
+        }
     }
 
     public void Heal(int healAmount)
     {
-        currenthealth = Mathf.Clamp(currenthealth + healAmount, 0, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth + healAmount, 0, maxHealth);
         if (playerUI == null) { playerUI = gameObject.GetComponent<PlayerBody>().cm.playerUI; }
         playerUI.UpdateHealth(healAmount);
     }

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
+    [SerializeField] GameObject player;
+    [SerializeField] public CanvasManager cm;
+
     [Header("Health")]
     [SerializeField] GameObject healthBar;
     [SerializeField] GameObject healthIconPrefab;
@@ -20,35 +23,31 @@ public class PlayerUI : MonoBehaviour
     public int currentCharge = 3;
     public int maxCharge = 3;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
+        
+        PlayerHealthManager hm = player.GetComponent<PlayerHealthManager>();
+        currentHealth = hm.currentHealth;
+        maxHealth = hm.maxHealth;
+        InitializeHealth();
+    }
+
+    public void ClearHealth()
+    {
+        CustomizeMenu.DestroyAllChildren(healthBar);
+        healthIcons.Clear();
+    }
+
+    public void InitializeHealth()
+    {
+        ClearHealth();
         healthIcons = new List<HealthIcon>();
         for (int i = 0; i < maxHealth; i++)
         {
             healthIcons.Add(Instantiate(healthIconPrefab, healthBar.transform, false).GetComponent<HealthIcon>());
         }
     }
-
-    /*private void Update()
-    {   //debug
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            ResetCharge();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            IncrementCharge(1);
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            IncrementCharge(1);
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            IncrementCharge(2);
-        }
-    }*/
 
     public void HideUI() { gameObject.SetActive(false); }
     public void ShowUI() { gameObject.SetActive(true); }

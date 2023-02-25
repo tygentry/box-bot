@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class PelletGunArm : SingleShotArm
 {
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
