@@ -13,7 +13,7 @@ public class PlayerHealthManager : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
         print("Ouch, " + damage + " damage!");
         if (playerUI == null) { playerUI = gameObject.GetComponent<PlayerBody>().cm.playerUI; }
-        playerUI.UpdateHealth(damage);
+        playerUI.UpdateHealth(-damage);
 
         //death check
         if (currentHealth <= 0)

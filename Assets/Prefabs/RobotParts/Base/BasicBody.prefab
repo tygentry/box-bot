@@ -9,12 +9,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7091389847620684324, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_Name
-      value: BasicBody1
+      value: BasicBody
       objectReference: {fileID: 0}
     - target: {fileID: 7091389847620684326, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+      objectReference: {fileID: 21300000, guid: be264a17731d3f141bb4768be1db42b8, type: 3}
     - target: {fileID: 7091389847620684327, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -123,6 +123,7 @@ MonoBehaviour:
   inventoryPrefab: {fileID: 0}
   startPos: {x: 0, y: 0, z: 0}
   startRot: {x: 0, y: 0, z: 0}
+  stats: {fileID: 0}
   leftArmObj: {fileID: 0}
   rightArmObj: {fileID: 0}
   coreTrinketObj: {fileID: 0}

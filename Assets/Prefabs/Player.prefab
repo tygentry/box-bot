@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 6
-  currenthealth: 6
+  currentHealth: 6
   playerUI: {fileID: 0}
 --- !u!114 &358262031442127434
 MonoBehaviour:
