@@ -380,6 +380,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3459472435168718545}
     m_Modifications:
+    - target: {fileID: 7304388203925145011, guid: 3d205de2c520f414393d05d0d537c079, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304388203925145011, guid: 3d205de2c520f414393d05d0d537c079, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304388203925145011, guid: 3d205de2c520f414393d05d0d537c079, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3459472434588446143}
+    - target: {fileID: 7304388203925145011, guid: 3d205de2c520f414393d05d0d537c079, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304388203925145011, guid: 3d205de2c520f414393d05d0d537c079, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TogglePauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304388203925145011, guid: 3d205de2c520f414393d05d0d537c079, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CanvasManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304388203925145011, guid: 3d205de2c520f414393d05d0d537c079, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7304388204805216299, guid: 3d205de2c520f414393d05d0d537c079, type: 3}
       propertyPath: m_IsActive
       value: 0
