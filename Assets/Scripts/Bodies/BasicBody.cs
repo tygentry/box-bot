@@ -9,10 +9,4 @@ public class BasicBody : BodyBehavior
     {
         base.Start();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

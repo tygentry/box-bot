@@ -186,10 +186,10 @@ public class PlayerBody : MonoBehaviour
                 b.leftArmObj = newPart;
                 b.UpdateLeftArm();
                 newPart.transform.SetParent(b.gameObject.transform, false);
-                Vector3 adjustedPos = prefabBase.startPos;
+                Vector3 adjustedPos = b.armPos + prefabBase.startPos;
                 adjustedPos.x *= -1; //flipping X value for left arm
                 Vector3 adjustedRot = prefabBase.startRot;
-                adjustedRot.z += 180;
+                adjustedRot.y += 180;
                 newPart.transform.SetLocalPositionAndRotation(adjustedPos, Quaternion.Euler(adjustedRot));
                 return b.leftArmObj; 
             }
@@ -201,7 +201,7 @@ public class PlayerBody : MonoBehaviour
                     b.rightArmObj = newPart;
                     b.UpdateRightArm();
                     newPart.transform.SetParent(b.gameObject.transform, false);
-                    newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
+                    newPart.transform.SetLocalPositionAndRotation(b.armPos + prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
                     return b.rightArmObj;
                 }
                 else if (slotName.Equals(TrinketLocString()))
@@ -210,7 +210,7 @@ public class PlayerBody : MonoBehaviour
                     b.coreTrinketObj = newPart;
                     b.UpdateTrinketArm();
                     newPart.transform.SetParent(b.gameObject.transform, false);
-                    newPart.transform.SetLocalPositionAndRotation(prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
+                    newPart.transform.SetLocalPositionAndRotation(b.trinketPos + prefabBase.startPos, Quaternion.Euler(prefabBase.startRot));
                     return b.coreTrinketObj;
                 }
             }

@@ -12,6 +12,12 @@ public abstract class BodyBehavior : RobotPart
     private ArmBehavior rightArm;
     private TrinketBehavior trinket;
 
+    [Header("Part Offsets")]
+    public Vector3 headPos;
+    public Vector3 trinketPos;
+    public Vector3 armPos; // no need for left arm pos, just flips x to mirror
+    public Vector3 legsPos;
+
     // Start is called before the first frame update
     public new void Start()
     {
