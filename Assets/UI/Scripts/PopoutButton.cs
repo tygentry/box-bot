@@ -9,7 +9,12 @@ public class PopoutButton : MonoBehaviour
     [SerializeField] Image partImg;
     public RobotPart.PartEnum type;
 
-    public void SetImage(Sprite img) { partImg.sprite = img; }
+    public void SetImage(Sprite img, bool flip)
+    { 
+        partImg.sprite = img;
+        if (flip)
+            partImg.rectTransform.localScale = new Vector3(-1, 1, 1);
+    }
 
     // generic call to let popout know a new part was picked up
     public void Selected()

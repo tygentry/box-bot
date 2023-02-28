@@ -280,6 +280,7 @@ public class PlayerBody : MonoBehaviour
             GameObject drop = Instantiate(droppedPrefab);
             drop.GetComponent<Interactable>().EnableInteraction();
             drop.transform.position = gameObject.transform.position;
+            drop.transform.rotation = Quaternion.Euler(0, 0, 0);
             Destroy(droppedPrefab);
         }
     }

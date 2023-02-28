@@ -86,16 +86,32 @@ public class CustomizeMenu : MonoBehaviour
     {
         ClearDraggables();
         CalibrateDropZones();
-        Instantiate(player.GetHead().inventoryPrefab, headSlot.transform.position, Quaternion.identity).transform.SetParent(headSlot.transform);
+        if (player.GetHead())
+        {
+            Instantiate(player.GetHead().inventoryPrefab, headSlot.transform.position, Quaternion.identity).transform.SetParent(headSlot.transform);
+        }
         for (int i = 0; i < trinkets.Count; i++)
         {
             BodyBehavior body = player.GetBody(i);
-            GameObject leftArm = Instantiate(body.GetLeftArm().inventoryPrefab, leftArmSlots[i].transform.position, Quaternion.identity);
-            leftArm.transform.SetParent(leftArmSlots[i].transform);
-            leftArm.GetComponent<Image>().rectTransform.localScale = new Vector3(1,1,-1);
-            Instantiate(body.GetTrinket().inventoryPrefab, trinketSlots[i].transform.position, Quaternion.identity).transform.SetParent(trinketSlots[i].transform);
-            Instantiate(body.GetRightArm().inventoryPrefab, rightArmSlots[i].transform.position, Quaternion.identity).transform.SetParent(rightArmSlots[i].transform);
+            if (body == null) continue;
+            if (body.GetLeftArm())
+            {
+                GameObject leftArm = Instantiate(body.GetLeftArm().inventoryPrefab, leftArmSlots[i].transform.position, Quaternion.identity);
+                leftArm.transform.SetParent(leftArmSlots[i].transform);
+                leftArm.GetComponent<Image>().rectTransform.localScale = new Vector3(-1, 1, 1);
+            }
+            if (body.GetTrinket())
+            {
+                Instantiate(body.GetTrinket().inventoryPrefab, trinketSlots[i].transform.position, Quaternion.identity).transform.SetParent(trinketSlots[i].transform);
+            }
+            if (body.GetRightArm())
+            {
+                Instantiate(body.GetRightArm().inventoryPrefab, rightArmSlots[i].transform.position, Quaternion.identity).transform.SetParent(rightArmSlots[i].transform);
+            }
         }
-        Instantiate(player.GetLeg().inventoryPrefab, legsSlot.transform.position, Quaternion.identity).transform.SetParent(legsSlot.transform);
+        if (player.GetLeg())
+        {
+            Instantiate(player.GetLeg().inventoryPrefab, legsSlot.transform.position, Quaternion.identity).transform.SetParent(legsSlot.transform);
+        }
     }
 }
