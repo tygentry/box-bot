@@ -10,8 +10,8 @@ public class InteractPopup : MonoBehaviour
     public string subtextText;
     public GameObject header;
     public GameObject subtext;
-    private TextMeshProUGUI headerTMP;
-    private TextMeshProUGUI subtextTMP;
+    public TextMeshProUGUI headerTMP;
+    public TextMeshProUGUI subtextTMP;
 
     // Start is called before the first frame update
     public void Start()
