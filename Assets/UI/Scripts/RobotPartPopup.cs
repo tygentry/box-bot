@@ -6,7 +6,7 @@ public class RobotPartPopup : InteractPopup
 {
     [Header("Robot Part")]
     [SerializeField] GameObject attributePanel;
-    [SerializeField] RobotPart linkedPart;
+    [SerializeField] GameObject linkedPart;
     public RobotPart.PartEnum type;
     [SerializeField] List<Attributes.RobotPartAttributes> attributes;
     [SerializeField] GameObject attributePrefab;

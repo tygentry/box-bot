@@ -16,6 +16,7 @@ public class InteractPopup : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        print(gameObject.name);
         headerTMP = header.GetComponent<TextMeshProUGUI>();
         headerTMP.SetText(headerText);
         subtextTMP = subtext.GetComponent<TextMeshProUGUI>();

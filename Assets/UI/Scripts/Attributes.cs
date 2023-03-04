@@ -9,6 +9,7 @@ public class Attributes : MonoBehaviour
         Melee,
         Ranged,
         Charged,
+        Explosive,
     }
 
     public static Dictionary<RobotPartAttributes, string> AttributeImages = new Dictionary<RobotPartAttributes, string>()
@@ -16,6 +17,7 @@ public class Attributes : MonoBehaviour
         { RobotPartAttributes.Melee, "" },
         { RobotPartAttributes.Ranged, "" },
         { RobotPartAttributes.Charged, "" },
+        { RobotPartAttributes.Explosive, "" },
     };
 
     public static Dictionary<RobotPartAttributes, string> AttributeText = new Dictionary<RobotPartAttributes, string>()
@@ -23,5 +25,6 @@ public class Attributes : MonoBehaviour
         { RobotPartAttributes.Melee, "Melee" },
         { RobotPartAttributes.Ranged, "Ranged" },
         { RobotPartAttributes.Charged, "Charged" },
+        { RobotPartAttributes.Explosive, "Explosive" },
     };
 }
