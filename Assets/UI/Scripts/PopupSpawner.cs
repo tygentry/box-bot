@@ -53,8 +53,11 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             Destroy(popup);
         }
         popup = Instantiate(popupPrefab, spawnLocation.transform);
-        popup.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = title;
-        popup.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = description;
+        //popup.transform.localScale = new Vector3(0.025f, 0.025f, 0.025f);
+        InteractPopup intP = popup.GetComponent<InteractPopup>();
+        intP.headerText = title;
+        intP.subtextText = description;
+        intP.SetUp();
         Animator anim = popup.GetComponent<Animator>();
         anim.SetBool("Show", true);
     }
@@ -63,8 +66,13 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         Animator anim = popup.GetComponent<Animator>();
         anim.SetBool("Show", false);
-        print("destroy");
         StartCoroutine(DestroyOnVanish());
+    }
+
+    public void InstaDestroy()
+    {
+        Destroy(popup);
+        popup = null;
     }
 
     IEnumerator DestroyOnVanish()

@@ -12,9 +12,8 @@ public class RobotPartPopup : InteractPopup
     [SerializeField] GameObject attributePrefab;
 
     // Start is called before the first frame update
-    new void Start()
+    void Start()
     {
-        base.Start();
         headerTMP.text = headerTMP.text + " - " + type;
         foreach (var attr in attributes)
         {
