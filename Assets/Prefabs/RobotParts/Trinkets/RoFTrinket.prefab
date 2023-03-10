@@ -23,6 +23,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1796919132771118113, guid: c3731b91d2d525942b9bf21c624bc5b9, type: 3}
+      propertyPath: title
+      value: RoF Trinket
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796919132771118113, guid: c3731b91d2d525942b9bf21c624bc5b9, type: 3}
+      propertyPath: description
+      value: Shoot fast, eat ass
+      objectReference: {fileID: 0}
     - target: {fileID: 2922242152009561837, guid: c3731b91d2d525942b9bf21c624bc5b9, type: 3}
       propertyPath: headerText
       value: RoFTrinket

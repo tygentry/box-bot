@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 236033516264638487, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 236033516264638487, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: title
+      value: Basic Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 236033516264638487, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: description
+      value: Stop, hammer time
+      objectReference: {fileID: 0}
+    - target: {fileID: 236033516264638487, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: partAttributes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2022744108943437445, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

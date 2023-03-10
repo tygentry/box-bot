@@ -218,6 +218,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8362218014146637284, guid: 3d25e89682a309c40b131d0231aec04c, type: 3}
+      propertyPath: title
+      value: Pellet Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362218014146637284, guid: 3d25e89682a309c40b131d0231aec04c, type: 3}
+      propertyPath: description
+      value: If you can dodge a wrench
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362218014146637284, guid: 3d25e89682a309c40b131d0231aec04c, type: 3}
+      propertyPath: partAttributes.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d25e89682a309c40b131d0231aec04c, type: 3}
 --- !u!1 &1853790583160867300 stripped

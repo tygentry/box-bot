@@ -10,6 +10,10 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public string title;
     [TextArea(15, 20)]
     public string description;
+
+    public RobotPart.PartEnum type;
+    public List<Attributes.RobotPartAttributes> partAttributes;
+
     public bool isHovered = false;
     bool isShown = false;
 
@@ -18,7 +22,7 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField]
     public GameObject spawnLocation;
 
-    private GameObject popup;
+    public GameObject popup;
 
     public bool isHoverable = true;
 
@@ -53,17 +57,15 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             Destroy(popup);
         }
         popup = Instantiate(popupPrefab, spawnLocation.transform);
-        //popup.transform.localScale = new Vector3(0.025f, 0.025f, 0.025f);
-        InteractPopup intP = popup.GetComponent<InteractPopup>();
-        intP.headerText = title;
-        intP.subtextText = description;
-        intP.SetUp();
+        InteractPopup intP = popup.GetComponent<InteractPopup>();        
+        intP.SetUp(this);
         Animator anim = popup.GetComponent<Animator>();
         anim.SetBool("Show", true);
     }
 
     public void DespawnPopUp()
     {
+        if (popup == null) return;
         Animator anim = popup.GetComponent<Animator>();
         anim.SetBool("Show", false);
         StartCoroutine(DestroyOnVanish());
@@ -71,6 +73,7 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void InstaDestroy()
     {
+        print(popup);
         Destroy(popup);
         popup = null;
     }

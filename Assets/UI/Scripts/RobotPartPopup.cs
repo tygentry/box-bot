@@ -6,16 +6,13 @@ public class RobotPartPopup : InteractPopup
 {
     [Header("Robot Part")]
     [SerializeField] GameObject attributePanel;
-    [SerializeField] GameObject linkedPart;
-    public RobotPart.PartEnum type;
-    [SerializeField] List<Attributes.RobotPartAttributes> attributes;
     [SerializeField] GameObject attributePrefab;
 
-    // Start is called before the first frame update
-    void Start()
+    public override void SetUp(PopupSpawner ps)
     {
-        headerTMP.text = headerTMP.text + " - " + type;
-        foreach (var attr in attributes)
+        base.SetUp(ps);
+        headerTMP.text = headerTMP.text + " - " + ps.type;
+        foreach (var attr in ps.partAttributes)
         {
             GameObject newAttr = Instantiate(attributePrefab, attributePanel.transform);
             newAttr.GetComponent<PartAttribute>().SetAttribute(attr);
