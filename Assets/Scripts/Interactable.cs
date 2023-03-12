@@ -112,10 +112,10 @@ public class Interactable : MonoBehaviour
                 if (mv.canInteract)
                 {
                     mv.RemoveIntObj(this.gameObject);
-                    if (mv.closestIntObj == this.gameObject)
+                    /*if (mv.closestIntObj == this.gameObject)
                     {
                         mv.closestIntObj = null;
-                    }
+                    }*/
                     //StartCoroutine(ToggleHighlight());
                 }
             }

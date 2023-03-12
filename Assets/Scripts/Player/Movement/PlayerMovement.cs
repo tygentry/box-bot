@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Interact")]
     public List<GameObject> intObjs = new List<GameObject>();
     public GameObject closestIntObj;
-    public float closestIntObjDist;
+    public float closestIntObjDist = 999f;
     public bool canInteract = true;
     public GameObject interactedObj;
 
@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody2D>();
         controls = new Controls();
+        closestIntObjDist = 999f;
     }
 
     public void OnEnable()
@@ -69,10 +70,13 @@ public class PlayerMovement : MonoBehaviour
         if(canMove)
             legBehavior.LegUpdate(input, spacePressed);
 
-        float checkDist = Vector3.Distance(closestIntObj.transform.position, gameObject.transform.position);
-        if (checkDist > closestIntObjDist)
+        if (closestIntObj != null)
         {
-            RecalculateClosestIntObj();
+            float checkDist = Vector3.Distance(closestIntObj.transform.position, gameObject.transform.position);
+            if (checkDist > closestIntObjDist)
+            {
+                RecalculateClosestIntObj();
+            }
         }
 
         if (controls.PlayerControls.Interact.triggered && canInteract && intObjs.Count > 0)
@@ -123,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
         }
         //calculate new
         closestIntObj = null;
+        closestIntObjDist = 999f;
         for (int i = 0; i < intObjs.Count; i++)
         {
             float dist = Vector3.Distance(intObjs[i].transform.position, gameObject.transform.position);

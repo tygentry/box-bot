@@ -127,5 +127,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicLegsDrag
       objectReference: {fileID: 0}
+    - target: {fileID: 3482085975817789962, guid: 9c30cd314e5269e4d95ed396864a0299, type: 3}
+      propertyPath: type
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c30cd314e5269e4d95ed396864a0299, type: 3}

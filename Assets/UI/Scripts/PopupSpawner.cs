@@ -61,9 +61,16 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         {
             Destroy(popup);
         }
-        bool spawnLeft = SetLocation();
-        print(spawnLeft);
-        popup = Instantiate(popupPrefab, (spawnLeft ? leftSpawnLocation : rightSpawnLocation).transform);
+        //spawn location can change based on player location
+        if (!isHoverable)
+        {
+            bool spawnLeft = SetLocation();
+            popup = Instantiate(popupPrefab, (spawnLeft ? leftSpawnLocation : rightSpawnLocation).transform);
+        }
+        else //spawn location should be always right
+        {
+            popup = Instantiate(popupPrefab, rightSpawnLocation.transform);
+        }
         InteractPopup intP = popup.GetComponent<InteractPopup>();        
         intP.SetUp(this);
         Animator anim = popup.GetComponent<Animator>();

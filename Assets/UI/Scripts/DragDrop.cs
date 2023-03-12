@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragDrop : MonoBehaviour
+public class DragDrop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Canvas Objects")]
     public CanvasManager cm;
@@ -20,6 +21,7 @@ public class DragDrop : MonoBehaviour
     private RectTransform trans;
     public RobotPart.PartEnum dropType = RobotPart.PartEnum.None;
     [SerializeField] GameObject partPrefab;
+    [SerializeField] PopupSpawner ps;
 
     void Start()
     {
@@ -175,5 +177,15 @@ public class DragDrop : MonoBehaviour
                 pop.popup.isHoverable = true;
             }*/
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ps.OnPointerEnter(eventData);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ps.OnPointerExit(eventData);
     }
 }

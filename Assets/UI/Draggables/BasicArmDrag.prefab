@@ -135,5 +135,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicArmDrag
       objectReference: {fileID: 0}
+    - target: {fileID: 3482085975817789962, guid: 9c30cd314e5269e4d95ed396864a0299, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3482085975817789962, guid: 9c30cd314e5269e4d95ed396864a0299, type: 3}
+      propertyPath: partAttributes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c30cd314e5269e4d95ed396864a0299, type: 3}

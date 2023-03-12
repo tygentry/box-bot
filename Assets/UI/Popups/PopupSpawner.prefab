@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4100350874342478408}
   - component: {fileID: 7329674933818630942}
-  m_Layer: 0
+  - component: {fileID: 2509056088177280048}
+  m_Layer: 5
   m_Name: PopupSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,6 +64,14 @@ MonoBehaviour:
   rightSpawnLocation: {fileID: 8892369399216425022}
   popup: {fileID: 0}
   isHoverable: 1
+--- !u!222 &2509056088177280048
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060863406475961403}
+  m_CullTransparentMesh: 1
 --- !u!1 &4233732484220017269
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,7 +81,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7926825427299110785}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LeftSpawnLoc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9086040156754171832}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RightSpawnLoc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
