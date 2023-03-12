@@ -160,7 +160,7 @@ public class DragDrop : MonoBehaviour
                 {
                     trans.SetSiblingIndex(prevChildIndex);
                 }
-                cm.customizePopout.MimicCustomize();
+                cm.MatchPlayer(cm.customizeMenu.player);
             }
             else
             {

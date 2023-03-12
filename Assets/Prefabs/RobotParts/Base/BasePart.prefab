@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 82488346412274724, guid: 2525ea05a6a83da4dbbfd224ef9b2fa4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 82488346412274724, guid: 2525ea05a6a83da4dbbfd224ef9b2fa4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.62
+      objectReference: {fileID: 0}
     - target: {fileID: 764643851190794427, guid: 2525ea05a6a83da4dbbfd224ef9b2fa4, type: 3}
       propertyPath: popupPrefab
       value: 

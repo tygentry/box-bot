@@ -331,6 +331,34 @@ PrefabInstance:
       propertyPath: popupPrefab
       value: 
       objectReference: {fileID: 6601817743000068406, guid: e59b3bd7334f9bc45862ad09a5c29f26, type: 3}
+    - target: {fileID: 7329674933818630942, guid: 0b98cbb0248753047ae4bbe86549e2e3, type: 3}
+      propertyPath: interactable
+      value: 
+      objectReference: {fileID: 7760737679185918601}
+    - target: {fileID: 7926825427299110785, guid: 0b98cbb0248753047ae4bbe86549e2e3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926825427299110785, guid: 0b98cbb0248753047ae4bbe86549e2e3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926825427299110785, guid: 0b98cbb0248753047ae4bbe86549e2e3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926825427299110785, guid: 0b98cbb0248753047ae4bbe86549e2e3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.662
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926825427299110785, guid: 0b98cbb0248753047ae4bbe86549e2e3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.627
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926825427299110785, guid: 0b98cbb0248753047ae4bbe86549e2e3, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9086040156754171832, guid: 0b98cbb0248753047ae4bbe86549e2e3, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.01

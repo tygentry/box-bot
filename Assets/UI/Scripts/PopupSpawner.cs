@@ -5,12 +5,15 @@ using UnityEngine.EventSystems;
 
 public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [Header("Base Popup")]
     float timeHovered = 0.0f;
     public float hoverToShowTime = 1.0f;
     public string title;
     [TextArea(15, 20)]
     public string description;
+    [SerializeField] Interactable interactable;
 
+    [Header("Robot Part Popup")]
     public RobotPart.PartEnum type;
     public List<Attributes.RobotPartAttributes> partAttributes;
 
@@ -20,7 +23,9 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField]
     public GameObject popupPrefab;
     [SerializeField]
-    public GameObject spawnLocation;
+    public GameObject leftSpawnLocation;
+    [SerializeField]
+    public GameObject rightSpawnLocation;
 
     public GameObject popup;
 
@@ -56,7 +61,9 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         {
             Destroy(popup);
         }
-        popup = Instantiate(popupPrefab, spawnLocation.transform);
+        bool spawnLeft = SetLocation();
+        print(spawnLeft);
+        popup = Instantiate(popupPrefab, (spawnLeft ? leftSpawnLocation : rightSpawnLocation).transform);
         InteractPopup intP = popup.GetComponent<InteractPopup>();        
         intP.SetUp(this);
         Animator anim = popup.GetComponent<Animator>();
@@ -71,9 +78,22 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         StartCoroutine(DestroyOnVanish());
     }
 
+    /**
+     * Returns true if the popup should spawn to the left side, false if it should spawn to the right
+     */
+    private bool SetLocation()
+    {
+        float dir = gameObject.transform.position.x - interactable.GetPlayer().transform.position.x;
+        print(dir);
+        if (dir < 0.0f)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void InstaDestroy()
     {
-        print(popup);
         Destroy(popup);
         popup = null;
     }

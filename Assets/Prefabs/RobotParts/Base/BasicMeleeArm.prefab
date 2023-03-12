@@ -23,6 +23,22 @@ PrefabInstance:
       propertyPath: partAttributes.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 648252287208187016, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 648252287208187016, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794309376024394929, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794309376024394929, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.76
+      objectReference: {fileID: 0}
     - target: {fileID: 2022744108943437445, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -98,6 +114,14 @@ PrefabInstance:
     - target: {fileID: 4871710525821218753, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_Offset.x
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780711136623278401, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780711136623278401, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 7091389847620684324, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_Name
@@ -229,6 +253,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7091389847620684327, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091389847716372120, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
