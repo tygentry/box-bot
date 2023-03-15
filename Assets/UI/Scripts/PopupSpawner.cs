@@ -14,6 +14,8 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField] Interactable interactable;
 
     [Header("Robot Part Popup")]
+    // when adding a new part, add new entries to match this string in RobotPartLookup.cs
+    public string lookupStr;
     public RobotPart.PartEnum type;
     public List<Attributes.RobotPartAttributes> partAttributes;
 
