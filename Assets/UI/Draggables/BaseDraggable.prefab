@@ -96,11 +96,12 @@ MonoBehaviour:
   isDraggable: 1
   dragger: {fileID: 0}
   isOverDropZone: 0
+  objectParent: {fileID: 8242116582182632554}
   allowedDropZones: []
   dropZones: []
   dropType: 2
   partPrefab: {fileID: 0}
-  ps: {fileID: 0}
+  ps: {fileID: 3732264916885223245}
 --- !u!114 &4563956267607015958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +365,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b98cbb0248753047ae4bbe86549e2e3, type: 3}
+--- !u!114 &3732264916885223245 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7329674933818630942, guid: 0b98cbb0248753047ae4bbe86549e2e3, type: 3}
+  m_PrefabInstance: {fileID: 6229489485306958931}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa9a714b1c7b36e4eb61f29b193128ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7968214415875360283 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4100350874342478408, guid: 0b98cbb0248753047ae4bbe86549e2e3, type: 3}

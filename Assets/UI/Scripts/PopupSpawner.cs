@@ -17,7 +17,6 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     // when adding a new part, add new entries to match this string in RobotPartLookup.cs
     public string lookupStr;
     public RobotPart.PartEnum type;
-    public List<Attributes.RobotPartAttributes> partAttributes;
 
     public bool isHovered = false;
     bool isShown = false;

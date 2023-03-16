@@ -6,6 +6,7 @@ public class RobotPartLookup : MonoBehaviour
 {
     public static Dictionary<string, string> DisplayNames = new Dictionary<string, string>()
     {
+        { "", "No Lookup String" },
         { "HammerMelee", "Hammer" },
         { "PelletGun", "Pellet Gun" },
         { "BombHead", "Mr. Bombastic" },
@@ -15,6 +16,7 @@ public class RobotPartLookup : MonoBehaviour
 
     public static Dictionary<string, string> Descriptions = new Dictionary<string, string>()
     {
+        { "", "No Lookup String" },
         { "HammerMelee", "Stop, hammer time!" },
         { "PelletGun", "If you can dodge a wrench..." },
         { "BombHead", "KABOOOM!" },
@@ -27,6 +29,7 @@ public class RobotPartLookup : MonoBehaviour
 
     public static Dictionary<string, Attributes.RobotPartAttributes[]> PartAttributes = new Dictionary<string, Attributes.RobotPartAttributes[]>()
     {
+        { "", noAttributes },
         { "HammerMelee", new Attributes.RobotPartAttributes[] { Attributes.RobotPartAttributes.Melee } },
         { "PelletGun", new Attributes.RobotPartAttributes[] { Attributes.RobotPartAttributes.Ranged } },
         { "BombHead", new Attributes.RobotPartAttributes[] { Attributes.RobotPartAttributes.Explosive } },

@@ -13,6 +13,7 @@ public class DragDrop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public bool isDraggable = true;
     public GameObject dragger;
     public bool isOverDropZone = false;
+    [SerializeField] GameObject objectParent;
     private GameObject previousParent;
     private int prevChildIndex;
     public List<GameObject> allowedDropZones = new List<GameObject>();
@@ -25,7 +26,7 @@ public class DragDrop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void Start()
     {
-        trans = GetComponent<RectTransform>();
+        trans = objectParent.GetComponent<RectTransform>();
         Dragger d = FindObjectOfType<Dragger>();
         if (d != null)
         {
@@ -103,10 +104,10 @@ public class DragDrop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         //then picking minimum distance from valid collision
         retVal = valid[0];
-        float minDist = Vector3.Distance(gameObject.transform.position, retVal.transform.position);
+        float minDist = Vector3.Distance(objectParent.transform.position, retVal.transform.position);
         foreach (GameObject dropZone in valid)
         {
-            float dist = Vector3.Distance(gameObject.transform.position, dropZone.transform.position);
+            float dist = Vector3.Distance(objectParent.transform.position, dropZone.transform.position);
             if (dist < minDist)
             {
                 retVal = dropZone;
@@ -151,7 +152,7 @@ public class DragDrop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     //swapChild.localPosition = startPosition;
                     string swapLoc = cm.customizeMenu.player.MatchPart(previousParent.GetComponent<DropZone>());
                     //moving old part
-                    previousParent.GetComponent<DropZone>().associatedSlot = cm.customizeMenu.player.UpdateBody(swapLoc, swapChild.GetComponent<DragDrop>().partPrefab);
+                    previousParent.GetComponent<DropZone>().associatedSlot = cm.customizeMenu.player.UpdateBody(swapLoc, swapChild.GetComponentInChildren<DragDrop>().partPrefab);
                 }
                 //print(dropZone);
                 trans.SetParent(dropZone.transform, false);

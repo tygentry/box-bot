@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RobotPartPopup : InteractPopup
@@ -10,12 +11,15 @@ public class RobotPartPopup : InteractPopup
 
     public override void SetUp(PopupSpawner ps)
     {
-        base.SetUp(ps);
-        headerTMP.text = headerTMP.text + " - " + ps.type;
-        foreach (var attr in ps.partAttributes)
+        headerTMP = header.GetComponent<TextMeshProUGUI>();
+        headerTMP.SetText(RobotPartLookup.DisplayNames[ps.lookupStr] + " - " + ps.type);
+        subtextTMP = subtext.GetComponent<TextMeshProUGUI>();
+        subtextTMP.SetText(RobotPartLookup.Descriptions[ps.lookupStr]);
+        Attributes.RobotPartAttributes[] attrs = RobotPartLookup.PartAttributes[ps.lookupStr];
+        for (int i = 0; i < attrs.Length; i++)
         {
             GameObject newAttr = Instantiate(attributePrefab, attributePanel.transform);
-            newAttr.GetComponent<PartAttribute>().SetAttribute(attr);
+            newAttr.GetComponent<PartAttribute>().SetAttribute(attrs[i]);
         }
     }
 }

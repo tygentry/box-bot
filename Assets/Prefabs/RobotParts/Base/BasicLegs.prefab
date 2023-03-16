@@ -13,11 +13,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 236033516264638487, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: title
-      value: Basic Legs
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 236033516264638487, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: lookupStr
+      value: BasicLegs
       objectReference: {fileID: 0}
     - target: {fileID: 236033516264638487, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: description
-      value: Basic legs description
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 236033516264638487, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: partAttributes.Array.size
@@ -236,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  inventoryPrefab: {fileID: 8817916807367149135, guid: da5ec75d26ba7b44eb7ef0357974c035, type: 3}
+  inventoryPrefab: {fileID: 6988058319219103923, guid: b9ea50e8e9889ef42a50f1d4a52b6383, type: 3}
   startPos: {x: 0, y: -0.619, z: 0}
   startRot: {x: 0, y: 0, z: 0}
   stats: {fileID: 0}

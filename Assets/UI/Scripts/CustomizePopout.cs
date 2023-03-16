@@ -68,7 +68,7 @@ public class CustomizePopout : MonoBehaviour
         if (cm.customizeMenu.headSlot.transform.childCount == 0) { head.SetImage(transparentSprite, false); }
         else
         {
-            head.SetImage(cm.customizeMenu.headSlot.transform.GetChild(0).gameObject.GetComponent<Image>().sprite, false);
+            head.SetImage(cm.customizeMenu.headSlot.transform.GetChild(0).GetComponentInChildren<Image>().sprite, false);
         }
 
         for (int i = 0; i < bodies.Count; i++)
@@ -76,23 +76,23 @@ public class CustomizePopout : MonoBehaviour
             if (cm.customizeMenu.leftArmSlots[i].transform.childCount == 0) { bodies[i].leftArm.SetImage(transparentSprite, false); }
             else
             {
-                bodies[i].leftArm.SetImage(cm.customizeMenu.leftArmSlots[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite, true);
+                bodies[i].leftArm.SetImage(cm.customizeMenu.leftArmSlots[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite, true);
             }
             if (cm.customizeMenu.trinketSlots[i].transform.childCount == 0) { bodies[i].trinket.SetImage(transparentSprite, false); }
             else
             {
-                bodies[i].trinket.SetImage(cm.customizeMenu.trinketSlots[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite, false);
+                bodies[i].trinket.SetImage(cm.customizeMenu.trinketSlots[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite, false);
             }
             if (cm.customizeMenu.rightArmSlots[i].transform.childCount == 0) { bodies[i].rightArm.SetImage(transparentSprite, false); }
             else
             {
-                bodies[i].rightArm.SetImage(cm.customizeMenu.rightArmSlots[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite, false);
+                bodies[i].rightArm.SetImage(cm.customizeMenu.rightArmSlots[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite, false);
             }
         }
         if (cm.customizeMenu.legsSlot.transform.childCount == 0) { legs.SetImage(transparentSprite, false); }
         else
         {
-            legs.SetImage(cm.customizeMenu.legsSlot.transform.GetChild(0).gameObject.GetComponent<Image>().sprite, false);
+            legs.SetImage(cm.customizeMenu.legsSlot.transform.GetChild(0).GetComponentInChildren<Image>().sprite, false);
         }
     }
 
