@@ -53,12 +53,13 @@ public class DragDrop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void StartDrag()
     {
-        /*ModifierPopUp pop = GetComponent<ModifierPopUp>();
+        PopupSpawner pop = transform.parent.GetComponentInChildren<PopupSpawner>();
         if (pop != null)
         {
-            pop.popup.isHoverable = false;
-            pop.popup.isHovered = false;
-        }*/
+            pop.isHoverable = false;
+            pop.isHovered = false;
+            pop.InstaDestroy();
+        }
         dropZones.Clear();
         if (isDraggable)
         {
@@ -172,17 +173,18 @@ public class DragDrop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 trans.localPosition = startPosition;
             }
 
-            /*ModifierPopUp pop = GetComponent<ModifierPopUp>();
+            PopupSpawner pop = transform.parent.GetComponentInChildren<PopupSpawner>();
             if (pop != null)
             {
-                pop.popup.isHoverable = true;
-            }*/
+                pop.isHoverable = true;
+            }
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         ps.OnPointerEnter(eventData);
+        trans.parent.SetAsLastSibling();
     }
 
     public void OnPointerExit(PointerEventData eventData)

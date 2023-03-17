@@ -37,8 +37,9 @@ public class CustomizePopout : MonoBehaviour
         cm.customizeMenu.player.UpdateBody(loc, newPart);
         cm.customizeMenu.MatchCharacter(cm.customizeMenu.player);
         MimicCustomize();
+        cm.customizeMenu.player.GetComponent<PlayerMovement>().RemoveIntObj(newPart);
         Destroy(newPart);
-        cm.customizeMenu.player.GetComponent<PlayerMovement>().interactedObj = null;
+        //cm.customizeMenu.player.GetComponent<PlayerMovement>().interactedObj = null;
     }
 
     /*

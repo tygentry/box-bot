@@ -77,6 +77,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 RecalculateClosestIntObj();
             }
+            else
+            {
+                closestIntObjDist = checkDist;
+            }
         }
 
         if (controls.PlayerControls.Interact.triggered && canInteract && intObjs.Count > 0)

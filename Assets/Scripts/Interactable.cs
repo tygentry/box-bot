@@ -94,7 +94,6 @@ public class Interactable : MonoBehaviour
                 PlayerMovement mv = player.GetComponent<PlayerMovement>();
                 if (mv.canInteract) { 
                     mv.NewIntObj(this.gameObject);
-                    //StartCoroutine(ToggleHighlight());
                 }
             }
         }
@@ -112,11 +111,6 @@ public class Interactable : MonoBehaviour
                 if (mv.canInteract)
                 {
                     mv.RemoveIntObj(this.gameObject);
-                    /*if (mv.closestIntObj == this.gameObject)
-                    {
-                        mv.closestIntObj = null;
-                    }*/
-                    //StartCoroutine(ToggleHighlight());
                 }
             }
         }
