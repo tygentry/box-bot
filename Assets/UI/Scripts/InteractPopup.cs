@@ -6,20 +6,16 @@ using UnityEngine.UI;
 
 public class InteractPopup : MonoBehaviour
 {
-    public string headerText;
-    public string subtextText;
     public GameObject header;
     public GameObject subtext;
     public TextMeshProUGUI headerTMP;
     public TextMeshProUGUI subtextTMP;
 
-    // Start is called before the first frame update
-    public void Start()
+    public virtual void SetUp(PopupSpawner ps)
     {
-        print(gameObject.name);
         headerTMP = header.GetComponent<TextMeshProUGUI>();
-        headerTMP.SetText(headerText);
+        headerTMP.SetText(ps.title);
         subtextTMP = subtext.GetComponent<TextMeshProUGUI>();
-        subtextTMP.SetText(subtextText);
+        subtextTMP.SetText(ps.description);
     }
 }

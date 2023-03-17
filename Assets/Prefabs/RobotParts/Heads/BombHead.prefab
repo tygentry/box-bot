@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: inventoryPrefab
       value: 
       objectReference: {fileID: 8550680104868396063, guid: 048dcf02353d85542a1d17e473ee0a4f, type: 3}
+    - target: {fileID: 794106083712444600, guid: 8d48b46572ebcf34a91e78472cb2f9b4, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 794106083858988036, guid: 8d48b46572ebcf34a91e78472cb2f9b4, type: 3}
       propertyPath: m_Name
       value: BombHead
@@ -155,6 +159,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7649954420826865207, guid: 8d48b46572ebcf34a91e78472cb2f9b4, type: 3}
+      propertyPath: title
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7649954420826865207, guid: 8d48b46572ebcf34a91e78472cb2f9b4, type: 3}
+      propertyPath: lookupStr
+      value: BombHead
+      objectReference: {fileID: 0}
+    - target: {fileID: 7649954420826865207, guid: 8d48b46572ebcf34a91e78472cb2f9b4, type: 3}
+      propertyPath: description
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7649954420826865207, guid: 8d48b46572ebcf34a91e78472cb2f9b4, type: 3}
+      propertyPath: partAttributes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7649954420826865207, guid: 8d48b46572ebcf34a91e78472cb2f9b4, type: 3}
+      propertyPath: partAttributes.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8466394792250333349, guid: 8d48b46572ebcf34a91e78472cb2f9b4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -192,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  inventoryPrefab: {fileID: 8550680104868396063, guid: 048dcf02353d85542a1d17e473ee0a4f, type: 3}
+  inventoryPrefab: {fileID: 854034471091137035, guid: 85c78522a7be8354685205bbb2ab7a06, type: 3}
   startPos: {x: 0, y: 0.94, z: 0}
   startRot: {x: 0, y: 0, z: 0}
   stats: {fileID: 0}

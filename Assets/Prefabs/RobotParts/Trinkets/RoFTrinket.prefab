@@ -23,6 +23,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1796919132771118113, guid: c3731b91d2d525942b9bf21c624bc5b9, type: 3}
+      propertyPath: title
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796919132771118113, guid: c3731b91d2d525942b9bf21c624bc5b9, type: 3}
+      propertyPath: lookupStr
+      value: RoFTrinket
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796919132771118113, guid: c3731b91d2d525942b9bf21c624bc5b9, type: 3}
+      propertyPath: description
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2922242152009561837, guid: c3731b91d2d525942b9bf21c624bc5b9, type: 3}
       propertyPath: headerText
       value: RoFTrinket
@@ -176,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
-  inventoryPrefab: {fileID: 4368693400412802296, guid: 2a28f8a3feb72284aa1f6c8015d7e047, type: 3}
+  inventoryPrefab: {fileID: 1547859494386851118, guid: ca4bdfc5c0410e54db27abdb6c5ec3f0, type: 3}
   startPos: {x: 0, y: 0, z: 0}
   startRot: {x: 0, y: 0, z: 0}
   stats: {fileID: 0}

@@ -218,6 +218,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8047005782988380482, guid: 3d25e89682a309c40b131d0231aec04c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362218014146637284, guid: 3d25e89682a309c40b131d0231aec04c, type: 3}
+      propertyPath: title
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362218014146637284, guid: 3d25e89682a309c40b131d0231aec04c, type: 3}
+      propertyPath: lookupStr
+      value: PelletGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362218014146637284, guid: 3d25e89682a309c40b131d0231aec04c, type: 3}
+      propertyPath: description
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362218014146637284, guid: 3d25e89682a309c40b131d0231aec04c, type: 3}
+      propertyPath: partAttributes.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d25e89682a309c40b131d0231aec04c, type: 3}
 --- !u!1 &1853790583160867300 stripped
@@ -238,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  inventoryPrefab: {fileID: 2902938765829276747, guid: b9f40a449b076514da71c001f72a92b5, type: 3}
+  inventoryPrefab: {fileID: 7874544382988641716, guid: a4780c65768ac9b4185d4f3a4ff2023a, type: 3}
   startPos: {x: 0, y: 0, z: 0}
   startRot: {x: 0, y: 0, z: 0}
   stats: {fileID: 0}

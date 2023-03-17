@@ -98,7 +98,7 @@ public class CustomizeMenu : MonoBehaviour
             {
                 GameObject leftArm = Instantiate(body.GetLeftArm().inventoryPrefab, leftArmSlots[i].transform.position, Quaternion.identity);
                 leftArm.transform.SetParent(leftArmSlots[i].transform);
-                leftArm.GetComponent<Image>().rectTransform.localScale = new Vector3(-1, 1, 1);
+                leftArm.transform.GetChild(0).gameObject.GetComponent<Image>().rectTransform.localScale = new Vector3(-1, 1, 1);
             }
             if (body.GetTrinket())
             {

@@ -14,9 +14,9 @@ public class Interactable : MonoBehaviour
     [SerializeField] CircleCollider2D interactRange;
 
     [Header("Interact Popup")]
-    public InteractPopup popupObj;
+    [SerializeField] PopupSpawner popupSpawn;
     public float timeUntilPopup = 3.0f;
-    public CanvasGroup popupGroup;
+
     public delegate bool InteractFunction();
     InteractFunction interact;
     public delegate bool PickUpFunction();
@@ -27,7 +27,6 @@ public class Interactable : MonoBehaviour
 
     public void Start()
     {
-        //print("test");
         highlightMat = gameObject.GetComponent<SpriteRenderer>().material;
         highlightMat.shader = nonHighlightShader;
         isRobotPart = gameObject.GetComponent<RobotPart>();
@@ -43,13 +42,18 @@ public class Interactable : MonoBehaviour
     {
         canHighlight = false;
         interactRange.enabled = false;
-        InstaHidePopup();
+        popupSpawn.InstaDestroy();
     }
 
     public void EnableInteraction()
     {
         canHighlight = true;
         interactRange.enabled = true;
+    }
+
+    public void CoroutineToggle()
+    {
+        StartCoroutine(ToggleHighlight());
     }
 
     // Highlight and animation control for popup
@@ -65,46 +69,18 @@ public class Interactable : MonoBehaviour
             yield return new WaitForSeconds(timeUntilPopup);
 
             if (isHighlighted)
-            { 
-                StartCoroutine(DisplayPopup());
+            {
+                popupSpawn.SpawnPopUp();
             }
         }
         else
         {
             highlightMat.shader = nonHighlightShader;
-            StopAllCoroutines();
             playerBody.cm.isCustomizing = false;
             playerBody.cm.customizePopout.StartPopBack();
             player.GetComponent<PlayerMovement>().interactedObj = null;
-            StartCoroutine(HidePopup());
+            popupSpawn.DespawnPopUp();
         }
-    }
-
-    IEnumerator DisplayPopup()
-    {
-        if (popupGroup == null) yield break;
-        while (popupGroup.alpha < 1.0f)
-        {
-            popupGroup.alpha += .01f;
-            Mathf.Clamp(popupGroup.alpha, -0.1f, 1.0f);
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-    }
-
-    IEnumerator HidePopup()
-    {
-        if (popupGroup == null) yield break;
-        while (popupGroup.alpha > 0.0f)
-        {
-            popupGroup.alpha -= .01f;
-            Mathf.Clamp(popupGroup.alpha, -0.1f, 1.0f);
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-    }
-
-    public void InstaHidePopup()
-    {
-        popupGroup.alpha = 0.0f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -117,8 +93,7 @@ public class Interactable : MonoBehaviour
                 if (player == null) { player = colObj; }
                 PlayerMovement mv = player.GetComponent<PlayerMovement>();
                 if (mv.canInteract) { 
-                    mv.closestIntObj = this.gameObject;
-                    StartCoroutine(ToggleHighlight());
+                    mv.NewIntObj(this.gameObject);
                 }
             }
         }
@@ -135,11 +110,7 @@ public class Interactable : MonoBehaviour
                 PlayerMovement mv = player.GetComponent<PlayerMovement>();
                 if (mv.canInteract)
                 {
-                    if (mv.closestIntObj == this.gameObject)
-                    {
-                        mv.closestIntObj = null;
-                    }
-                    StartCoroutine(ToggleHighlight());
+                    mv.RemoveIntObj(this.gameObject);
                 }
             }
         }

@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragDrop : MonoBehaviour
+public class DragDrop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Canvas Objects")]
     public CanvasManager cm;
@@ -12,6 +13,7 @@ public class DragDrop : MonoBehaviour
     public bool isDraggable = true;
     public GameObject dragger;
     public bool isOverDropZone = false;
+    [SerializeField] GameObject objectParent;
     private GameObject previousParent;
     private int prevChildIndex;
     public List<GameObject> allowedDropZones = new List<GameObject>();
@@ -20,10 +22,11 @@ public class DragDrop : MonoBehaviour
     private RectTransform trans;
     public RobotPart.PartEnum dropType = RobotPart.PartEnum.None;
     [SerializeField] GameObject partPrefab;
+    [SerializeField] PopupSpawner ps;
 
     void Start()
     {
-        trans = GetComponent<RectTransform>();
+        trans = objectParent.GetComponent<RectTransform>();
         Dragger d = FindObjectOfType<Dragger>();
         if (d != null)
         {
@@ -50,12 +53,13 @@ public class DragDrop : MonoBehaviour
 
     public void StartDrag()
     {
-        /*ModifierPopUp pop = GetComponent<ModifierPopUp>();
+        PopupSpawner pop = transform.parent.GetComponentInChildren<PopupSpawner>();
         if (pop != null)
         {
-            pop.popup.isHoverable = false;
-            pop.popup.isHovered = false;
-        }*/
+            pop.isHoverable = false;
+            pop.isHovered = false;
+            pop.InstaDestroy();
+        }
         dropZones.Clear();
         if (isDraggable)
         {
@@ -101,10 +105,10 @@ public class DragDrop : MonoBehaviour
 
         //then picking minimum distance from valid collision
         retVal = valid[0];
-        float minDist = Vector3.Distance(gameObject.transform.position, retVal.transform.position);
+        float minDist = Vector3.Distance(objectParent.transform.position, retVal.transform.position);
         foreach (GameObject dropZone in valid)
         {
-            float dist = Vector3.Distance(gameObject.transform.position, dropZone.transform.position);
+            float dist = Vector3.Distance(objectParent.transform.position, dropZone.transform.position);
             if (dist < minDist)
             {
                 retVal = dropZone;
@@ -149,7 +153,7 @@ public class DragDrop : MonoBehaviour
                     //swapChild.localPosition = startPosition;
                     string swapLoc = cm.customizeMenu.player.MatchPart(previousParent.GetComponent<DropZone>());
                     //moving old part
-                    previousParent.GetComponent<DropZone>().associatedSlot = cm.customizeMenu.player.UpdateBody(swapLoc, swapChild.GetComponent<DragDrop>().partPrefab);
+                    previousParent.GetComponent<DropZone>().associatedSlot = cm.customizeMenu.player.UpdateBody(swapLoc, swapChild.GetComponentInChildren<DragDrop>().partPrefab);
                 }
                 //print(dropZone);
                 trans.SetParent(dropZone.transform, false);
@@ -160,7 +164,7 @@ public class DragDrop : MonoBehaviour
                 {
                     trans.SetSiblingIndex(prevChildIndex);
                 }
-                cm.customizePopout.MimicCustomize();
+                cm.MatchPlayer(cm.customizeMenu.player);
             }
             else
             {
@@ -169,11 +173,22 @@ public class DragDrop : MonoBehaviour
                 trans.localPosition = startPosition;
             }
 
-            /*ModifierPopUp pop = GetComponent<ModifierPopUp>();
+            PopupSpawner pop = transform.parent.GetComponentInChildren<PopupSpawner>();
             if (pop != null)
             {
-                pop.popup.isHoverable = true;
-            }*/
+                pop.isHoverable = true;
+            }
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ps.OnPointerEnter(eventData);
+        trans.parent.SetAsLastSibling();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ps.OnPointerExit(eventData);
     }
 }
