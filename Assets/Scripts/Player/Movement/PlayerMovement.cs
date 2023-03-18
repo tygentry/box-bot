@@ -124,23 +124,28 @@ public class PlayerMovement : MonoBehaviour
     // recalculates the closest obj between all in current range
     private void RecalculateClosestIntObj()
     {
-        //removing old toggle
-        if (closestIntObj != null)
-        {
-            closestIntObj.GetComponent<Interactable>().CoroutineToggle();
-        }
+        print("reacalc");
         //calculate new
-        closestIntObj = null;
+        GameObject newClosestIntObj = null;
         closestIntObjDist = 999f;
         for (int i = 0; i < intObjs.Count; i++)
         {
             float dist = Vector3.Distance(intObjs[i].transform.position, gameObject.transform.position);
             if (dist < closestIntObjDist)
             {
-                closestIntObj = intObjs[i];
+                newClosestIntObj = intObjs[i];
                 closestIntObjDist = dist;
             }
         }
+
+        // if no change, don't worry about toggling off and on
+        if (newClosestIntObj == closestIntObj) { return; }
+        //removing old toggle
+        if (closestIntObj != null)
+        {
+            closestIntObj.GetComponent<Interactable>().CoroutineToggle();
+        }
+        closestIntObj = newClosestIntObj;
         //enabling new toggle
         if (closestIntObj != null)
         {

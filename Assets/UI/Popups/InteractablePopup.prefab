@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5502939281251179519}
   - component: {fileID: 3920811181023190929}
   - component: {fileID: 3901573980752418605}
+  - component: {fileID: 9099253697052075182}
   m_Layer: 5
   m_Name: InteractablePopup
   m_TagString: Untagged
@@ -93,8 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f88a96a1206764b8b61d4e202adfda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headerText: 
-  subtextText: 
   header: {fileID: 6833648691049994471}
   subtext: {fileID: 7656118792533339863}
   headerTMP: {fileID: 0}
@@ -145,6 +144,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!225 &9099253697052075182
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6601817743000068406}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &6833648691049994471
 GameObject:
   m_ObjectHideFlags: 0

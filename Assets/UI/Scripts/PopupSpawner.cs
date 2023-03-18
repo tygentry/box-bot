@@ -60,6 +60,7 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         if (popup != null)
         {
+            print("still alive");
             Destroy(popup);
         }
         //spawn location can change based on player location
@@ -92,7 +93,6 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private bool SetLocation()
     {
         float dir = gameObject.transform.position.x - interactable.GetPlayer().transform.position.x;
-        print(dir);
         if (dir < 0.0f)
         {
             return true;
