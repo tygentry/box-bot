@@ -103,6 +103,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.025
       objectReference: {fileID: 0}
+    - target: {fileID: 4620462995132388986, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.453
+      objectReference: {fileID: 0}
     - target: {fileID: 4871710525821218753, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_Offset.y
       value: -0.45

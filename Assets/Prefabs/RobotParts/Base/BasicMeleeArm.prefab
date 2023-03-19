@@ -111,6 +111,18 @@ PrefabInstance:
       propertyPath: attributes.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4620462995132388986, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620462995132388986, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.771
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620462995132388986, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.015
+      objectReference: {fileID: 0}
     - target: {fileID: 4871710525821218753, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_Enabled
       value: 1

@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (closestIntObj != null)
         {
-            float checkDist = Vector3.Distance(closestIntObj.transform.position, gameObject.transform.position);
+            float checkDist = Vector3.Distance(closestIntObj.GetComponent<Interactable>().centerPt.position, gameObject.transform.position);
             if (checkDist > closestIntObjDist)
             {
                 RecalculateClosestIntObj();
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
     public void NewIntObj(GameObject obj)
     {
         intObjs.Insert(0, obj);
-        float dist = Vector3.Distance(obj.transform.position, gameObject.transform.position);
+        float dist = Vector3.Distance(obj.GetComponent<Interactable>().centerPt.position, gameObject.transform.position);
         if (dist < closestIntObjDist)
         {
             //toggle off old closest
@@ -124,13 +124,12 @@ public class PlayerMovement : MonoBehaviour
     // recalculates the closest obj between all in current range
     private void RecalculateClosestIntObj()
     {
-        print("reacalc");
         //calculate new
         GameObject newClosestIntObj = null;
         closestIntObjDist = 999f;
         for (int i = 0; i < intObjs.Count; i++)
         {
-            float dist = Vector3.Distance(intObjs[i].transform.position, gameObject.transform.position);
+            float dist = Vector3.Distance(intObjs[i].GetComponent<Interactable>().centerPt.position, gameObject.transform.position);
             if (dist < closestIntObjDist)
             {
                 newClosestIntObj = intObjs[i];

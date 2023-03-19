@@ -16,6 +16,7 @@ public class Interactable : MonoBehaviour
     [Header("Interact Popup")]
     [SerializeField] PopupSpawner popupSpawn;
     public float timeUntilPopup = 3.0f;
+    [SerializeField] public Transform centerPt;
 
     public delegate bool InteractFunction();
     InteractFunction interact;
