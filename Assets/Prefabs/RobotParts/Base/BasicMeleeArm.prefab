@@ -159,6 +159,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 0365c574b805e34489a8fb7af8b7b1af, type: 3}
+    - target: {fileID: 7091389847620684326, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091389847620684326, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2088101223
+      objectReference: {fileID: 0}
     - target: {fileID: 7091389847620684327, guid: c6a4caeb9358dc64888e919fa40614ed, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -281,6 +289,7 @@ MonoBehaviour:
   knockback: 5
   canAttack: 1
   aimTransform: {fileID: 0}
+  followMouse: 0
   hitboxObj: {fileID: 3745229743403023389}
   activeHitTime: 1
 --- !u!224 &8990835477135700094 stripped

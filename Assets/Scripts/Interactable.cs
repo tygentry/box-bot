@@ -69,8 +69,9 @@ public class Interactable : MonoBehaviour
 
             yield return new WaitForSeconds(timeUntilPopup);
 
-            if (isHighlighted)
+            if (isHighlighted && !popupSpawn.isShown)
             {
+                popupSpawn.isShown = true;
                 popupSpawn.SpawnPopUp();
             }
         }

@@ -18,6 +18,9 @@ public abstract class BodyBehavior : RobotPart
     public Vector3 armPos; // no need for left arm pos, just flips x to mirror
     public Vector3 legsPos;
 
+    public float rightArmAngle = 0.0f;
+    public float leftArmAngle = 0.0f;
+
     // Start is called before the first frame update
     public new void Start()
     {
@@ -36,7 +39,7 @@ public abstract class BodyBehavior : RobotPart
         }
     }
 
-    //getters / setters
+    #region getters/setters
     public ArmBehavior GetLeftArm() { return leftArm; }
     public void UpdateLeftArm() 
     { 
@@ -73,6 +76,7 @@ public abstract class BodyBehavior : RobotPart
             trinket = coreTrinketObj.GetComponent<TrinketBehavior>();
         }
     }
+    #endregion
 
     //click handlers
     public void PressLeft(float dt) { if (leftArm) leftArm.PressAttack(dt); }

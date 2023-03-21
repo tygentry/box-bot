@@ -19,7 +19,7 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public RobotPart.PartEnum type;
 
     public bool isHovered = false;
-    bool isShown = false;
+    public bool isShown = false;
 
     [SerializeField]
     public GameObject popupPrefab;
@@ -35,24 +35,25 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     // Update is called once per frame
     void Update()
     {
-        if (isHovered)
-        {
-            timeHovered += Time.deltaTime;
-            //display popup
-            if (timeHovered > 1.0f && !isShown)
+        if (isHoverable) { 
+            if (isHovered)
             {
-                isShown = true;
-                SpawnPopUp();
+                timeHovered += Time.deltaTime;
+                //display popup
+                if (timeHovered > 1.0f && !isShown)
+                {
+                    isShown = true;
+                    SpawnPopUp();
+                }
             }
-        }
-        else
-        {
-            if (isShown)
+            else
             {
-                DespawnPopUp();
-                isShown = false;
+                if (isShown)
+                {
+                    DespawnPopUp();
+                }
+                timeHovered = 0.0f;
             }
-            timeHovered = 0.0f;
         }
     }
 
@@ -60,7 +61,6 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         if (popup != null)
         {
-            print("still alive");
             Destroy(popup);
         }
         //spawn location can change based on player location
@@ -104,6 +104,8 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         Destroy(popup);
         popup = null;
+        isShown = false;
+        timeHovered = 0.0f;
     }
 
     IEnumerator DestroyOnVanish()
@@ -111,6 +113,7 @@ public class PopupSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         yield return new WaitForSeconds(.4f);
         Destroy(popup);
         popup = null;
+        isShown = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -11,10 +11,21 @@ public abstract class ArmBehavior : RobotPart
     public bool canAttack;
     public Transform aimTransform;
 
+    public bool followMouse = false;
+
     public new void Start()
     {
         base.Start();
         aimTransform = FindObjectOfType<AimTracker>().transform;
+    }
+
+    public void Update()
+    {
+        if (followMouse)
+        {
+            Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.right = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y));
+        }
     }
 
     public virtual void PressAttack(float dt)
@@ -30,5 +41,19 @@ public abstract class ArmBehavior : RobotPart
     public override bool OnPartInteract()
     {
         return base.OnPartInteract();
+    }
+
+    public override bool OnPartPickUp(GameObject player)
+    {
+        bool retVal = base.OnPartPickUp(player);
+        followMouse = true;
+        return retVal;
+    }
+
+    public override bool OnPartDrop(GameObject player)
+    {
+        bool retVal = base.OnPartDrop(player);
+        followMouse = false;
+        return retVal;
     }
 }
