@@ -18,9 +18,6 @@ public abstract class BodyBehavior : RobotPart
     public Vector3 armPos; // no need for left arm pos, just flips x to mirror
     public Vector3 legsPos;
 
-    public float rightArmAngle = 0.0f;
-    public float leftArmAngle = 0.0f;
-
     // Start is called before the first frame update
     public new void Start()
     {
