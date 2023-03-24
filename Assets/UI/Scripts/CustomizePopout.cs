@@ -74,20 +74,20 @@ public class CustomizePopout : MonoBehaviour
 
         for (int i = 0; i < bodies.Count; i++)
         {
-            if (cm.customizeMenu.leftArmSlots[i].transform.childCount == 0) { bodies[i].leftArm.SetImage(transparentSprite, false); }
+            if (cm.customizeMenu.leftArms[i].transform.childCount == 0) { bodies[i].leftArm.SetImage(transparentSprite, false); }
             else
             {
-                bodies[i].leftArm.SetImage(cm.customizeMenu.leftArmSlots[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite, true);
+                bodies[i].leftArm.SetImage(cm.customizeMenu.leftArms[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite, true);
             }
-            if (cm.customizeMenu.trinketSlots[i].transform.childCount == 0) { bodies[i].trinket.SetImage(transparentSprite, false); }
+            if (cm.customizeMenu.trinkets[i].transform.childCount == 0) { bodies[i].trinket.SetImage(transparentSprite, false); }
             else
             {
-                bodies[i].trinket.SetImage(cm.customizeMenu.trinketSlots[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite, false);
+                bodies[i].trinket.SetImage(cm.customizeMenu.trinkets[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite, false);
             }
-            if (cm.customizeMenu.rightArmSlots[i].transform.childCount == 0) { bodies[i].rightArm.SetImage(transparentSprite, false); }
+            if (cm.customizeMenu.rightArms[i].transform.childCount == 0) { bodies[i].rightArm.SetImage(transparentSprite, false); }
             else
             {
-                bodies[i].rightArm.SetImage(cm.customizeMenu.rightArmSlots[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite, false);
+                bodies[i].rightArm.SetImage(cm.customizeMenu.rightArms[i].transform.GetChild(0).GetComponentInChildren<Image>().sprite, false);
             }
         }
         if (cm.customizeMenu.legsSlot.transform.childCount == 0) { legs.SetImage(transparentSprite, false); }

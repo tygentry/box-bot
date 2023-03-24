@@ -56,10 +56,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b665f63d76b64594da90f0791fba531c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftArm: {fileID: 1438429198525499439}
+  trinket: {fileID: 1438429198468780629}
+  rightArm: {fileID: 1438429199704552071}
+  cm: {fileID: 0}
+  bodyNum: 0
   leftAngleSlider: {fileID: 3648619945036741373}
   rightAngleSlider: {fileID: 3362345446225251429}
-  leftAngle: 0
-  rightAngle: 0
 --- !u!1 &5916659557135139518
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +443,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5220312652499366826, guid: 5aaa6a94c9b7df94fbb6c99879044b94, type: 3}
   m_PrefabInstance: {fileID: 4932233038940475659}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1438429198468780629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306337371167523678, guid: 5aaa6a94c9b7df94fbb6c99879044b94, type: 3}
+  m_PrefabInstance: {fileID: 4932233038940475659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4932233038993001329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -552,6 +560,11 @@ PrefabInstance:
 --- !u!224 &864842190678669531 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5220312652499366826, guid: 5aaa6a94c9b7df94fbb6c99879044b94, type: 3}
+  m_PrefabInstance: {fileID: 4932233038993001329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1438429198525499439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306337371167523678, guid: 5aaa6a94c9b7df94fbb6c99879044b94, type: 3}
   m_PrefabInstance: {fileID: 4932233038993001329}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4932233039834411481
@@ -668,6 +681,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5220312652499366826, guid: 5aaa6a94c9b7df94fbb6c99879044b94, type: 3}
   m_PrefabInstance: {fileID: 4932233039834411481}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1438429199704552071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306337371167523678, guid: 5aaa6a94c9b7df94fbb6c99879044b94, type: 3}
+  m_PrefabInstance: {fileID: 4932233039834411481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5447233145500028302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -678,6 +696,22 @@ PrefabInstance:
     - target: {fileID: 1364256624251107428, guid: dce25db128b956142b3a33d6cd2cab94, type: 3}
       propertyPath: m_Value
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364256624251107428, guid: dce25db128b956142b3a33d6cd2cab94, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3765463068308901353}
+    - target: {fileID: 1364256624251107428, guid: dce25db128b956142b3a33d6cd2cab94, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateRightAngle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364256624251107428, guid: dce25db128b956142b3a33d6cd2cab94, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BodyDropZone, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364256624251107428, guid: dce25db128b956142b3a33d6cd2cab94, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2168312101169164323, guid: dce25db128b956142b3a33d6cd2cab94, type: 3}
       propertyPath: m_FillAmount
@@ -825,6 +859,22 @@ PrefabInstance:
     - target: {fileID: 1364256624251107428, guid: dce25db128b956142b3a33d6cd2cab94, type: 3}
       propertyPath: m_Value
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364256624251107428, guid: dce25db128b956142b3a33d6cd2cab94, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3765463068308901353}
+    - target: {fileID: 1364256624251107428, guid: dce25db128b956142b3a33d6cd2cab94, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateLeftAngle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364256624251107428, guid: dce25db128b956142b3a33d6cd2cab94, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BodyDropZone, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364256624251107428, guid: dce25db128b956142b3a33d6cd2cab94, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2168312101169164323, guid: dce25db128b956142b3a33d6cd2cab94, type: 3}
       propertyPath: m_FillAmount

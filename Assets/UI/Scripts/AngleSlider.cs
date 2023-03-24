@@ -11,4 +11,9 @@ public class AngleSlider : MonoBehaviour
     {
         return slider.value;
     }
+
+    public void SetValue(float val)
+    {
+        slider.value = val;
+    }
 }
