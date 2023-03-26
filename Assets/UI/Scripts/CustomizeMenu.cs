@@ -103,7 +103,7 @@ public class CustomizeMenu : MonoBehaviour
                 GameObject leftArm = Instantiate(body.GetLeftArm().inventoryPrefab, leftArms[i].transform.position, Quaternion.identity);
                 leftArm.transform.SetParent(leftArms[i].transform);
                 leftArm.transform.GetChild(0).gameObject.GetComponent<Image>().rectTransform.localScale = new Vector3(-1, 1, 1);
-                bodySlots[i].GetComponent<BodyDropZone>().SetLeftAngle(body.GetLeftArm().angleOffset);
+                body.GetLeftArm().angleOffset = bodySlots[i].GetComponent<BodyDropZone>().GetLeftAngle();
             }
             if (body.GetTrinket())
             {
@@ -112,7 +112,7 @@ public class CustomizeMenu : MonoBehaviour
             if (body.GetRightArm())
             {
                 Instantiate(body.GetRightArm().inventoryPrefab, rightArms[i].transform.position, Quaternion.identity).transform.SetParent(rightArms[i].transform);
-                bodySlots[i].GetComponent<BodyDropZone>().SetRightAngle(body.GetRightArm().angleOffset);
+                body.GetRightArm().angleOffset = bodySlots[i].GetComponent<BodyDropZone>().GetRightAngle();
             }
         }
         if (player.GetLeg())

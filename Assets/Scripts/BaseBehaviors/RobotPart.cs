@@ -45,4 +45,9 @@ public class RobotPart : MonoBehaviour
     {
         return true;
     }
+
+    public virtual void CopyPart(RobotPart part)
+    {
+        //nothing here needs to be copied over
+    }
 }

@@ -73,4 +73,31 @@ public class BodyDropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerExit(PointerEventData eventData)
     {
     }
+
+    public float GetDropZoneAngle(DropZone dz)
+    {
+        if (dz == null) { return 0.0f; }
+        if (dz.gameObject == leftArm)
+        {
+            return GetLeftAngle();
+        }
+        if (dz.gameObject == rightArm)
+        {
+            return GetRightAngle();
+        }
+        return 0.0f;
+    }
+
+    public void SetDropZoneAngle(DropZone dz, float val)
+    {
+        if (dz == null) { return; }
+        if (dz.gameObject == leftArm)
+        {
+            SetLeftAngle(val);
+        }
+        if (dz.gameObject == rightArm)
+        {
+            SetRightAngle(val);
+        }
+    }
 }

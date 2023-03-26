@@ -157,7 +157,11 @@ public class PlayerBody : MonoBehaviour
         {
             if (location.Equals(HeadLocString()))
             {
-                Destroy(headObj);
+                if (headObj)
+                {
+                    prefabBase.CopyPart(headObj.GetComponent<RobotPart>());
+                    Destroy(headObj);
+                }
                 headObj = newPart;
                 head = headObj.GetComponent<HeadBehavior>();
                 newPart.transform.SetParent(this.gameObject.transform, false);
@@ -166,7 +170,11 @@ public class PlayerBody : MonoBehaviour
             }
             else if (location.Equals(LegsLocString()))
             {
-                Destroy(legsObj);
+                if (legsObj)
+                {
+                    prefabBase.CopyPart(legsObj.GetComponent<RobotPart>());
+                    Destroy(legsObj);
+                }
                 legsObj = newPart;
                 legs = legsObj.GetComponent<LegBehavior>();
                 newPart.transform.SetParent(this.gameObject.transform, false);
@@ -180,9 +188,17 @@ public class PlayerBody : MonoBehaviour
             string slotName = location.Substring(0, sepLoc);
             int index = Int16.Parse(location.Substring(sepLoc + 1));
             BodyBehavior b = GetBody(index);
+            if (b == null)
+            {
+                Debug.Log("We have a serious problem");
+            }
             if (slotName.Equals(LeftArmLocString()))
             {
-                Destroy(b.leftArmObj);
+                if (b.leftArmObj)
+                {
+                    prefabBase.CopyPart(b.leftArmObj.GetComponent<RobotPart>());
+                    Destroy(b.leftArmObj);
+                }
                 b.leftArmObj = newPart;
                 b.UpdateLeftArm();
                 newPart.transform.SetParent(b.gameObject.transform, false);
@@ -197,7 +213,11 @@ public class PlayerBody : MonoBehaviour
             {
                 if (slotName.Equals(RightArmLocString()))
                 {
-                    Destroy(b.rightArmObj);
+                    if (b.rightArmObj)
+                    {
+                        prefabBase.CopyPart(b.rightArmObj.GetComponent<RobotPart>());
+                        Destroy(b.rightArmObj);
+                    }
                     b.rightArmObj = newPart;
                     b.UpdateRightArm();
                     newPart.transform.SetParent(b.gameObject.transform, false);
@@ -206,7 +226,11 @@ public class PlayerBody : MonoBehaviour
                 }
                 else if (slotName.Equals(TrinketLocString()))
                 {
-                    Destroy(b.coreTrinketObj);
+                    if (b.coreTrinketObj)
+                    {
+                        prefabBase.CopyPart(b.coreTrinketObj.GetComponent<RobotPart>());
+                        Destroy(b.coreTrinketObj);
+                    }
                     b.coreTrinketObj = newPart;
                     b.UpdateTrinketArm();
                     newPart.transform.SetParent(b.gameObject.transform, false);

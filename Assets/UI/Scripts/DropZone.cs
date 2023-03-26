@@ -33,4 +33,9 @@ public class DropZone : MonoBehaviour
 
         return isValid;
     }
+
+    public BodyDropZone GetBodyDropZone()
+    {
+        return this.GetComponentInParent<BodyDropZone>();
+    }
 }

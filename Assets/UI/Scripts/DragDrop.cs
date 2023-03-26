@@ -148,6 +148,19 @@ public class DragDrop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if (dropZone.transform.childCount > 0)
                 {
                     Transform swapChild = dropZone.transform.GetChild(dropZone.transform.childCount - 1);
+
+                    //getting angle offsets in case of arm swapping
+                    float swapOffset = 0.0f, previousOffset = 0.0f;
+                    BodyDropZone swapBDZ = dropZone.GetComponent<DropZone>().GetBodyDropZone();
+                    BodyDropZone previousBDZ = previousParent.GetComponent<DropZone>().GetBodyDropZone();
+                    if (swapBDZ) 
+                    {
+                        swapOffset = swapBDZ.GetDropZoneAngle(dropZone.GetComponent<DropZone>());
+                        previousOffset = previousBDZ.GetDropZoneAngle(previousParent.GetComponent<DropZone>());
+                        swapBDZ.SetDropZoneAngle(dropZone.GetComponent<DropZone>(), previousOffset);
+                        previousBDZ.SetDropZoneAngle(previousParent.GetComponent<DropZone>(), swapOffset);
+                    }
+
                     swapChild.SetParent(previousParent.transform, false);
                     swapChild.SetSiblingIndex(prevChildIndex);
                     //swapChild.localPosition = startPosition;

@@ -57,4 +57,10 @@ public abstract class ArmBehavior : RobotPart
         followMouse = false;
         return retVal;
     }
+
+    public override void CopyPart(RobotPart part)
+    {
+        base.CopyPart(part);
+        //this.angleOffset = part.GetComponent<ArmBehavior>().angleOffset;
+    }
 }
