@@ -33,6 +33,8 @@ public class PlayerBody : MonoBehaviour
     public CanvasManager cm;
     [SerializeField] PlayerMovement mv;
 
+    private bool pauseStatus;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -307,6 +309,25 @@ public class PlayerBody : MonoBehaviour
             drop.transform.rotation = Quaternion.Euler(0, 0, 0);
             Destroy(droppedPrefab);
         }
+    }
+
+    public void SetArmMovement(bool status)
+    {
+        foreach (BodyBehavior b in bodies)
+        {
+            b.GetLeftArm().followMouse = status;
+            b.GetRightArm().followMouse = status;
+        }
+    }
+
+    /**
+     * Handles updating anything necessary to stop calculation during a pause to simulate a pause (i.e. stopping arm rotation)
+     */
+    public void SimulatePause(bool newStatus)
+    {
+        pauseStatus = newStatus;
+        //tell all arms to stop following mouse
+        SetArmMovement(!pauseStatus);
     }
 
     public static string HeadLocString() { return "headObj"; }

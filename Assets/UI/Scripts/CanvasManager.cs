@@ -19,7 +19,10 @@ public class CanvasManager : MonoBehaviour
     public bool isDead;
     public bool isCustomizing;
 
+    private bool wasCustomizing;
+
     private PlayerMovement playerControls;
+    private PlayerBody playerBody;
 
     private void Awake()
     {
@@ -34,10 +37,18 @@ public class CanvasManager : MonoBehaviour
     }
     public void ToggleCustomizeMenu()
     {
-        if (isPaused || isDead)
+        if (isDead)
             return;
 
+        if (playerControls == null)
+        {
+            playerControls = customizeMenu.player.gameObject.GetComponent<PlayerMovement>();
+            playerBody = customizeMenu.player.gameObject.GetComponent<PlayerBody>();
+        }
+
         isCustomizing = !isCustomizing;
+        if (isCustomizing) { playerControls.OnDisable(); }
+        else { playerControls.OnEnable(); }
         customizeMenuObj.SetActive(isCustomizing);
     }
 
@@ -54,9 +65,24 @@ public class CanvasManager : MonoBehaviour
         if (playerControls == null)
         {
             playerControls = customizeMenu.player.gameObject.GetComponent<PlayerMovement>();
+            playerBody = customizeMenu.player.gameObject.GetComponent<PlayerBody>();
         }
         
+        if (isCustomizing)
+        {
+            wasCustomizing = true;
+            ToggleCustomizeMenu();
+            //isCustomizing = false;
+        }
+        else if (wasCustomizing)
+        {
+            wasCustomizing = false;
+            ToggleCustomizeMenu();
+            //isCustomizing = true;
+        }
+
         isPaused = pauseMenuManager.TogglePause();
+        playerBody.SimulatePause(isPaused);
         if (isPaused) { playerControls.OnDisable(); }
         else { playerControls.OnEnable(); }
     }
@@ -67,6 +93,7 @@ public class CanvasManager : MonoBehaviour
         if (playerControls == null)
         {
             playerControls = customizeMenu.player.gameObject.GetComponent<PlayerMovement>();
+            playerBody = customizeMenu.player.gameObject.GetComponent<PlayerBody>();
         }
         playerControls.OnDisable();
         playerDeath.ShowDeath();
