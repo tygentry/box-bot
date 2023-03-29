@@ -19,8 +19,6 @@ public class CanvasManager : MonoBehaviour
     public bool isDead;
     public bool isCustomizing;
 
-    private bool wasCustomizing;
-
     private PlayerMovement playerControls;
     private PlayerBody playerBody;
 
@@ -37,7 +35,7 @@ public class CanvasManager : MonoBehaviour
     }
     public void ToggleCustomizeMenu()
     {
-        if (isDead)
+        if (isPaused || isDead)
             return;
 
         if (playerControls == null)
@@ -47,6 +45,7 @@ public class CanvasManager : MonoBehaviour
         }
 
         isCustomizing = !isCustomizing;
+        playerBody.SetArmMovement(!isCustomizing);
         if (isCustomizing) { playerControls.OnDisable(); }
         else { playerControls.OnEnable(); }
         customizeMenuObj.SetActive(isCustomizing);
@@ -66,19 +65,6 @@ public class CanvasManager : MonoBehaviour
         {
             playerControls = customizeMenu.player.gameObject.GetComponent<PlayerMovement>();
             playerBody = customizeMenu.player.gameObject.GetComponent<PlayerBody>();
-        }
-        
-        if (isCustomizing)
-        {
-            wasCustomizing = true;
-            ToggleCustomizeMenu();
-            //isCustomizing = false;
-        }
-        else if (wasCustomizing)
-        {
-            wasCustomizing = false;
-            ToggleCustomizeMenu();
-            //isCustomizing = true;
         }
 
         isPaused = pauseMenuManager.TogglePause();

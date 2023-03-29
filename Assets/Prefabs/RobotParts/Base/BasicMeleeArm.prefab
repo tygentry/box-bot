@@ -289,7 +289,8 @@ MonoBehaviour:
   knockback: 5
   canAttack: 1
   aimTransform: {fileID: 0}
-  followMouse: 0
+  followMouse: -1
+  angleOffset: 0
   hitboxObj: {fileID: 3745229743403023389}
   activeHitTime: 1
 --- !u!224 &8990835477135700094 stripped

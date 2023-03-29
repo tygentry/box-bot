@@ -32,8 +32,25 @@ public class PlayerBody : MonoBehaviour
 
     public CanvasManager cm;
     [SerializeField] PlayerMovement mv;
-
+    private Controls controls;
     private bool pauseStatus;
+
+    public void Awake()
+    {
+        controls = new Controls();
+    }
+
+    private void OnEnable()
+    {
+        if (controls == null) { return; }
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (controls == null) { return; }
+        controls.Disable();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -81,7 +98,7 @@ public class PlayerBody : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mv.controls.PlayerControls.OpenCustomize.triggered)
+        if (controls.PlayerControls.OpenCustomize.triggered)
         {
             cm.ToggleCustomizeMenu();
         }
@@ -313,10 +330,12 @@ public class PlayerBody : MonoBehaviour
 
     public void SetArmMovement(bool status)
     {
+        //flips the change val to update locks - status=true will remove one lock count, false will add one lock
+        int changeVal = status ? -1 : 1;
         foreach (BodyBehavior b in bodies)
         {
-            b.GetLeftArm().followMouse = status;
-            b.GetRightArm().followMouse = status;
+            b.GetLeftArm().followMouse += changeVal;
+            b.GetRightArm().followMouse += changeVal;
         }
     }
 

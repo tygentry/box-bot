@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private LegBehavior legBehavior;
     public Controls controls;
+    public int controlsLock = 0;
     public bool canMove;
 
     private bool spacePressed = false;
@@ -36,13 +37,20 @@ public class PlayerMovement : MonoBehaviour
     public void OnEnable()
     {
         if (controls == null) { return; }
-        controls.Enable();
+        if (controlsLock != 0)
+            controlsLock--;
+
+        if (controlsLock == 0) 
+        { 
+            controls.Enable();
+        }
     }
 
     public void OnDisable()
     {
         if (controls == null) { return; }
         controls.Disable();
+        controlsLock++;
     }
 
     public void SetLegMovement(LegBehavior legBehavior)
