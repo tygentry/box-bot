@@ -21,6 +21,7 @@ public class CanvasManager : MonoBehaviour
 
     private PlayerMovement playerControls;
     private PlayerBody playerBody;
+    private MouseTracker mouseTracker;
 
     private void Awake()
     {
@@ -46,6 +47,7 @@ public class CanvasManager : MonoBehaviour
 
         isCustomizing = !isCustomizing;
         playerBody.SetArmMovement(!isCustomizing);
+        playerBody.SetMouseFollow(!isCustomizing);
         if (isCustomizing) { playerControls.OnDisable(); }
         else { playerControls.OnEnable(); }
         customizeMenuObj.SetActive(isCustomizing);

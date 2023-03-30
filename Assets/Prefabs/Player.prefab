@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6241148983329299898}
   lookAheadDistance: 1
+  followPlayer: 1
 --- !u!1 &6241148983329299896
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,8 +145,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   legBehavior: {fileID: 0}
+  controlsLock: 0
   canMove: 0
+  intObjs: []
   closestIntObj: {fileID: 0}
+  closestIntObjDist: 999
   canInteract: 1
   interactedObj: {fileID: 0}
 --- !u!114 &6241148983329299902
@@ -173,6 +177,7 @@ MonoBehaviour:
   legsObj: {fileID: 0}
   cm: {fileID: 0}
   mv: {fileID: 0}
+  mt: {fileID: 6241148981547769585}
 --- !u!50 &6241148983329299900
 Rigidbody2D:
   serializedVersion: 4

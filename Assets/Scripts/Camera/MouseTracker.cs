@@ -6,6 +6,7 @@ public class MouseTracker : MonoBehaviour
 {
     public Transform player;
     public float lookAheadDistance = 0.5f;
+    public bool followPlayer = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,9 @@ public class MouseTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position =  Vector2.MoveTowards((Vector2)player.transform.position, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition), lookAheadDistance);
+        if (followPlayer)
+        {
+            transform.position = Vector2.MoveTowards((Vector2)player.transform.position, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition), lookAheadDistance);
+        }
     }
 }

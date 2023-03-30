@@ -32,6 +32,7 @@ public class PlayerBody : MonoBehaviour
 
     public CanvasManager cm;
     [SerializeField] PlayerMovement mv;
+    [SerializeField] MouseTracker mt;
     private Controls controls;
     private bool pauseStatus;
 
@@ -337,6 +338,11 @@ public class PlayerBody : MonoBehaviour
             b.GetLeftArm().followMouse += changeVal;
             b.GetRightArm().followMouse += changeVal;
         }
+    }
+
+    public void SetMouseFollow(bool status)
+    {
+        mt.followPlayer = status;
     }
 
     /**
