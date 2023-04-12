@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PlayerStats;
 
 public class Attributes : MonoBehaviour
 {
@@ -12,7 +13,17 @@ public class Attributes : MonoBehaviour
         Explosive,
     }
 
-    public static Dictionary<RobotPartAttributes, string> AttributeImages = new Dictionary<RobotPartAttributes, string>()
+    public static Dictionary<RobotPartAttributes, Sprite> AttributeImages = new Dictionary<RobotPartAttributes, Sprite>();
+    //populating the icons for lookup
+    private void Awake()
+    {
+        foreach (KeyValuePair<RobotPartAttributes, string> path in AttributeImagesPaths)
+        {
+            AttributeImages.Add(path.Key, Resources.Load(path.Value) as Sprite);
+        }
+    }
+
+    public static Dictionary<RobotPartAttributes, string> AttributeImagesPaths = new Dictionary<RobotPartAttributes, string>()
     {
         { RobotPartAttributes.Melee, "" },
         { RobotPartAttributes.Ranged, "" },

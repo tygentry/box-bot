@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Attributes;
 
 public class PlayerStats : MonoBehaviour
 {
     [System.Serializable]
     public enum ModifiableStats
     {
-        None,
         AllDamage,
         MeleeDamage,
         ShotDamage,
@@ -25,6 +25,28 @@ public class PlayerStats : MonoBehaviour
         public float value;
     }
 
+    public static Dictionary<ModifiableStats, Sprite> StatIcons = new Dictionary<ModifiableStats, Sprite>();
+    //populating the icons for lookup
+    private void Awake()
+    {
+        foreach (KeyValuePair<ModifiableStats, string> path in StatIconPaths)
+        {
+            StatIcons.Add(path.Key, Resources.Load(path.Value) as Sprite);
+        }
+    }
+
+    public static Dictionary<ModifiableStats, string> StatIconPaths = new Dictionary<ModifiableStats, string>()
+    {
+        { ModifiableStats.AllDamage, "" },
+        { ModifiableStats.MeleeDamage, "" },
+        { ModifiableStats.ShotDamage, "" },
+        { ModifiableStats.ChargeDamage, "" },
+        { ModifiableStats.AttackSpeed, "" },
+        { ModifiableStats.MoveSpeed, "" },
+        { ModifiableStats.HeadChargeRate, "" },
+        { ModifiableStats.Luck, "" },
+    };
+
     [SerializeField] Dictionary<ModifiableStats, float> statsDict = new Dictionary<ModifiableStats, float>()
     {
         { ModifiableStats.AllDamage, 1.0f },
@@ -39,13 +61,11 @@ public class PlayerStats : MonoBehaviour
 
     public void ModifyStat(ModifiableStats stat, float value)
     {
-        if (stat == ModifiableStats.None) return;
         statsDict[stat] += value;
     }
 
     public float GetStat(ModifiableStats stat)
     {
-        if (stat == ModifiableStats.None) return 0.0f;
         return statsDict[stat];
     }
 

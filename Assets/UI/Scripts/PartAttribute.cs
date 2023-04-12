@@ -11,7 +11,7 @@ public class PartAttribute : MonoBehaviour
 
     public void SetAttribute(Attributes.RobotPartAttributes attr)
     {
-        attrIcon.sprite = Resources.Load(Attributes.AttributeImages[attr]) as Sprite;
+        attrIcon.sprite = Attributes.AttributeImages[attr];
         attrText.text = Attributes.AttributeText[attr];
     }
 }
