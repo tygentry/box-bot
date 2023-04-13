@@ -47,6 +47,18 @@ public class PlayerStats : MonoBehaviour
         { ModifiableStats.Luck, "" },
     };
 
+    public static Dictionary<ModifiableStats, string> StatNames = new Dictionary<ModifiableStats, string>()
+    {
+        { ModifiableStats.AllDamage, "Damage" },
+        { ModifiableStats.MeleeDamage, "Melee Damage" },
+        { ModifiableStats.ShotDamage, "Ranged Damage" },
+        { ModifiableStats.ChargeDamage, "Charge Damage" },
+        { ModifiableStats.AttackSpeed, "Attack Speed" },
+        { ModifiableStats.MoveSpeed, "Move Speed" },
+        { ModifiableStats.HeadChargeRate, "Special Charge" },
+        { ModifiableStats.Luck, "Luck" },
+    };
+
     [SerializeField] Dictionary<ModifiableStats, float> statsDict = new Dictionary<ModifiableStats, float>()
     {
         { ModifiableStats.AllDamage, 1.0f },

@@ -193,5 +193,5 @@ MonoBehaviour:
   startRot: {x: 0, y: 0, z: 0}
   stats: {fileID: 0}
   statsList:
-  - stat: 5
-    value: 0.15
+  - stat: 4
+    value: 1

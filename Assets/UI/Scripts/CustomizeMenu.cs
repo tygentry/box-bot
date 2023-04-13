@@ -17,6 +17,8 @@ public class CustomizeMenu : MonoBehaviour
 
     public PlayerBody player;
 
+    public StatsPanel statsPanel;
+
     /*
      * Forces a recalculation of drop zone variables and associated slots on the player
      */
@@ -120,4 +122,6 @@ public class CustomizeMenu : MonoBehaviour
             Instantiate(player.GetLeg().inventoryPrefab, legsSlot.transform.position, Quaternion.identity).transform.SetParent(legsSlot.transform);
         }
     }
+
+
 }

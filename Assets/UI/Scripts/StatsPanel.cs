@@ -13,15 +13,25 @@ public class StatsPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerStats = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerStats>();
         foreach (ModifiableStats stat in Enum.GetValues(typeof(ModifiableStats)))
         {
             GameObject sl = Instantiate(StatLinePrefab, gameObject.transform);
+            sl.GetComponent<StatLine>().SetUp(stat, playerStats.GetStat(stat));
             StatLines.Add(stat, sl);
         }
     }
 
-    public void UpdateStats()
+    public void UpdateAllStats()
     {
+        foreach (ModifiableStats stat in Enum.GetValues(typeof(ModifiableStats)))
+        {
+            UpdateStat(stat);
+        }
+    }
 
+    public void UpdateStat(ModifiableStats stat)
+    {
+        StatLines[stat].GetComponent<StatLine>().SetVal(playerStats.GetStat(stat));
     }
 }
