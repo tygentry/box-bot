@@ -12,6 +12,7 @@ public class CustomizePopout : MonoBehaviour
 
     [SerializeField] Sprite transparentSprite;
     public float popoutDistance = 220.0f;
+    public float animationSpeed = 2f;
     RectTransform trans;
     private CanvasManager cm;
 
@@ -105,7 +106,7 @@ public class CustomizePopout : MonoBehaviour
     {
         while (trans.anchoredPosition.x < popoutDistance)
         {
-            trans.anchoredPosition = new Vector2(trans.anchoredPosition.x + 1f, trans.anchoredPosition.y);
+            trans.anchoredPosition = new Vector2(trans.anchoredPosition.x + animationSpeed, trans.anchoredPosition.y);
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
@@ -114,7 +115,7 @@ public class CustomizePopout : MonoBehaviour
     {
         while (trans.anchoredPosition.x > -popoutDistance)
         {
-            trans.anchoredPosition = new Vector2(trans.anchoredPosition.x - 1f, trans.anchoredPosition.y);
+            trans.anchoredPosition = new Vector2(trans.anchoredPosition.x - animationSpeed, trans.anchoredPosition.y);
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }

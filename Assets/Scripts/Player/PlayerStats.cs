@@ -71,9 +71,12 @@ public class PlayerStats : MonoBehaviour
         { ModifiableStats.Luck, 1.0f },
     };
 
+    public StatsPanel statsPanel;
+
     public void ModifyStat(ModifiableStats stat, float value)
     {
         statsDict[stat] += value;
+        if (statsPanel) statsPanel.UpdateStat(stat);
     }
 
     public float GetStat(ModifiableStats stat)

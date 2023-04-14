@@ -10,7 +10,10 @@ public class PartAttribute : MonoBehaviour
     [SerializeField] TextMeshProUGUI attrText;
 
     public void SetAttribute(Attributes.RobotPartAttributes attr)
-    {
+    { 
+        if (Attributes.AttributeImages.Count == 0)
+            Attributes.PopulateImages();
+
         attrIcon.sprite = Attributes.AttributeImages[attr];
         attrText.text = Attributes.AttributeText[attr];
     }

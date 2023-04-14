@@ -376,6 +376,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4387721161740756698, guid: c895d737a66e3c842884eddb3dc2f0a3, type: 3}
+      propertyPath: statsList.Array.data[0].stat
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387721161740756698, guid: c895d737a66e3c842884eddb3dc2f0a3, type: 3}
       propertyPath: statsList.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}

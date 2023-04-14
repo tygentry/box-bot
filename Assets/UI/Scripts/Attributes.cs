@@ -15,7 +15,7 @@ public class Attributes : MonoBehaviour
 
     public static Dictionary<RobotPartAttributes, Sprite> AttributeImages = new Dictionary<RobotPartAttributes, Sprite>();
     //populating the icons for lookup
-    private void Awake()
+    public static void PopulateImages()
     {
         foreach (KeyValuePair<RobotPartAttributes, string> path in AttributeImagesPaths)
         {

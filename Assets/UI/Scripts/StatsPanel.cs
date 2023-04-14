@@ -14,6 +14,7 @@ public class StatsPanel : MonoBehaviour
     void Start()
     {
         playerStats = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerStats>();
+        playerStats.statsPanel = this;
         foreach (ModifiableStats stat in Enum.GetValues(typeof(ModifiableStats)))
         {
             GameObject sl = Instantiate(StatLinePrefab, gameObject.transform);
