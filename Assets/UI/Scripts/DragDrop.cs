@@ -172,7 +172,7 @@ public class DragDrop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 trans.SetParent(dropZone.transform, false);
                 string location = cm.customizeMenu.player.MatchPart(dropZone.GetComponent<DropZone>());
                 //new part attach
-                dropZone.GetComponent<DropZone>().associatedSlot = cm.customizeMenu.player.UpdateBody(location, partPrefab); ;
+                dropZone.GetComponent<DropZone>().associatedSlot = cm.customizeMenu.player.UpdateBody(location, partPrefab);
                 if (dropZone == previousParent) 
                 {
                     trans.SetSiblingIndex(prevChildIndex);

@@ -18,6 +18,7 @@ public class CustomizeMenu : MonoBehaviour
     public PlayerBody player;
 
     public StatsPanel statsPanel;
+    public FollowPlayer playerViewCam;
 
     /*
      * Forces a recalculation of drop zone variables and associated slots on the player
