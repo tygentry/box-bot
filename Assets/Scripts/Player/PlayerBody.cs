@@ -335,8 +335,21 @@ public class PlayerBody : MonoBehaviour
         int changeVal = status ? -1 : 1;
         foreach (BodyBehavior b in bodies)
         {
-            b.GetLeftArm().followMouse += changeVal;
-            b.GetRightArm().followMouse += changeVal;
+            if (b.GetLeftArm())
+                b.GetLeftArm().followMouse += changeVal;
+            if (b.GetRightArm())
+                b.GetRightArm().followMouse += changeVal;
+        }
+    }
+
+    public void DefaultArms()
+    {
+        foreach (BodyBehavior b in bodies)
+        {
+            if (b.GetLeftArm())
+                b.GetLeftArm().ZeroArm();
+            if (b.GetRightArm())
+                b.GetRightArm().ZeroArm();
         }
     }
 

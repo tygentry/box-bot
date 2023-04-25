@@ -48,6 +48,7 @@ public class CanvasManager : MonoBehaviour
         isCustomizing = !isCustomizing;
         playerBody.SetArmMovement(!isCustomizing);
         playerBody.SetMouseFollow(!isCustomizing);
+        playerBody.DefaultArms();
         if (isCustomizing) { playerControls.OnDisable(); }
         else { playerControls.OnEnable(); }
         customizeMenuObj.SetActive(isCustomizing);
