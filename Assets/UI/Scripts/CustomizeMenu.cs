@@ -18,6 +18,7 @@ public class CustomizeMenu : MonoBehaviour
     public PlayerBody player;
 
     public StatsPanel statsPanel;
+    public CharacterViewer charView;
     public FollowPlayer playerViewCam;
 
     /*

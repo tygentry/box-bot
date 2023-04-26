@@ -108,6 +108,13 @@ public class PlayerBody : MonoBehaviour
         {
             foreach (BodyBehavior b in bodies)
             {
+                //move arms
+                if (!pauseStatus)
+                {
+                    Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    b.UpdateArms((Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y)));
+                }
+
                 // holding / initial press
                 if (mv.controls.PlayerControls.LeftFirePress.triggered)
                 {
@@ -329,19 +336,6 @@ public class PlayerBody : MonoBehaviour
         }
     }
 
-    public void SetArmMovement(bool status)
-    {
-        //flips the change val to update locks - status=true will remove one lock count, false will add one lock
-        int changeVal = status ? -1 : 1;
-        foreach (BodyBehavior b in bodies)
-        {
-            if (b.GetLeftArm())
-                b.GetLeftArm().followMouse += changeVal;
-            if (b.GetRightArm())
-                b.GetRightArm().followMouse += changeVal;
-        }
-    }
-
     public void DefaultArms()
     {
         foreach (BodyBehavior b in bodies)
@@ -364,8 +358,6 @@ public class PlayerBody : MonoBehaviour
     public void SimulatePause(bool newStatus)
     {
         pauseStatus = newStatus;
-        //tell all arms to stop following mouse
-        SetArmMovement(!pauseStatus);
     }
 
     public static string HeadLocString() { return "headObj"; }

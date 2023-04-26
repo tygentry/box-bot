@@ -11,7 +11,6 @@ public abstract class ArmBehavior : RobotPart
     public bool canAttack;
     public Transform aimTransform;
 
-    public int followMouse = -1;
     public float angleOffset = 0.0f;
 
     public new void Start()
@@ -20,13 +19,9 @@ public abstract class ArmBehavior : RobotPart
         aimTransform = FindObjectOfType<AimTracker>().transform;
     }
 
-    public void Update()
+    public void MoveArm(Vector3 dir)
     {
-        if (followMouse == 0)
-        {
-            Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.right = Quaternion.Euler(0, 0, angleOffset) * (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y));
-        }
+        transform.right = Quaternion.Euler(0, 0, angleOffset) * dir;
     }
 
     public void ZeroArm()
@@ -52,20 +47,17 @@ public abstract class ArmBehavior : RobotPart
     public override bool OnPartPickUp(GameObject player)
     {
         bool retVal = base.OnPartPickUp(player);
-        followMouse = 0;
         return retVal;
     }
 
     public override bool OnPartDrop(GameObject player)
     {
         bool retVal = base.OnPartDrop(player);
-        followMouse = -1;
         return retVal;
     }
 
     public override void CopyPart(RobotPart part)
     {
         base.CopyPart(part);
-        this.followMouse = part.GetComponent<ArmBehavior>().followMouse;
     }
 }

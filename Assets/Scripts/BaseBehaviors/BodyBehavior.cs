@@ -36,6 +36,14 @@ public abstract class BodyBehavior : RobotPart
         }
     }
 
+    public void UpdateArms(Vector3 dir)
+    {
+        if (leftArm)
+            leftArm.MoveArm(dir);
+        if (rightArm)
+            rightArm.MoveArm(dir);
+    }
+
     #region getters/setters
     public ArmBehavior GetLeftArm() { return leftArm; }
     public void UpdateLeftArm() 
