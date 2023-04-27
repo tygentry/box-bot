@@ -26,7 +26,7 @@ public abstract class ArmBehavior : RobotPart
 
     public void ZeroArm()
     {
-        transform.right = Quaternion.Euler(0, 0, angleOffset) * new Vector3(0,0,0);
+        transform.right = Quaternion.Euler(0, 0, angleOffset) * Vector3.right;
     }
 
     public virtual void PressAttack(float dt)

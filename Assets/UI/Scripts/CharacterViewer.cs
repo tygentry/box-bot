@@ -22,10 +22,9 @@ public class CharacterViewer : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         if (trackMouse)
         {
-            //foreach (BodyBehavior b in player.bodies)
-            {
-
-            }
+            //Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos = (Vector2)Input.mousePosition;
+            player.UpdateArms((Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y)));
         }
     }
 
@@ -37,5 +36,6 @@ public class CharacterViewer : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerExit(PointerEventData eventData)
     {
         trackMouse= false;
+        player.DefaultArms();
     }
 }

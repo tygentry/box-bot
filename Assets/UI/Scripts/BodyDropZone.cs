@@ -33,12 +33,14 @@ public class BodyDropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         if (cm == null) { return; }
         cm.player.GetBody(bodyNum).GetLeftArm().angleOffset = GetLeftAngle();
+        cm.player.DefaultArms();
     }
 
     public void UpdateRightAngle()
     {
         if (cm == null) { return; }
         cm.player.GetBody(bodyNum).GetRightArm().angleOffset = GetRightAngle();
+        cm.player.DefaultArms();
     }
 
     #region getters and setters

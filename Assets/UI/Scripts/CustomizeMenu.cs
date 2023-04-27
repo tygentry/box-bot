@@ -123,6 +123,7 @@ public class CustomizeMenu : MonoBehaviour
         {
             Instantiate(player.GetLeg().inventoryPrefab, legsSlot.transform.position, Quaternion.identity).transform.SetParent(legsSlot.transform);
         }
+        player.DefaultArms();
     }
 
 

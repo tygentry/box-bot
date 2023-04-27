@@ -106,15 +106,15 @@ public class PlayerBody : MonoBehaviour
 
         if (!cm.isCustomizing)
         {
+            //move arms
+            if (!pauseStatus)
+            {
+                Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                UpdateArms((Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y)));
+            }
+
             foreach (BodyBehavior b in bodies)
             {
-                //move arms
-                if (!pauseStatus)
-                {
-                    Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    b.UpdateArms((Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y)));
-                }
-
                 // holding / initial press
                 if (mv.controls.PlayerControls.LeftFirePress.triggered)
                 {
@@ -333,6 +333,14 @@ public class PlayerBody : MonoBehaviour
             drop.transform.position = gameObject.transform.position;
             drop.transform.rotation = Quaternion.Euler(0, 0, 0);
             Destroy(droppedPrefab);
+        }
+    }
+
+    public void UpdateArms(Vector3 dir)
+    {
+        foreach (BodyBehavior b in bodies)
+        {
+            b.UpdateArms(dir);
         }
     }
 
