@@ -25,7 +25,7 @@ public abstract class SingleShotArm : ArmBehavior
     public void Fire()
     {
         GameObject proj = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation);
-        proj.transform.right = aimTransform.position - spawnPoint.position;
+        proj.transform.right = transform.right;
         StartCoroutine(ResetFire());
     }
 

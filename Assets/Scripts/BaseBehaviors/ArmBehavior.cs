@@ -9,19 +9,18 @@ public abstract class ArmBehavior : RobotPart
     public int damage;
     public float knockback;
     public bool canAttack;
-    public Transform aimTransform;
 
     public float angleOffset = 0.0f;
 
     public new void Start()
     {
         base.Start();
-        aimTransform = FindObjectOfType<AimTracker>().transform;
     }
 
     public void MoveArm(Vector3 dir)
     {
-        transform.right = Quaternion.Euler(0, 0, angleOffset) * dir;
+        Vector3 res = Quaternion.Euler(0, 0, angleOffset) * dir;
+        transform.right = res;
     }
 
     public void ZeroArm()
